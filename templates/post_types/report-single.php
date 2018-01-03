@@ -1,3 +1,7 @@
+<?php  
+  require_once path_to_theme() . '/resources/php/email_data.php';
+  $mcu_email_data = mcu_get_email_data(the_field('campaign_id'), get_field('ad_urls'));
+  ?>
 <?php $sponsor = get_field('sponsor'); ?>
 <div class="section">
   <div class="wrapper">
