@@ -14,16 +14,33 @@
     <hr>
     <div class="row">
       <div class="span8">
+        <div class="row">
+          <div class="span4">
+            <span class="num"><?php echo number_format($mcu_email_data['opens']) ?></span>
+            <label>Opens</label>
+          </div>
+          <div class="span4">
+            <span class="num"><?php echo number_format($mcu_email_data['ad_clicks']) ?></span>
+            <label>Ad Clicks</label>
+          </div>
+        </div>
+        <hr>
+        <?php
+          foreach($mcu_email_data['ad_links'] as $ad_link) :
+        ?>
+        
+        <?php
+          endforeach;
+        ?>
         <?php fn::put($mcu_email_data) ?>
         <hr>
-        <?php 
-          $urls = get_field('ad_urls');
-          foreach($urls as $url){
-            echo "<p>{$url['url']}</p>";
-          }
-        ?>
       </div>
       <div class="span4">
+        <h4>Campaign Preview <a class="alignright" href="<?php echo $mcu_email_data['web_view'] ?>" target="popup" onclick="window.open('<?php echo $mcu_email_data['web_view'] ?>','popup','width=700,height=700,resizable=no'); return false;">View Full</a></h4>
+        <div class="preview">
+          <iframe src="<?php echo $mcu_email_data['web_view'] ?>" width="600" height="900">
+          </iframe>
+        </div>
         <?php the_field('notes'); ?>
       </div>
     </div>

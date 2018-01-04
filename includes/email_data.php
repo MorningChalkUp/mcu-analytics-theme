@@ -2,7 +2,7 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     
-    // require_once '/vars.php';
+    require_once ABSPATH.'/vars.php';
     require_once 'cm/csrest_campaigns.php';
     require_once 'cm/csrest_clients.php';
     
@@ -28,17 +28,21 @@
         } while (!$break);
     
         $ad_click = 0;
-    
+        
+        $ad_links = array();
         foreach ($clicks as $click) {
           foreach ($ad_domains as $ad_domain) {
-            $url = parse_url($click->URL);
-            if ($url['host'] == $ad_domain) {
-              ++$ad_click;
-              if (isset($links[$click->URL])) {
-                ++$links[$click->URL];
+            // see if click link is on ad domain
+            if (strpos($click->URL, $ad_domain['url']) !== false) {
+              $ad_click ++;
+              // check to see if link is in $ad_link
+              if(!isset($ad_links[$click->URL])) {
+                $ad_links[$click->URL] = 1;
               } else {
-                $links[$click->URL] = 1;
+                $ad_links[$click->URL]++;
               }
+              // if it is not, then add it
+              // increment click count by one
             }
           }
         }
@@ -62,7 +66,7 @@
           'clicks_unique' => $result->response->Clicks,
           'clicks_total' => count($clicks),
           'ad_clicks' => $ad_click,
-          'ad_links' => $links,
+          'ad_links' => $ad_links,
           'title' => $title,
           'web_view' => $result->response->WebVersionURL,
         );
