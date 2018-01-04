@@ -74,6 +74,8 @@
       show_admin_bar( false );
   }
   
+  include(THEME.'/includes/email_data.php');
+  
   // ACF Options
   if( function_exists('acf_add_options_page') ) {
     acf_add_options_sub_page();

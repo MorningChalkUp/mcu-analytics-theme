@@ -1,7 +1,6 @@
 <?php  
-  require_once path_to_theme() . '/resources/php/email_data.php';
-  $mcu_email_data = mcu_get_email_data(the_field('campaign_id'), get_field('ad_urls'));
-  ?>
+  $mcu_email_data = mcu_get_email_data(get_field('campaign_id'), get_field('ad_urls'));
+?>
 <?php $sponsor = get_field('sponsor'); ?>
 <div class="section">
   <div class="wrapper">
@@ -15,7 +14,7 @@
     <hr>
     <div class="row">
       <div class="span8">
-        <?php the_field('campaign_id') ?>
+        <?php fn::put($mcu_email_data) ?>
         <hr>
         <?php 
           $urls = get_field('ad_urls');
