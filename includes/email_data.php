@@ -37,9 +37,9 @@
               $ad_click ++;
               // check to see if link is in $ad_link
               if(!isset($ad_links[$click->URL])) {
-                $ad_links[$click->URL] = 1;
+                $ad_links[$click->URL] = array('url' => $click->URL, 'clicks'=> 1);
               } else {
-                $ad_links[$click->URL]++;
+                $ad_links[$click->URL]['clicks']++;
               }
               // if it is not, then add it
               // increment click count by one
@@ -56,6 +56,7 @@
         foreach ($campaign_list->response as $campaign) {
           if ($campaign->CampaignID == $id) {
             $title = $campaign->Name;
+            $subject = $campaign->Subject;
             break;
           }
         }
@@ -68,10 +69,23 @@
           'ad_clicks' => $ad_click,
           'ad_links' => $ad_links,
           'title' => $title,
+          'subject' => $subject,
           'web_view' => $result->response->WebVersionURL,
         );
     
         return $data;
       }
     }
+    
+    function mcu_get_campaigns(){
+      $auth = array('api_key' => CM_API_KEY);
+      $wrap = new CS_REST_Clients(
+          CM_CLIENT_ID, 
+          $auth);
+  
+      $campaigns = $wrap->get_campaigns();  
+      
+      return $campaigns->response;
+    }
+    
 ?>

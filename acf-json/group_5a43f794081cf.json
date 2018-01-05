@@ -46,7 +46,7 @@
             "name": "campaign_id",
             "type": "text",
             "value": null,
-            "instructions": "",
+            "instructions": "<a href='/campaigns/' target='_blank'>Find the ID</a>",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -135,7 +135,6 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": [
-        "permalink",
         "the_content",
         "excerpt",
         "custom_fields",
