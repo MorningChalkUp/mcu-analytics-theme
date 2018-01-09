@@ -3,7 +3,7 @@
 /* Resets */
   *{line-height:150%}
   br{line-height:100%}
-  html, body{color:#585858;font-family:'Roboto', 'Helvetica Neue', sans-serif;font-weight:300;font-size:16px;height:100%;margin:0;padding:0;}
+  html, body{background-color:#f9f9f9;color:#484546;font-family:'Roboto', 'Helvetica Neue', sans-serif;font-weight:300;font-size:16px;height:100%;margin:0;padding:0;}
   a{color:#3D5BA9;text-decoration:none;}
   b, strong{font-weight:500;}
   
@@ -145,17 +145,17 @@
   .vertical-center:after{content:'';display:block;}
   
   table{width:100%;border-collapse:collapse;}
-  table tr{border-bottom:1px solid #eee;border-top:1px solid #eee;}
+  table tr{border-bottom:1px solid #ddd;border-top:1px solid #ddd;}
   table td{padding:1rem;}
   
 /* Header */
-  #logo{height:16px;}
+  #logo{height:16px;margin-right:3px;}
   
-  #navbar {background-color:#333132;color:rgba(255,255,255,0.7);padding:15px 0;transition:all 0.5s;}
+  #navbar {background-color:#fff;border-bottom:1px solid rgba(51, 49, 50, 0.2);padding:15px 0;transition:all 0.5s;}
   #navbar .wrapper{align-items:center;display:flex;flex-direction:row;justify-content:space-between;}
-  #navbar .wrapper #logo .morning{fill:#fff;}
-  #navbar .wrapper #logo .chalkup{fill:#fff;}
-  #navbar .wrapper a{padding:0.5rem;color:rgba(255,255,255,0.7);}
+  #navbar .wrapper #logo .morning{fill:#484546;}
+  #navbar .wrapper #logo .chalkup{fill:#3D5BA9;}
+  #navbar .wrapper a{padding:0.5rem 0;}
   #navbar .wrapper > *{flex:1;}
   #navbar .wrapper h1{font-size:22px;font-weight:200;}
   #navbar .wrapper .navleft{text-align:left;}
@@ -186,8 +186,8 @@
   
   h2 img{vertical-align:middle;border-radius:100%;margin-right:20px;}
   
-  .num{color:#3D5BA9;font-size:64px;font-weight:100;}
-  .num + label{color:#999;text-transform:uppercase;letter-spacing:0.1em;}
+  .num{color:#3D5BA9;font-size:48px;font-weight:100;}
+  label{color:#999;text-transform:uppercase;letter-spacing:0.1em;display:block;}
   
   .num-small{font-size:24px;}
   

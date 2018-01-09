@@ -4,14 +4,15 @@
     <h2 class="section-title">
       <?php the_title() ?>
     </h2>
-    <hr>
     <table>
     <?php
       $campaigns = mcu_get_campaigns();
       foreach ($campaigns as $campaign):
+        //fn::put($campaign);
     ?>
       <tr>
-        <td><?php echo $campaign->Name ?></td>
+        <td><?php echo date_format(date_create($campaign->SentDate),"n/j/Y") ?></td>
+        <td><?php echo $campaign->Subject ?></td>
         <td><?php echo $campaign->CampaignID ?></td>
       </tr>
     <?php endforeach; ?>

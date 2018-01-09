@@ -1,0 +1,6 @@
+.login h1 a{
+  background:transparent url('../images/mcu.svg') no-repeat 50% 50%;
+  background-size:contain;
+  height:80px;
+  width:90%;
+}

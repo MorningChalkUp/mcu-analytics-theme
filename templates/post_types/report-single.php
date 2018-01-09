@@ -13,16 +13,21 @@
     </h2>
     <hr>
     <div class="row">
-      <div class="span7">
-        <h4>&ldquo;<?php echo $mcu_email_data['subject'] ?>&rdquo;</h4>
+      <div class="span8">
+        <?php //fn::put($mcu_email_data); ?>
+        <h4>Ad Summary:</h4>
         <div class="row">
-          <div class="span4">
-            <span class="num"><?php echo number_format($mcu_email_data['opens']) ?></span>
-            <label>Opens</label>
+          <div class="span3">
+            <label>Recipients</label>
+            <span class="num"><?php echo number_format($mcu_email_data['recipients']) ?></span>
           </div>
           <div class="span3">
+            <label>Opens</label>
+            <span class="num"><?php echo number_format($mcu_email_data['opens']) ?></span>
+          </div>
+          <div class="span2">
+            <label>Clicks</label>
             <span class="num"><?php echo number_format($mcu_email_data['ad_clicks']) ?></span>
-            <label>Ad Clicks</label>
           </div>
         </div>
         <hr>
@@ -43,11 +48,13 @@
       </div>
       <div class="span1 placeholder"></div>
       <div class="span4">
-        <h4>Preview: <a class="alignright" href="<?php echo $mcu_email_data['web_view'] ?>" target="popup" onclick="window.open('<?php echo $mcu_email_data['web_view'] ?>','popup','width=700,height=700,resizable=no'); return false;">View Full</a></h4>
+        <h4>Newsletter:</h4>
+        <p><em>&ldquo;<?php echo $mcu_email_data['subject'] ?>&rdquo;</em></p><br>
         <div class="preview">
           <iframe src="<?php echo $mcu_email_data['web_view'] ?>" width="600" height="900">
           </iframe>
         </div>
+        <h4 class="center-text"><a href="<?php echo $mcu_email_data['web_view'] ?>" target="popup" onclick="window.open('<?php echo $mcu_email_data['web_view'] ?>','popup','width=700,height=700,resizable=no'); return false;">View Full Newsletter</a></h4>
         <?php if($notes = get_field('notes')) :?>
           <h4>Notes:</h4>
           <?php echo  $notes; ?>
