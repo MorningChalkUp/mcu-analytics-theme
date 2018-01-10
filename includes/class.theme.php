@@ -6,7 +6,15 @@
       );
       
       $post_types = array(
-        'report' => 'dashicons-portfolio',
+        'report' => array(
+          'menu_icon' => 'dashicons-portfolio',
+          'query' => array(
+            'posts_per_page' => '-1',
+            'meta_key' => 'date',
+            'orderby' => 'meta_value',
+            'order' => 'DESC',
+          ),
+        )
       );
       
       $resources = array(

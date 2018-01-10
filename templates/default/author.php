@@ -6,23 +6,29 @@
     $title = "<strong>All</strong> Reports";
     $partial = 'post-report-admin';
     $args = array(
-            'post_type' => 'report',
-            'posts_per_page' => -1,
-          );
+      'post_type' => 'report',
+      'posts_per_page' => -1,
+      'meta_key' => 'date',
+      'orderby' => 'meta_value',
+      'order' => 'DESC',
+    );
   } else {
     $title = "<strong>$author->display_name</strong> Reports";
     $partial = 'post-report';
     $args = array(
-            'post_type' => 'report',
-            'posts_per_page' => -1,
-            'meta_query' => array(
-              array(
-                'key' => 'sponsor', // name of custom field
-                'value' => $author->ID,
-                'compare' => '='
-              )
-            )
-          );
+      'post_type' => 'report',
+      'posts_per_page' => -1,
+      'meta_key' => 'date',
+      'orderby' => 'meta_value',
+      'order' => 'DESC',
+      'meta_query' => array(
+        array(
+          'key' => 'sponsor', // name of custom field
+          'value' => $author->ID,
+          'compare' => '=',
+        )
+      )
+    );
   }
   
   
