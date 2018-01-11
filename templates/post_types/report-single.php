@@ -8,7 +8,9 @@
       <a href="/">&larr; Back to Dashboard</a>
     </div>
     <h2 class="section-title">
-      <?php pxl::image("acf|logo|user_{$sponsor['ID']}", array( 'w' => 100, 'h' => 'auto' )); ?>
+      <?php $logo = get_field('logo','user_'.$sponsor['ID']); ?>
+      <img src="<?php echo $logo['url'] ?>" width="100" height="100"/>
+      <?php //pxl::image("acf|logo|user_{$sponsor['ID']}", array( 'w' => 100, 'h' => '100' )); ?>
       <?php echo $sponsor['display_name']; ?> <small>| <?php the_field('date') ?></small>
     </h2>
     <hr>

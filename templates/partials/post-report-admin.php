@@ -2,7 +2,9 @@
   <tr>
     <td><span class="date"><?php the_field('date'); ?></span></td>
     <td>
-      <?php pxl::image("acf|logo|user_{$sponsor['ID']}", array( 'w' => 30, 'h' => 'auto' )); ?>
+      <?php $logo = get_field('logo','user_'.$sponsor['ID']); ?>
+      <img src="<?php echo $logo['url'] ?>" width="30" height="30"/>
+      <?php //pxl::image($logo, array( 'w' => 30, 'h' => 'auto' )); ?>
       <strong><?php echo $sponsor['display_name'] ?></strong>
     </td>
     <td>
