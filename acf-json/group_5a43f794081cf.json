@@ -7,7 +7,6 @@
             "label": "Date",
             "name": "date",
             "type": "date_picker",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -25,7 +24,6 @@
             "label": "Sponsor",
             "name": "sponsor",
             "type": "user",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -45,7 +43,6 @@
             "label": "Campaign ID",
             "name": "campaign_id",
             "type": "text",
-            "value": null,
             "instructions": "<a href=\"\/campaigns\/\">Find the ID<\/a>",
             "required": 0,
             "conditional_logic": 0,
@@ -62,10 +59,9 @@
         },
         {
             "key": "field_5a43f81bf91b5",
-            "label": "Ad Domains",
+            "label": "Ad URLs",
             "name": "ad_urls",
             "type": "repeater",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -85,7 +81,6 @@
                     "label": "Domain",
                     "name": "url",
                     "type": "text",
-                    "value": null,
                     "instructions": "pulls data for all urls for this domain.",
                     "required": 0,
                     "conditional_logic": 0,
@@ -103,11 +98,29 @@
             ]
         },
         {
+            "key": "field_5a5d0328f3017",
+            "label": "Ad Copy",
+            "name": "ad_copy",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
             "key": "field_5a43f84df91b6",
             "label": "Notes",
             "name": "notes",
             "type": "wysiwyg",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -156,5 +169,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1515186885
+    "modified": 1516045110
 }

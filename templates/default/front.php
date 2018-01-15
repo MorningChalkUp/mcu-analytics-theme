@@ -11,7 +11,6 @@
   					$lostpassword_url = wp_lostpassword_url(home_url('my-account/?passwordreset=true'));
   					echo "<div class='error'>Login Failed<br><small>Please try again, <a href=\"{$lostpassword_url}\">click here to reset your password</a>.</small></div>";
   				}
-				
   				if ( !empty($_REQUEST['passwordreset']) ) echo "<h5>Check your email for the confirmation link.<small></h5>";
   			?>
 			</div>

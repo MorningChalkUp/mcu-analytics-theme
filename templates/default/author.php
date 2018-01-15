@@ -36,9 +36,9 @@
 <div class="section">
   <div class="wrapper">
     <h2 class="section-title">
-      <?php $logo = get_field('logo','user_'.$author->ID); ?>
-      <img src="<?php echo $logo['url'] ?>" width="100" height="100"/>
-      <?php //pxl::image("acf|logo|user_$author->ID", array( 'w' => 100, 'h' => 'auto' )); ?>
+      <?php //$logo = get_field('logo','user_'.$author->ID); ?>
+      <!-- <img src="<?php //echo $logo['url'] ?>" width="100" height="100"/> -->
+      <?php pxl::image("acf|logo|user_$author->ID", array( 'w' => 100, 'h' => 'auto' )); ?>
       <?php echo $title ?>
     </h2>
     <table id="reports">
