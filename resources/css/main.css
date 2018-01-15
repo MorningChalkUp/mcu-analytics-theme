@@ -170,7 +170,7 @@
   #menu > ul > li a{padding:0.5rem 1rem;}
   
 /* Footer */
-/*  #footer{padding:2rem 0;}*/
+  #footer{padding:2rem 0;}
   
 /* Dashboard */
   .breadcrumb{margin:2rem 0;}
@@ -208,3 +208,13 @@
   table.fix td.num{width:55px;}
   table.fix td{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
   
+  @media (max-width: 767px) {
+    h2 img{width:60px;height:60px;}
+    
+    label{font-size:14px;}
+    .num{font-size:32px;}
+    .num-small{font-size:24px;}
+    
+    .span8 .span4{float:left;width:45%;}
+    .span8 .span4 + .span4{margin-left:10%;}
+  }

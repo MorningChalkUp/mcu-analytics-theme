@@ -57,7 +57,7 @@
       </div>
       <div class="span1 placeholder"></div>
       <div class="span4">
-        <p><em>&ldquo;<?php echo $mcu_email_data['subject'] ?>&rdquo;</em></p><br>
+        <h4><em>&ldquo;<?php echo $mcu_email_data['subject'] ?>&rdquo;</em></h4>
         <div class="ad-copy">
           <?php the_field('ad_copy'); ?>
         </div>
