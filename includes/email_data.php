@@ -33,7 +33,7 @@
         foreach ($clicks as $click) {
           foreach ($ad_domains as $ad_domain) {
             // see if click link is on ad domain
-            if (strpos($click->URL, $ad_domain['url']) !== false) {
+            if (strpos(strtolower($click->URL), strtolower($ad_domain['url'])) !== false) {
               $ad_click ++;
               // check to see if link is in $ad_link
               if(!isset($ad_links[$click->URL])) {
