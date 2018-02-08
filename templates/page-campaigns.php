@@ -12,7 +12,7 @@
     ?>
       <tr>
         <td><?php echo date_format(date_create($campaign->SentDate),"n/j/Y") ?></td>
-        <td><a href="<?php echo $campaign->WebVersionURL ?>" target="_blank"><?php echo $campaign->Subject ?></a></td>
+        <td><a href="<?php echo str_replace('http:','https:',$campaign->WebVersionURL) ?>" target="_blank"><?php echo $campaign->Subject ?></a></td>
         <td><?php echo $campaign->CampaignID ?></td>
       </tr>
     <?php endforeach; ?>
