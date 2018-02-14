@@ -18,6 +18,7 @@
         $size = 1000;
         $break = false;
         $clicks = [];
+        $countries = [];
         do {
           $click_json = $wrap->get_clicks('2000-01-01', $page, $size);
           $clicks = array_merge($clicks, $click_json->response->Results);

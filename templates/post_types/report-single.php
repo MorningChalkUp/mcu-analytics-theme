@@ -9,7 +9,44 @@
     </div>
     <h2 class="section-title">
       <?php pxl::image("acf|logo|user_{$sponsor['ID']}", array( 'w' => 100, 'h' => '100' )); ?>
-      <small><?php the_field('date') ?></small><br>
+      
+      <?php
+        if ( current_user_can( 'manage_options' ) ) {
+          $args = array(
+            'post_type' => 'report',
+            'posts_per_page' => -1,
+            'meta_key' => 'date',
+            'orderby' => 'meta_value',
+            'order' => 'DESC',
+          );
+        } else {
+          $args = array(
+            'post_type' => 'report',
+            'posts_per_page' => -1,
+            'meta_key' => 'date',
+            'orderby' => 'meta_value',
+            'order' => 'DESC',
+            'meta_query' => array(
+              array(
+                'key' => 'sponsor', // name of custom field
+                'value' => $author->ID,
+                'compare' => '=',
+              )
+            )
+          );
+        }
+        $reports = get_posts($args);
+      ?>
+      
+      <div class="select-container">
+        <select id="report_select">
+          <?php foreach ($reports as $report) : $date = get_field('date',$report->ID) ; $selected = $report->ID == $post->ID ? 'selected' : '' ; ?>
+            <option <?php echo $selected ?> value="<?php echo get_permalink($report->ID) ?>"><?php echo $date ?></option>
+          <?php endforeach; ?>
+        </select>
+        <i class="fal fa-angle-down"></i>
+      </div>
+      <br>
       <em>&ldquo;<?php echo $mcu_email_data['subject'] ?>&rdquo;</em>
     </h2>
     

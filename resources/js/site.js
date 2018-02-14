@@ -1,14 +1,14 @@
-var click = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) ? "touchstart" : "click";
-
 (function($){
-  function embedContainer() {
-    jQuery('iframe[src*="youtube"]').each(function() {
-      var $video = $(this);
-      if ( ! $video.parent().hasClass('embed-container') ) $video.wrap("<div class='embed-container'></div>");
-    });
-  }
   
   $(function(){
-    embedContainer();
+
+    console.log('load');
+    $('#report_select').on('change', function () {
+      console.log($(this).val());
+      var url = $(this).val();
+      if (url) { window.location = url; }
+      return false;
+    });
+          
   })
 })(jQuery);
