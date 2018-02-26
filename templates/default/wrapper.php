@@ -12,15 +12,18 @@
           $site   = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'];
           $author = wp_get_current_user();
           $logout = wp_logout_url($site);
-          echo '<span class="hidden-phone">welcome, '.$author->display_name.' | </span>';
+          echo '<span class="hidden-phone">welcome, '.$author->display_name.' </span>';
 
-          echo "<a href='$logout'>Logout</a>";
+          echo "<a href='#' id='menubtn'> <i class='fal fa-bars fa-lg'></i></a>";
         } ?>
+        <div id="menu">
+          <ul>
+            <li><?php echo "<a href='$logout'>Logout</a>" ?></li>
+          </ul>
+        </div>
       </div>
     </div>
-    <!-- <div id="menu">
-
-    </div> -->
+    
   </div>
 <?php else : // Content Loads Between ?>
   <div id="footer">

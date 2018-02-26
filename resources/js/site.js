@@ -1,8 +1,17 @@
 (function($){
   
+  function toggleMenu(){
+    $('#menubtn').click(function(e){
+      e.preventDefault();
+      $('#menu').toggleClass('open');
+      $(this).find('[data-fa-processed]').toggleClass('fa-bars').toggleClass('fa-times');
+      return false;
+    });
+  }
+  
   $(function(){
-
-    console.log('load');
+    toggleMenu()
+    
     $('#report_select').on('change', function () {
       console.log($(this).val());
       var url = $(this).val();
