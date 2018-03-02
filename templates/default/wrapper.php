@@ -18,6 +18,7 @@
         } ?>
         <div id="menu">
           <ul>
+            <li><a href="/profile">My Profile</a></li>
             <li><?php echo "<a href='$logout'>Logout</a>" ?></li>
           </ul>
         </div>

@@ -32,6 +32,7 @@
   .select-container select::-ms-expand{display: none;}
   .select-container select option{background-color:#fff;color:#808080;}
   
+  .nofloat{float:none;}
   
   .screen-reader-text{display:none;}
 	.gform_ajax_spinner {border-left-color:#000000!important;}
