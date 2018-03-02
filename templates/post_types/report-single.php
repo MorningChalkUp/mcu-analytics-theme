@@ -1,7 +1,8 @@
 <?php  
+  // pull data
   $mcu_email_data = mcu_get_email_data(get_field('campaign_id'), get_field('ad_urls'));
   
-  // save to cache:
+  // save data to cache:
   update_field('recipients', $mcu_email_data['recipients']);
   update_field('opens', $mcu_email_data['opens']);
   update_field('clicks', $mcu_email_data['ad_clicks']);
