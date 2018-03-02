@@ -1,5 +1,11 @@
 <?php  
   $mcu_email_data = mcu_get_email_data(get_field('campaign_id'), get_field('ad_urls'));
+  
+  // save to cache:
+  update_field('recipients', $mcu_email_data['recipients']);
+  update_field('opens', $mcu_email_data['opens']);
+  update_field('clicks', $mcu_email_data['ad_clicks']);
+  
 ?>
 <?php $sponsor = get_field('sponsor'); ?>
 <div class="section">
