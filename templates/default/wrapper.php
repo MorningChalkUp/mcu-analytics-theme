@@ -14,9 +14,12 @@
           $logout = wp_logout_url($site);
           echo '<span class="hidden-phone">welcome, '.$author->display_name.' </span>';
 
-          echo "<a href='#' id='menubtn'> <i class='fal fa-bars fa-lg'></i></a>";
+          echo "<a href='#' id='menubtn'> <i class='fal fa-bars fa-lg fa-fw'></i></a>";
         } ?>
         <div id="menu">
+          <ul>
+            <li><a href="/">Reports</a></li>
+          </ul>
           <ul>
             <li><a href="/profile">My Profile</a></li>
             <li><?php echo "<a href='$logout'>Logout</a>" ?></li>
