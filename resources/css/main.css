@@ -165,11 +165,13 @@
   
   #menubtn{padding:0.5rem !important;}
   
-  #menu{background-color:#fff;box-shadow:0 1px 2px rgba(0,0,0,0.1);position:absolute;opacity:0;pointer-events:none;right:0;transition:0.2s all;}
-  #menu.open{opacity:1;pointer-events:auto;}
-  #menu > ul{list-style-type:none;}
+  #menu{background-color:#fff;box-shadow:0 1px 2px rgba(0,0,0,0.1);position:absolute;opacity:0;pointer-events:none;right:0;transition:0.2s all;z-index:20;transform:scale(0.5);transform-origin:top right;}
+  #menu.open{opacity:1;pointer-events:auto;transform:scale(1);}
+  #menu > ul{list-style-type:none;margin:0;padding:0;}
+  #menu > ul + ul{border-top:1px solid #eee;}
   #menu > ul > li{}
   #menu > ul > li a{display:block;padding:0.5rem 1rem !important;}
+  #menu > ul > li a:hover{background-color:#3D5BA9;color:#fff;}
   
 /* Footer */
   #footer{padding:2rem 0;}

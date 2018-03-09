@@ -18,6 +18,9 @@
         } ?>
         <div id="menu">
           <ul>
+            <li><a href="/">Reports</a></li>
+          </ul>
+          <ul>
             <li><?php echo "<a href='$logout'>Logout</a>" ?></li>
           </ul>
         </div>
