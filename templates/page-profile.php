@@ -31,34 +31,48 @@
 
 				<?php $current_user = wp_get_current_user(); ?>
 
-				<form method="post" id="adduser" action="<?php the_permalink(); ?>">
-
-          <h3><?php _e('Personal info', 'textdomain'); ?></h3>
-          
-          <p>
-              <label for="first-name"><?php _e('Username', 'textdomain'); ?></label>
-              <input class="text-input" name="user_login" type="text" id="user_login" value="<?php the_author_meta( 'user_login', $current_user->ID ); ?>" disabled/>
-              <?php _e('It is not possible to change your username.', 'textdomain'); ?>
-          </p>
-          
-          <p><?php _e('Please note, all information below is also shown on the website.', 'textdomain'); ?></p>
+				<form method="post" id="adduser" action="<?php the_permalink(); ?>">          
           <table class="form-table">
             <tbody>
-            <tr class="acf-field">
-              <td class="acf-label"><label for="first-name"><?php _e('First name', 'textdomain'); ?></label></td>
-              <td><input class="text-input" name="first-name" type="text" id="first-name" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" /></td>
-            </tr>
-            <tr class="acf-field">
-              <td class="acf-label"><label for="last-name"><?php _e('Last name', 'textdomain'); ?></label></td>
-              <td><input class="text-input" name="last-name" type="text" id="last-name" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" /></td>
-            </tr>
-            <tr class="acf-field">
-              <td class="acf-label"><label for="email"><?php _e('E-mail *', 'textdomain'); ?></label></td>
-              <td><input class="text-input" name="email" type="text" id="email" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" /></td>
-            </tr>
-          </tbody>
+              <tr class="acf-field">
+                <td class="acf-label"><label for="user_login"><?php _e('Username', 'textdomain'); ?></label></td>
+                <td><input class="text-input" name="user_login" type="text" id="user_login" value="<?php the_author_meta( 'user_login', $current_user->ID ); ?>" disabled/></td>
+              </tr>
+              <tr class="acf-field">
+                <td class="acf-label"><label for="first-name"><?php _e('First name', 'textdomain'); ?></label></td>
+                <td><input class="text-input" name="first-name" type="text" id="first-name" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" /></td>
+              </tr>
+              <tr class="acf-field">
+                <td class="acf-label"><label for="last-name"><?php _e('Last name', 'textdomain'); ?></label></td>
+                <td><input class="text-input" name="last-name" type="text" id="last-name" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" /></td>
+              </tr>
+              <tr class="acf-field">
+                <td class="acf-label"><label for="email"><?php _e('E-mail *', 'textdomain'); ?></label></td>
+                <td><input class="text-input" name="email" type="text" id="email" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" /></td>
+              </tr>
+              <tr class="acf-field">
+                <td class="acf-label">
+                  <label><?php _e('Change password', 'textdomain'); ?></label>
+                </td>
+                <td>
+                  <p class="form-password">
+                      <label for="pass1"><?php _e('Password *', 'profile'); ?> </label>
+                      <input class="text-input" name="pass1" type="password" id="pass1" />
+                  </p>
+                  <p class="form-password">
+                      <label for="pass2"><?php _e('Repeat password *', 'profile'); ?></label>
+                      <input class="text-input" name="pass2" type="password" id="pass2" />
+                  </p>
+                  <p><?php _e('When both password fields are left empty, your password will not change', 'textdomain'); ?></p>
+                  
+                </td>
+              </tr>
+            </tbody>
           </table>
-          
+          <style>
+            #acf-form-data + h2{display:none;}
+            #acf-form-data + h2 + table{}
+          </style>
           <?php 
               // action hook for plugin and extra fields
               do_action('edit_user_profile', $current_user); 
@@ -66,19 +80,8 @@
           <p><?php //the_field('logo', 'user_'.$current_user->ID); ?></p>
 
           <?php //acf_form(); ?>
-                    
-          <h3><?php _e('Change password', 'textdomain'); ?></h3>
-          
-          <p><?php _e('When both password fields are left empty, your password will not change', 'textdomain'); ?></p>
-          
-          <p class="form-password">
-              <label for="pass1"><?php _e('Password *', 'profile'); ?> </label>
-              <input class="text-input" name="pass1" type="password" id="pass1" />
-          </p><!-- .form-password -->
-          <p class="form-password">
-              <label for="pass2"><?php _e('Repeat password *', 'profile'); ?></label>
-              <input class="text-input" name="pass2" type="password" id="pass2" />
-          </p><!-- .form-password -->
+                              
+
           
           <p class="form-submit">
               <input name="updateuser" type="submit" id="updateuser" class="submit button" value="<?php _e('Update profile', 'textdomain'); ?>" />
