@@ -36,11 +36,46 @@
 <div class="section">
   <div class="wrapper">
     <h2 class="section-title">
-      <?php //$logo = get_field('logo','user_'.$author->ID); ?>
-      <!-- <img src="<?php //echo $logo['url'] ?>" width="100" height="100"/> -->
       <?php pxl::image("acf|logo|user_$author->ID", array( 'w' => 100, 'h' => 'auto' )); ?>
       <?php echo $title ?>
     </h2>
+    
+    <?php
+      $reports = get_posts($args);
+      $agg_r = 0;
+      $agg_o = 0;
+      $agg_c = 0;
+      $agg_or = 0;
+      foreach($reports as $report){
+        $r = get_field('recipients', $report->ID) ? : 0;
+        $o = get_field('opens', $report->ID) ? : 0;
+        $c = get_field('clicks', $report->ID) ? : 0;
+        $agg_o += $o;
+        $agg_c += $c;
+        $agg_or += ($r > 0) ? $o/$r : 0;
+      }
+      $avg_or = $agg_or/count($reports);
+    ?>
+    
+    <h4>Total Stats:</h4>
+    <div class="stats">
+      <div class="stat">
+        <label>Opens</label>
+        <span class="num"><?php echo number_format($agg_o) ?></span>
+      </div>
+      <div class="stat">
+        <label>Average Open Rate</label>
+        <span class="num"><?php  echo (round(($avg_or*10000))/100).'%' ?></span>
+      </div>
+      <div class="stat">
+        <label>Clicks</label>
+        <span class="num"><?php echo number_format($agg_c) ?></span>
+      </div>
+    </div>
+    
+    <br>
+    
+    <h4>Reports:</h4>
     <table id="reports">
     <?php 
       pxl::loop(
