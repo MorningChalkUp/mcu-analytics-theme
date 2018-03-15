@@ -12,7 +12,7 @@
 			<div class="wrap">
 
 				<?php if( !empty( $_GET['updated'] ) ): ?>
-					<div class="success"><?php _e('Profile successfully updated', 'textdomain'); ?></div>
+					<p class="success"><?php _e('Profile successfully updated', 'textdomain'); ?></p>
 				<?php endif; ?>
 
 				<?php if( !empty( $_GET['validation'] ) ): ?>
