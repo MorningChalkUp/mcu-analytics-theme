@@ -69,7 +69,9 @@
 			   }
 			}
       public function update_sponsor_profile() {
-        require_once(THEME.'/includes/update-profile.php');
+        if( is_user_logged_in() ) {
+          require_once(THEME.'/includes/update-profile.php');
+        }
       }
 			public function action_after_password_reset() {
 				// Redirects the user back to the My Account page once they have set a new password.
