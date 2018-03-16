@@ -36,7 +36,7 @@
 <div class="section">
   <div class="wrapper">
     <h2 class="section-title">
-      <?php pxl::image("acf|logo|user_$author->ID", array( 'w' => 100, 'h' => 'auto' )); ?>
+      <?php pxl::image("acf|logo|user_$author->ID", array( 'w' => 100, 'h' => 100, 'attrs' => array('class'=>'nofloat') )); ?>
       <?php echo $title ?>
     </h2>
     

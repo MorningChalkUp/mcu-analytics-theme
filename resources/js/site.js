@@ -4,7 +4,7 @@
     $('#menubtn').click(function(e){
       e.preventDefault();
       $('#menu').toggleClass('open');
-      $(this).find('[data-fa-processed]').toggleClass('fa-bars').toggleClass('fa-times');
+      $(this).find('[data-fa-i2svg]').toggleClass('fa-chevron-down').toggleClass('fa-times');
       return false;
     });
   }
