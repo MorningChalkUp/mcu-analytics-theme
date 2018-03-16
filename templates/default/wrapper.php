@@ -8,23 +8,26 @@
         
       </div>
       <div class="navright">
-        <?php if ( is_user_logged_in() ) {
-          $site   = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'];
-          $author = wp_get_current_user();
-          $logout = wp_logout_url($site);
-          echo '<span class="hidden-phone">welcome, '.$author->display_name.' </span>';
-
-          echo "<a href='#' id='menubtn'> <i class='fal fa-bars fa-lg fa-fw'></i></a>";
-        } ?>
-        <div id="menu">
-          <ul>
-            <li><a href="/">Reports</a></li>
-          </ul>
-          <ul>
-            <li><a href="/profile">My Profile</a></li>
-            <li><?php echo "<a href='$logout'>Logout</a>" ?></li>
-          </ul>
-        </div>
+        <?php 
+          if ( is_user_logged_in() ) :
+            $site   = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'];
+            $author = wp_get_current_user();
+            $logout = wp_logout_url($site);
+            
+        ?>
+          <a href='#' id='menubtn'>
+            <?php 
+              echo '<span class="hidden-phone">'.$author->display_name.'</span>';
+              pxl::image("acf|logo|user_$author->ID", array( 'w' => 40, 'h' => 40));
+            ?>
+          </a>
+          <div id="menu">
+            <ul>
+              <li><a href="/profile">My Profile</a></li>
+              <li><?php echo "<a href='$logout'>Logout</a>" ?></li>
+            </ul>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
     
