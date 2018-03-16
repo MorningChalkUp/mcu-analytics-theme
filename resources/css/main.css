@@ -39,6 +39,9 @@
   .screen-reader-text{display:none;}
 	.gform_ajax_spinner {border-left-color:#000000!important;}
   
+  .box{background-color:#fff;padding:2rem ;box-shadow:1px 1px 0.5px rgba(0,0,0,0.1), 2px 5px 10px rgba(0,0,0,0.02);margin:2rem 0;}
+  .box > h4:first-child{margin-top:0;}
+  
 /* Layout */
   .wrapper{margin:0 auto;width:930px;position:relative;}
   .placeholder{min-height:1px;}
@@ -155,22 +158,27 @@
 /* Header */
   #logo{height:16px;margin-right:3px;}
   
-  #navbar {background-color:#fff;border-bottom:1px solid rgba(51, 49, 50, 0.2);padding:15px 0;transition:all 0.5s;}
-  #navbar .wrapper{align-items:center;display:flex;flex-direction:row;justify-content:space-between;}
-  #navbar .wrapper #logo .morning{fill:#484546;}
-  #navbar .wrapper #logo .chalkup{fill:#3D5BA9;}
-  #navbar .wrapper a{padding:0.5rem 0;}
-  #navbar .wrapper > *{flex:auto;}
-  #navbar .wrapper h1{font-size:22px;font-weight:200;}
-  #navbar .wrapper .navleft{text-align:left;flex:auto;}
-  #navbar .wrapper .navmid{text-align:center;flex:auto;}
-  #navbar .wrapper .navright{text-align:right;}
+  .admin-bar #navbar{top:32px;}
+  
+  #navbar {background-color:#fff;box-shadow:1px 1px 0.5px rgba(0,0,0,0.1), 2px 5px 10px rgba(0,0,0,0.02);font-size:18px;position:absolute;top:0;left:0;right:0;z-index:100;padding:10px 20px;transition:all 0.5s;}
+  #navbar.fixed{position:fixed;}
+  #navbar .contain{align-items:center;display:flex;flex-direction:row;justify-content:space-between;max-width:1440px;margin:0 auto;position:relative;}
+  #navbar .contain #logo .morning{fill:#484546;}
+  #navbar .contain #logo .chalkup{fill:#3D5BA9;}
+  #navbar .contain a{padding:0.5rem 0;}
+  #navbar .contain h1{font-size:22px;font-weight:200;}
+  #navbar .contain > *{flex:auto;}
+  #navbar .contain .navleft{text-align:left;flex:1;}
+  #navbar .contain .navmid{text-align:center;}
+  #navbar .contain .navright{text-align:right;flex:1;}
+  
+  #navbar + .section{margin-top:80px;}
     
   #menubtn{display:inline-block;padding:0 !important;height:40px;}
   #menubtn *{vertical-align:middle;}
   #menubtn img{border-radius:20px;margin-left:0.5rem;}
   
-  #menu{background-color:#fff;box-shadow:0 1px 2px rgba(0,0,0,0.1);position:absolute;opacity:0;pointer-events:none;right:0;transition:0.2s all;z-index:20;transform:scale(0.5);transform-origin:top right;min-width:200px;top:56px;}
+  #menu{background-color:#fff;box-shadow:0 1px 2px rgba(0,0,0,0.1);position:absolute;opacity:0;pointer-events:none;right:0;transition:0.2s all;z-index:20;transform:scale(0.5);transform-origin:top right;min-width:200px;top:51px;}
   #menu.open{opacity:1;pointer-events:auto;transform:scale(1);}
   #menu > ul{list-style-type:none;margin:0;padding:0;}
   #menu > ul + ul{border-top:1px solid #eee;}

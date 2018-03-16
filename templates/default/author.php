@@ -3,7 +3,7 @@
 	$author = wp_get_current_user();
   
   if ( current_user_can( 'manage_options' ) ) {
-    $title = "<strong>All</strong> Reports";
+    $title = "<strong>All</strong>";
     $partial = 'post-report-admin';
     $args = array(
       'post_type' => 'report',
@@ -13,7 +13,7 @@
       'order' => 'DESC',
     );
   } else {
-    $title = "<strong>$author->display_name</strong> Reports";
+    $title = "<strong>$author->display_name</strong>";
     $partial = 'post-report';
     $args = array(
       'post_type' => 'report',
@@ -57,33 +57,33 @@
       $avg_or = $agg_or/count($reports);
     ?>
     
-    <h4>Total Stats:</h4>
-    <div class="stats">
-      <div class="stat">
-        <label>Opens</label>
-        <span class="num"><?php echo number_format($agg_o) ?></span>
-      </div>
-      <div class="stat">
-        <label>Average Open Rate</label>
-        <span class="num"><?php  echo (round(($avg_or*10000))/100).'%' ?></span>
-      </div>
-      <div class="stat">
-        <label>Clicks</label>
-        <span class="num"><?php echo number_format($agg_c) ?></span>
+    <div class="box">
+      <div class="stats">
+        <div class="stat">
+          <label>Opens</label>
+          <span class="num"><?php echo number_format($agg_o) ?></span>
+        </div>
+        <div class="stat">
+          <label>Average Open Rate</label>
+          <span class="num"><?php  echo (round(($avg_or*10000))/100).'%' ?></span>
+        </div>
+        <div class="stat">
+          <label>Clicks</label>
+          <span class="num"><?php echo number_format($agg_c) ?></span>
+        </div>
       </div>
     </div>
-    
-    <br>
-    
-    <h4>Reports:</h4>
-    <table id="reports">
-    <?php 
-      pxl::loop(
-        $partial,
-        $args
-      );
-    ?>
-    </table>
+    <div class="box">
+      <h4>Reports:</h4>
+      <table id="reports">
+      <?php 
+        pxl::loop(
+          $partial,
+          $args
+        );
+      ?>
+      </table>
+    </div>
 
 	</div>
 </div>
