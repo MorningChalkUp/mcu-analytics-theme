@@ -2,7 +2,7 @@
   <div id="navbar">
     <div class="wrapper">
       <div class="navleft">
-        <h1><a id="logo" href="/"><?php echo file_get_contents(get_bloginfo('stylesheet_directory').'/resources/images/mcu.svg') ?></a> <small class="hidden-phone">Analytics</small></h1>
+        <h1><a id="logo" href="/"><?php echo file_get_contents(get_bloginfo('stylesheet_directory').'/resources/images/mcu.svg') ?></a> <small class="hidden-phone">Ads</small></h1>
       </div>
       <div class="navmid">
         
