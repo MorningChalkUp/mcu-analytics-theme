@@ -175,6 +175,10 @@
   #navbar .contain .navright{text-align:right;flex:1;}
   
   #navbar + .section{margin-top:80px;}
+  
+  #nav{font-size: 14px;text-transform: uppercase;font-weight:700;}
+  #nav a{color:#484546;}
+  #nav a:hover{color:#3D5BA9;}
     
   #menubtn{display:inline-block;padding:0 !important;height:40px;}
   #menubtn *{vertical-align:middle;}
