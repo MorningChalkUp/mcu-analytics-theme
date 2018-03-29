@@ -2,6 +2,7 @@
   if ( is_user_logged_in() ) : 
     include(THEME . '/templates/default/author.php'); 
   else: ?>
+  
 	<div class="section vertical-center">
 		<div class="wrapper">
 			<div id="login" class="box">
@@ -17,4 +18,5 @@
 			
 		</div>
 	</div>
+  
 <?php endif; ?>

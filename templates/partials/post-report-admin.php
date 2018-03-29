@@ -5,10 +5,10 @@
       <span class="date"><?php echo $date->format('M j, Y'); ?></span>
     </td>
     <td>
-      <?php //$logo = get_field('logo','user_'.$sponsor['ID']); ?>
-      <!-- <img src="<?php //echo $logo['url'] ?>" width="30" height="30"/> -->
-      <?php pxl::image("acf|logo|user_{$sponsor['ID']}", array( 'w' => 30, 'h' => 'auto' )); ?>
-      <strong><?php echo $sponsor['display_name'] ?></strong>
+      <a href="<?php echo get_author_posts_url( $sponsor['ID'], $sponsor['user_nicename'] ); ?>">
+        <?php pxl::image("acf|logo|user_{$sponsor['ID']}", array( 'w' => 30, 'h' => '30' )); ?>
+        <strong><?php echo $sponsor['display_name'] ?></strong>
+      </a>
     </td>
     <td>
       <a href="<?php the_permalink(); ?>" class="report-row">

@@ -42,6 +42,8 @@
   .box{background-color:#fff;padding:2rem ;box-shadow:1px 1px 0.5px rgba(0,0,0,0.1), 2px 5px 10px rgba(0,0,0,0.02);margin:2rem 0;}
   .box > h4:first-child{margin-top:0;}
   
+  .box.nopad{padding:0;}
+  
 /* Layout */
   .wrapper{margin:0 auto;width:930px;position:relative;}
   .placeholder{min-height:1px;}
@@ -224,8 +226,10 @@
   table.fix td.num{width:55px;}
   table.fix td{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
   
-  .stats{margin-left:-1.5rem;}
-  .stats .stat{display:inline-block;margin:0.5rem 1.5rem;}
+  .stats{}
+  .stats .stat{display:inline-block;padding:1.5rem 2.5rem;}
+  .stats .stat.blue{background-color:#3D5BA9;}
+  .stats .stat.blue *{color:#fff;}
   
   @media (max-width: 767px) {
     h2 img{width:60px;height:60px;display:block;float:none;}

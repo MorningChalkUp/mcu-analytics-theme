@@ -1,18 +1,8 @@
 <?php if ( is_user_logged_in() ) :
 	$site   = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'];
-	$author = wp_get_current_user();
-  
-  if ( current_user_can( 'manage_options' ) ) {
-    $title = "<strong>All</strong>";
-    $partial = 'post-report-admin';
-    $args = array(
-      'post_type' => 'report',
-      'posts_per_page' => -1,
-      'meta_key' => 'date',
-      'orderby' => 'meta_value',
-      'order' => 'DESC',
-    );
-  } else {
+  //current_user_can( 'manage_options' )
+  if(is_author()){
+    $author = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
     $title = "<strong>$author->display_name</strong>";
     $partial = 'post-report';
     $args = array(
@@ -29,17 +19,23 @@
         )
       )
     );
+  } else {
+    $author = wp_get_current_user();
+    $title = "<strong>All</strong>";
+    $partial = 'post-report-admin';
+    $args = array(
+      'post_type' => 'report',
+      'posts_per_page' => -1,
+      'meta_key' => 'date',
+      'orderby' => 'meta_value',
+      'order' => 'DESC',
+    );
   }
-  
-  
+
+
 ?>
 <div class="section">
   <div class="wrapper">
-    <h2 class="section-title">
-      <?php pxl::image("acf|logo|user_$author->ID", array( 'w' => 100, 'h' => 100, 'attrs' => array('class'=>'nofloat') )); ?>
-      <?php echo $title ?>
-    </h2>
-    
     <?php
       $reports = get_posts($args);
       $agg_r = 0;
@@ -57,16 +53,20 @@
       $avg_or = $agg_or/count($reports);
     ?>
     
-    <div class="box">
+    <div class="box nopad">
       <div class="stats">
+        <div class="stat blue center-text">
+          <label>Ads</label>
+          <span class="num"><?php echo count($reports); ?></span>
+        </div>
         <div class="stat">
-          <label>Opens</label>
+          <label>Views</label>
           <span class="num"><?php echo number_format($agg_o) ?></span>
         </div>
-        <div class="stat">
+        <!-- <div class="stat">
           <label>Average Open Rate</label>
-          <span class="num"><?php  echo (round(($avg_or*10000))/100).'%' ?></span>
-        </div>
+          <span class="num"><?php  //echo (round(($avg_or*10000))/100).'%' ?></span>
+        </div> -->
         <div class="stat">
           <label>Clicks</label>
           <span class="num"><?php echo number_format($agg_c) ?></span>
