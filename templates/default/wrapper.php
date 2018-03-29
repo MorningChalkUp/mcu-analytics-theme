@@ -25,13 +25,29 @@
               $logout = wp_logout_url($site);
               
           ?>
-            <?php wp_nav_menu(array('container' => false,'fallback_cb' => false,'menu_class' => 'menu','theme_location' => 'menu','walker' => new pxl_menu)); ?>
-            <a href='#' id='menubtn'>
+            <ul class="menu">
               <?php 
-                echo '<span class="hidden-phone">'.$author->display_name.'</span>';
-                pxl::image("acf|logo|user_$author->ID", array( 'w' => 40, 'h' => 40));
+                wp_nav_menu(
+                  array(
+                    'container' => false,
+                    'items_wrap' => '%3$s',
+                    'fallback_cb' => false,
+                    'menu_class' => 'menu',
+                    'theme_location' => 'main',
+                    'walker' => new pxl_menu
+                  )
+                );
               ?>
-            </a>
+              <li class="pipe"><span></span></li>
+              <li>
+                <a href='#' id='menubtn'>
+                  <?php 
+                    echo $author->display_name;
+                    pxl::image("acf|logo|user_$author->ID", array( 'w' => 40, 'h' => 40));
+                  ?>
+                </a>
+              </li>
+            </ul>
             <div id="menu">
               <ul>
                 <li><a href="/profile">My Profile</a></li>

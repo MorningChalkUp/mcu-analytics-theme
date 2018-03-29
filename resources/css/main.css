@@ -140,6 +140,8 @@
   
   .nomar{margin:0;}
   
+  
+  
   .date{font-size:14px;font-weight:400;margin-bottom:0.3rem;}
   
   .embed-container{float:none;position: relative;padding-bottom: 56.25%;/* 16/9 ratio */height: 0;margin-bottom:1em;overflow: hidden;}
@@ -169,7 +171,7 @@
   
   .admin-bar #navbar{top:32px;}
   
-  #navbar {background-color:#fff;box-shadow:1px 1px 0.5px rgba(0,0,0,0.1), 2px 5px 10px rgba(0,0,0,0.02);font-size:18px;position:absolute;top:0;left:0;right:0;z-index:100;padding:10px 20px;transition:all 0.5s;}
+  #navbar {background-color:#fff;box-shadow:1px 1px 0.5px rgba(0,0,0,0.1), 2px 5px 10px rgba(0,0,0,0.02);font-size:18px;position:absolute;top:0;left:0;right:0;z-index:100;padding:0px 20px;transition:all 0.5s;}
   #navbar.fixed{position:fixed;}
   #navbar .contain{align-items:center;display:flex;flex-direction:row;justify-content:space-between;max-width:1440px;margin:0 auto;position:relative;}
   #navbar .contain #logo .morning{fill:#484546;}
@@ -177,17 +179,27 @@
   #navbar .contain a{padding:0.5rem 0;}
   #navbar .contain h1{font-size:22px;font-weight:200;}
   #navbar .contain > *{flex:auto;}
-  #navbar .contain .navleft{text-align:left;flex:1;}
+  #navbar .contain .navleft{text-align:left;}
   #navbar .contain .navmid{text-align:center;}
-  #navbar .contain .navright{text-align:right;flex:1;}
+  #navbar .contain .navright{text-align:right;}
   
   #navbar + .section{margin-top:80px;}
   
   #nav{font-size: 14px;text-transform: uppercase;font-weight:700;}
   #nav a{color:#484546;}
   #nav a:hover{color:#3D5BA9;}
+  
+  #nav li.pipe{padding:10px;}
+  #nav li.pipe span{background-color:#B3B3B3;display:inline-block;height:20px;width:1px;position:relative;top:5px;}
+  
+  
+  
+  #nav .menu{display:inline-block;padding:0;list-style-type:none;margin:0;}
+  #nav .menu li{display:inline-block;position:relative;}
+  #nav .menu li:after{background-color:#3D5BA9;content:'';position:absolute;bottom:0;left:10px;right:10px;height:0px;}
+  #nav .menu li.current_page_item:after{height:4px;}
+  #nav .menu li a{display:inline-block;padding:10px;height:40px;line-height:40px;}
     
-  #menubtn{display:inline-block;padding:0 !important;height:40px;}
   #menubtn *{vertical-align:middle;}
   #menubtn img{border-radius:20px;margin-left:0.5rem;}
   
