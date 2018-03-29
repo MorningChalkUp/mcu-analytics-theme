@@ -138,6 +138,10 @@
   .left-text{text-align:left;}
   .right-text{text-align:right;}
   
+  .nomar{margin:0;}
+  
+  .date{font-size:14px;font-weight:400;margin-bottom:0.3rem;}
+  
   .embed-container{float:none;position: relative;padding-bottom: 56.25%;/* 16/9 ratio */height: 0;margin-bottom:1em;overflow: hidden;}
   .embed-container iframe,
   .embed-container object,
@@ -147,15 +151,18 @@
   h2 small{font-size:20px;}
   h2 img{float:left;}
   
+  h4{font-weight:300;font-size:18px;}
+  
   .vertical-center{height:100%;display:flex;flex-direction:column;justify-content:space-between;}
   .vertical-center:before,
   .vertical-center:after{content:'';display:block;}
   
   table{width:100%;border-collapse:collapse;}
-  table tr{border-bottom:1px solid #ddd;border-top:1px solid #ddd;}
+  table tr{border-bottom:1px solid #ddd;}
   table td{padding:1rem;}
+  table th{padding:0 1rem 1rem;white-space:nowrap;}
   
-  
+  table td.num{color:#3D5BA9;font-size:24px;}  
   
 /* Header */
   #logo{height:16px;margin-right:3px;}
@@ -212,7 +219,7 @@
   h2 img{vertical-align:middle;border-radius:100%;margin-right:20px;}
   
   .num{color:#3D5BA9;font-size:42px;font-weight:100;}
-  label{font-size:14px;color:#999;text-transform:uppercase;letter-spacing:0.1em;display:block;}
+  label{font-weight:400;font-size:14px;color:#333;text-transform:uppercase;letter-spacing:0.1em;display:block;}
   
   .num-small{font-size:24px;}
   
@@ -221,19 +228,27 @@
   
   .ad-copy{background-color:#fff;box-shadow:0.5px 1px 5px rgba(0,0,0,0.05);padding:1rem 2rem;}
   
-  table#reports td:first-child{padding-left:0;}
-  table#reports td:last-child{padding-right:0;}
+  table#reports td:first-child,
+  table#reports th:first-child{padding-left:0;}
+  table#reports td:last-child,
+  table#reports th:last-child{padding-right:0;}
   
   table.fix {table-layout:fixed;}
+  table.fix th:first-child,
   table.fix td:first-child{padding-left:0;}
+  table.fix th:last-child,
   table.fix td:last-child{padding-right:0;}
   table.fix td.num{width:55px;}
   table.fix td{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
   
-  .stats{}
-  .stats .stat{display:inline-block;padding:1.5rem 2.5rem;}
+  .stats{display:flex;flex-direction:row;align-items:center;}
+  .stats .stat{padding:1.5rem 2.5rem;}
+  .stats .stat.prechart{padding-right:1rem;}
+  .stats .stat.chart{padding-left:0;}
   .stats .stat.blue{background-color:#3D5BA9;}
   .stats .stat.blue *{color:#fff;}
+  
+  .stats .stat.chart .chart{max-width:100% !important;}
   
   @media (max-width: 767px) {
     h2 img{width:60px;height:60px;display:block;float:none;}

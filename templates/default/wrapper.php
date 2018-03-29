@@ -8,7 +8,6 @@
 </script>
 
 <?php if ( $load == 'header' ) : ?>
-<<<<<<< HEAD
   <div id="navbar" class="fixed">
     <div class="max">
       <div class="contain">
@@ -26,6 +25,7 @@
               $logout = wp_logout_url($site);
               
           ?>
+            <?php wp_nav_menu(array('container' => false,'fallback_cb' => false,'menu_class' => 'menu','theme_location' => 'menu','walker' => new pxl_menu)); ?>
             <a href='#' id='menubtn'>
               <?php 
                 echo '<span class="hidden-phone">'.$author->display_name.'</span>';

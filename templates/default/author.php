@@ -1,5 +1,6 @@
-<?php if ( is_user_logged_in() ) :
-	$site   = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'];
+<?php 
+if ( is_user_logged_in() ) :
+  $site   = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'];
   //current_user_can( 'manage_options' )
   if(is_author()){
     $author = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
@@ -19,17 +20,36 @@
         )
       )
     );
-  } else {
-    $author = wp_get_current_user();
-    $title = "<strong>All</strong>";
-    $partial = 'post-report-admin';
-    $args = array(
-      'post_type' => 'report',
-      'posts_per_page' => -1,
-      'meta_key' => 'date',
-      'orderby' => 'meta_value',
-      'order' => 'DESC',
-    );
+  } else { //this is a dashboard
+    if(current_user_can( 'manage_options' )) {
+      $title = "<strong>All</strong>";
+      $partial = 'post-report';
+      $args = array(
+        'post_type' => 'report',
+        'posts_per_page' => -1,
+        'meta_key' => 'date',
+        'orderby' => 'meta_value',
+        'order' => 'DESC',
+      );
+    } else { 
+      $title = "<strong>$author->display_name</strong>";
+      $partial = 'post-report';
+      $author = wp_get_current_user();
+      $args = array(
+        'post_type' => 'report',
+        'posts_per_page' => -1,
+        'meta_key' => 'date',
+        'orderby' => 'meta_value',
+        'order' => 'DESC',
+        'meta_query' => array(
+          array(
+            'key' => 'sponsor', // name of custom field
+            'value' => $author->ID,
+            'compare' => '=',
+          )
+        ),
+      );
+    }
   }
 
 
@@ -38,50 +58,105 @@
   <div class="wrapper">
     <?php
       $reports = get_posts($args);
+      $rcount = count($reports);
       $agg_r = 0;
       $agg_o = 0;
       $agg_c = 0;
       $agg_or = 0;
+      $o_max = 0;
+      $o_min = 1000000000;
+      $c_max = 0;
+      $c_min = 1000000000;
       foreach($reports as $report){
         $r = get_field('recipients', $report->ID) ? : 0;
         $o = get_field('opens', $report->ID) ? : 0;
         $c = get_field('clicks', $report->ID) ? : 0;
+        $o_max = $o > $o_max ? $o : $o_max;
+        $o_min = $o < $o_min ? $o : $o_min;
+        $c_max = $c > $c_max ? $c : $c_max;
+        $c_min = $c < $c_min ? $c : $c_min;
         $agg_o += $o;
         $agg_c += $c;
         $agg_or += ($r > 0) ? $o/$r : 0;
       }
       $avg_or = $agg_or/count($reports);
+      $inc = 400/($rcount-1); // for trendline
     ?>
     
     <div class="box nopad">
       <div class="stats">
         <div class="stat blue center-text">
           <label>Ads</label>
-          <span class="num"><?php echo count($reports); ?></span>
+          <span class="num"><?php echo $rcount ?></span>
         </div>
-        <div class="stat">
+        <div class="stat prechart">
           <label>Views</label>
           <span class="num"><?php echo number_format($agg_o) ?></span>
+        </div>
+        <div class="stat chart">
+          <svg viewBox="-10 -10 420 120" class="chart">
+            <polyline fill="none" stroke="#3D5BA9" stroke-width="4"
+               points="
+               <?php
+                 foreach(array_reverse($reports) as $key=>$report){
+                   $ro = get_field('opens',$report->ID);
+                   $point = $key;
+                   $x = $point*$inc;
+                   $y = 100 - 100*($ro-$o_min)/($o_max-$o_min);
+                   echo "$x, $y ";
+                 }
+               ?>
+               "
+            />
+          </svg>
         </div>
         <!-- <div class="stat">
           <label>Average Open Rate</label>
           <span class="num"><?php  //echo (round(($avg_or*10000))/100).'%' ?></span>
         </div> -->
-        <div class="stat">
+        <div class="stat prechart">
           <label>Clicks</label>
           <span class="num"><?php echo number_format($agg_c) ?></span>
+        </div>
+        <div class="stat chart">
+          <svg viewBox="-10 -10 420 120" class="chart">
+            <polyline fill="none" stroke="#3D5BA9" stroke-width="4"
+               points="
+               <?php
+                 foreach(array_reverse($reports) as $key=>$report){
+                   $rc = get_field('clicks',$report->ID);
+                   $point = $key;
+                   $x = $point*$inc;
+                   $y = 100 - 100*($rc-$c_min)/($c_max-$c_min);
+                   echo "$x, $y ";
+                 }
+               ?>
+               "
+            />
+          </svg>
         </div>
       </div>
     </div>
     <div class="box">
-      <h4>Reports:</h4>
+      
       <table id="reports">
-      <?php 
-        pxl::loop(
-          $partial,
-          $args
-        );
-      ?>
+        <thead>
+          <tr>
+            <?php if (current_user_can( 'manage_options' )) echo "<th></th>"; ?>
+            <th align="left"><label>Ad Reports</label></th>
+            <th align="right"><label>Open rate</label></th>
+            <th align="right"><label>Views</label></th>
+            <th align="right"><label>Clicks</label></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            pxl::loop(
+              $partial,
+              $args
+            );
+          ?>
+        </tbody>
       </table>
     </div>
 
