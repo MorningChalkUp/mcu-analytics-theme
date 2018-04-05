@@ -260,7 +260,7 @@
   .stats .stat.blue{background-color:#3D5BA9;}
   .stats .stat.blue *{color:#fff;}
   
-  .stats .stat.chart .chart{max-width:100% !important;}
+  .stats .stat.chart .chart{max-width:100% !important;width:300px;}
   
   @media (max-width: 767px) {
     h2 img{width:60px;height:60px;display:block;float:none;}
