@@ -2,15 +2,30 @@
   <h3>No Reports</h3>
 <?php else: ?>
   <tr>
+    <?php if (current_user_can( 'manage_options' )): $sponsor = get_field('sponsor'); ?>
+      <td>
+        <a title="<?php echo $sponsor['display_name'] ?>" href="<?php echo get_author_posts_url( $sponsor['ID'], $sponsor['user_nicename'] ); ?>">
+          <?php pxl::image("acf|logo|user_{$sponsor['ID']}", array( 'w' => 30, 'h' => '30' )); ?>
+        </a>
+      </td>
+    <?php endif; ?>
     <td>
       <?php $date = get_field('date', false, false); $date = new DateTime($date); ?>
-      <span class="date hidden-phone"><?php echo $date->format('M j, Y'); ?></span>
-      <span class="date visible-phone"><?php echo $date->format('n/j/y'); ?></span>
+      <div class="date"><?php echo $date->format('n/j/y'); ?></div>
+      <h4 class="nomar"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
     </td>
-    <td>
-      <a href="<?php the_permalink(); ?>" class="report-row">
-          <?php the_title(); ?>
-      </a>
+    <td class="num" align="right">
+      <?php 
+        $recipients = get_field('recipients') ? : '1';
+        $or = get_field('opens')/$recipients;
+        echo (round(($or*10000))/100).'%'
+      ?>
+    </td>
+    <td class="num" align="right">
+      <?php echo number_format(get_field('opens')); ?>
+    </td>
+    <td class="num" align="right">
+      <?php echo number_format(get_field('clicks')); ?>
     </td>
   </tr>
 <?php endif; ?>
