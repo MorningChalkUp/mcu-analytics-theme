@@ -54,6 +54,12 @@
                 <li><?php echo "<a href='$logout'>Logout</a>" ?></li>
               </ul>
             </div>
+          <?php else: ?>
+            <ul class="menu">
+              <li>
+                <a href="/">Login</a>
+              </li>
+            </ul>
           <?php endif; ?>
         </div>
       </div>

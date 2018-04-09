@@ -80,21 +80,21 @@ if ( is_user_logged_in() ) :
         $agg_or += ($r > 0) ? $o/$r : 0;
       }
       $avg_or = $agg_or/count($reports);
-      $inc = 400/($rcount-1); // for trendline
+      $inc = 500/($rcount-1); // for trendline
     ?>
     
-    <div class="box nopad">
+    <div class="box nopad flexed">
+      <div class="stat blue center-text ads-stat">
+        <label>Ads</label>
+        <span class="num"><?php echo $rcount ?></span>
+      </div>
       <div class="stats">
-        <div class="stat blue center-text">
-          <label>Ads</label>
-          <span class="num"><?php echo $rcount ?></span>
-        </div>
-        <div class="stat prechart">
-          <label>Views</label>
-          <span class="num"><?php echo number_format($agg_o) ?></span>
-        </div>
         <div class="stat chart">
-          <svg viewBox="-10 -10 420 120" class="chart">
+          <div>
+            <label>Views</label>
+            <span class="num"><?php echo theme::humanize_number($agg_o) ?></span>
+          </div>
+          <svg viewBox="-10 -10 520 120" class="trendline" height="70">
             <polyline fill="none" stroke="#3D5BA9" stroke-width="4"
                points="
                <?php
@@ -110,16 +110,12 @@ if ( is_user_logged_in() ) :
             />
           </svg>
         </div>
-        <!-- <div class="stat">
-          <label>Average Open Rate</label>
-          <span class="num"><?php  //echo (round(($avg_or*10000))/100).'%' ?></span>
-        </div> -->
-        <div class="stat prechart">
-          <label>Clicks</label>
-          <span class="num"><?php echo number_format($agg_c) ?></span>
-        </div>
         <div class="stat chart">
-          <svg viewBox="-10 -10 420 120" class="chart">
+          <div>
+            <label>Clicks</label>
+            <span class="num"><?php echo theme::humanize_number($agg_c) ?></span>
+          </div>
+          <svg viewBox="-10 -10 520 120" class="trendline" height="70">
             <polyline fill="none" stroke="#3D5BA9" stroke-width="4"
                points="
                <?php

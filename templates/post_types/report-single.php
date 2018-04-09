@@ -86,7 +86,7 @@
     <div class="row">
       
       <div class="span6">
-        <h4>Ad Copy:</h4>
+        <h4><label>Ad Copy:</label></h4>
         <?php the_field('ad_copy'); ?>
         <p class="right-text"><a href="<?php echo $mcu_email_data['web_view'] ?>" target="popup" onclick="window.open('<?php echo $mcu_email_data['web_view'] ?>','popup','width=700,height=700,resizable=no'); return false;">View Full Newsletter &rarr;</a></p>
         
@@ -97,7 +97,7 @@
       </div>
       
       <div class="span6">
-        <h4>Click Activity by Link:</h4>
+        <h4><label>Click Activity by Link:</label></h4>
         <table class="fix">
         <?php
           foreach($mcu_email_data['ad_links'] as $ad_link) :

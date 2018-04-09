@@ -79,9 +79,19 @@
 				exit;
 			}
       
+
+      
     // Functions : Theme
       public static function filter_google_maps_key() {
         return 'AIzaSyCu3jVAEVx9LcgCJ9vt4Ux1Q0LuHJH0Dfg'; // Parapxl Clients Key for Small Sites Only
+      }
+      public static function humanize_number($value) {
+        $abbreviations = array(12 => 'T', 9 => 'B', 6 => 'M', 3 => 'k', 0 => '');
+        foreach($abbreviations as $exponent => $abbreviation) {
+          if($value >= pow(10, $exponent)) {
+            return round(floatval($value / pow(10, $exponent))).$abbreviation;
+          }
+        }
       }
   }
   

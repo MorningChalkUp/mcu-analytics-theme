@@ -253,14 +253,22 @@
   table.fix td.num{width:55px;}
   table.fix td{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
   
-  .stats{display:flex;flex-direction:row;align-items:center;}
-  .stats .stat{padding:1.5rem 2.5rem;}
-  .stats .stat.prechart{padding-right:1rem;}
-  .stats .stat.chart{padding-left:0;}
-  .stats .stat.blue{background-color:#3D5BA9;}
-  .stats .stat.blue *{color:#fff;}
+  .box.flexed{display:flex;flex-direction:row;}
+  .stat.blue{background-color:#3D5BA9;}
+  .stat.blue *{color:#fff;}
   
-  .stats .stat.chart .chart{max-width:100% !important;width:300px;}
+  .ads-stat{padding:1.5rem 2.5rem;}
+  
+  .stats{display:flex;flex-direction:row;}
+  .stats .stat{padding:1rem 4rem 1rem 0;}
+  
+  .stats .stat.chart{padding:1.5rem 2.5rem;}
+  .stats .stat.chart > div{width:100px;float:left;}
+  .stats .stat.chart .trendline{display:inline;float:left;max-width:100% !important;}
+  
+  @media (max-width: 976px) {
+    .stats{flex-wrap:wrap;}
+  }
   
   @media (max-width: 767px) {
     h2 img{width:60px;height:60px;display:block;float:none;}
@@ -270,5 +278,9 @@
     .num-small{font-size:24px;}
     
     .stats{overflow:hidden;margin:0;}
-    .stats .stat{display:block;float:left;width:50%;margin:0.5rem 0;}
+    .stats .stat{display:block;float:left;margin:0.5rem 0;}
+    
+    .ads-stat{display:block;float:left;padding:2rem 1.5rem;}
+    
+    
   }
