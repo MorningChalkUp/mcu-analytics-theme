@@ -89,7 +89,17 @@
         $abbreviations = array(12 => 'T', 9 => 'B', 6 => 'M', 3 => 'k', 0 => '');
         foreach($abbreviations as $exponent => $abbreviation) {
           if($value >= pow(10, $exponent)) {
-            return round(floatval($value / pow(10, $exponent))).$abbreviation;
+            $abbrnum = floatval($value / pow(10, $exponent));
+            if($abbrnum > 99){
+              return round($abbrnum).$abbreviation;
+            } elseif ($abbrnum > 9){
+              // return it with one decimal
+              return (round($abbrnum*10)/10).$abbreviation;
+            } else {
+              // return it with two decimal
+              return (round($abbrnum*100)/100).$abbreviation;
+            }
+            
           }
         }
       }

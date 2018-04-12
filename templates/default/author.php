@@ -92,7 +92,7 @@ if ( is_user_logged_in() ) :
         <div class="stat chart">
           <div>
             <label>Views</label>
-            <span class="num"><?php echo theme::humanize_number($agg_o) ?></span>
+            <span class="num" data-value="<?php echo $agg_o ?>" ><?php echo theme::humanize_number($agg_o) ?></span>
           </div>
           <svg viewBox="-10 -10 520 120" class="trendline" height="70">
             <polyline fill="none" stroke="#3D5BA9" stroke-width="4"
@@ -113,7 +113,7 @@ if ( is_user_logged_in() ) :
         <div class="stat chart">
           <div>
             <label>Clicks</label>
-            <span class="num"><?php echo theme::humanize_number($agg_c) ?></span>
+            <span class="num" data-value="<?php echo $agg_c ?>" ><?php echo theme::humanize_number($agg_c) ?></span>
           </div>
           <svg viewBox="-10 -10 520 120" class="trendline" height="70">
             <polyline fill="none" stroke="#3D5BA9" stroke-width="4"

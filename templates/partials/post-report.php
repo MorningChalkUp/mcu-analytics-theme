@@ -22,10 +22,10 @@
       ?>
     </td>
     <td class="num" align="right">
-      <?php echo number_format(get_field('opens')); ?>
+      <?php echo number_format(floatval(get_field('opens'))); ?>
     </td>
     <td class="num" align="right">
-      <?php echo number_format(get_field('clicks')); ?>
+      <?php echo number_format(floatval(get_field('clicks'))); ?>
     </td>
   </tr>
 <?php endif; ?>
