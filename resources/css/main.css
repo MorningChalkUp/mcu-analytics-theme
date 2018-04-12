@@ -228,7 +228,7 @@
   .error a{color:#fff;text-decoration:underline;}
   
   #reports a{display:block;}
-  #reports img{vertical-align:middle;border-radius:15px;margin-right:10px;}
+  #reports a img{vertical-align:middle;border-radius:15px;margin-right:10px;}
   
   h2 img{vertical-align:middle;border-radius:100%;margin-right:20px;}
   
@@ -241,6 +241,8 @@
   .preview iframe{border:none;box-shadow:0 0 20px rgba(0,0,0,0.1);transform:scale(0.5);width:200%;transform-origin:0 0;}
   
   .ad-copy{background-color:#fff;box-shadow:0.5px 1px 5px rgba(0,0,0,0.05);padding:1rem 2rem;}
+  
+  td.avatar{padding-right:0;}
   
   table#reports td:first-child,
   table#reports th:first-child{padding-left:0;}

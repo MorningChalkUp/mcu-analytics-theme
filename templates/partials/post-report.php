@@ -3,7 +3,7 @@
 <?php else: ?>
   <tr>
     <?php if (current_user_can( 'manage_options' )): $sponsor = get_field('sponsor'); ?>
-      <td>
+      <td class="avatar">
         <a title="<?php echo $sponsor['display_name'] ?>" href="<?php echo get_author_posts_url( $sponsor['ID'], $sponsor['user_nicename'] ); ?>">
           <?php pxl::image("acf|logo|user_{$sponsor['ID']}", array( 'w' => 30, 'h' => '30' )); ?>
         </a>
