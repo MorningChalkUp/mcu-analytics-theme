@@ -1,6 +1,37 @@
 <?php  
-  // pull data
-  $mcu_email_data = mcu_get_email_data(get_field('campaign_id'), get_field('ad_urls'));
+  // pull data from campaign(s)
+  $c_ids = get_field('campaign_id');
+  if( strpos($c_ids, '|') ) { // if multiple id's provided:
+    // break out multiple ids
+    $c_ids = explode("|", get_field('campaign_id'));
+    // get email data on the first item to start base array
+    $recipients = 0;
+    $opens = 0;
+    $ad_clicks = 0;
+    $ad_links = array();
+    foreach( $c_ids as $key => $c_id ){
+      // get data on each email, we will use this to icrement necessary fields, ultimate campaign will set base array
+      $mcu_email_data = mcu_get_email_data($c_id, get_field('ad_urls'));
+      
+      $recipients += $mcu_email_data['recipients'];
+      $opens += $mcu_email_data['opens'];
+      $ad_clicks += $mcu_email_data['ad_clicks'];
+      $ad_links = array_merge($ad_links, $mcu_email_data['ad_links']);
+    }
+    $mcu_email_data['recipients'] = $recipients;
+    $mcu_email_data['opens'] = $opens;
+    $mcu_email_data['ad_clicks'] = $ad_clicks;
+    $mcu_email_data['ad_links'] = $ad_links;
+    
+  } else {
+    $mcu_email_data = mcu_get_email_data($c_ids, get_field('ad_urls'));
+  }
+  
+  //combine ad links that are the same
+  
+    
+  
+  fn::put($mcu_email_data);
   
   // save data to cache:
   update_field('recipients', $mcu_email_data['recipients']);
