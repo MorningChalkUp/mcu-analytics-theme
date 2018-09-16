@@ -268,7 +268,7 @@
   .box.nopad .stats .stat{padding:1rem 4rem 1rem 0;}
   
   .stats .stat.chart{padding:1.5rem 2.5rem !important;}
-  .stats .stat.chart > div{width:110px;float:left;}
+  .stats .stat.chart > div{width:120px;float:left;}
   .stats .stat.chart .trendline{display:inline;float:left;margin-top: 5px;max-width:100% !important;}
   
   @media (max-width: 976px) {
