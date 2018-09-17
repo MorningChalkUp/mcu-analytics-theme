@@ -28,11 +28,8 @@
   }
   
   //combine ad links that are the same
-  
     
-  
-  fn::put($mcu_email_data);
-  
+    
   // save data to cache:
   update_field('recipients', $mcu_email_data['recipients']);
   update_field('opens', $mcu_email_data['opens']);
