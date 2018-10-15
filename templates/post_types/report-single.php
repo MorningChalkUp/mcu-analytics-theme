@@ -60,19 +60,19 @@
     <div class="box">
       <div class="stats">
         <div class="stat">
-          <label>Recipients</label>
+          <h4 class="label">Recipients</h4>
           <span class="num"><?php echo number_format($mcu_email_data['recipients']) ?></span>
         </div>
         <div class="stat">
-          <label>Opens</label>
+          <h4 class="label">Opens</h4>
           <span class="num"><?php echo number_format($mcu_email_data['opens']) ?></span>
         </div>
         <div class="stat">
-          <label>Open Rate</label>
+          <h4 class="label">Open Rate</h4>
           <span class="num"><?php  echo (round(($mcu_email_data['opens']/$mcu_email_data['recipients']*10000))/100).'%' ?></span>
         </div>
         <div class="stat">
-          <label>Clicks</label>
+          <h4 class="label">Clicks</h4>
           <span class="num"><?php echo number_format($mcu_email_data['ad_clicks']) ?></span>
         </div>
       </div>
@@ -82,7 +82,7 @@
       
       <div class="span6">
         <div class="box">
-          <h4><label>Ad Copy</label></h4>
+          <h4 class="label">Ad Copy</h4>
           <?php the_field('ad_copy'); ?>
           <p class="right-text"><a href="<?php echo $mcu_email_data['web_view'] ?>" target="popup" onclick="window.open('<?php echo $mcu_email_data['web_view'] ?>','popup','width=700,height=700,resizable=no'); return false;">View Full Newsletter &rarr;</a></p>
         

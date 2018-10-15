@@ -85,13 +85,13 @@ if ( is_user_logged_in() ) :
     
     <div class="box nopad flexed">
       <div class="stat blue center-text ads-stat">
-        <label>Ads</label>
+        <h4 class="label">Ads</h4>
         <span class="num"><?php echo $rcount ?></span>
       </div>
       <div class="stats">
         <div class="stat chart">
           <div>
-            <label>Views</label>
+            <h4 class="label">Views</h4>
             <span class="num" data-value="<?php echo $agg_o ?>" ><?php echo theme::humanize_number($agg_o) ?></span>
           </div>
           <svg viewBox="-10 -10 520 120" class="trendline" height="70">
@@ -112,7 +112,7 @@ if ( is_user_logged_in() ) :
         </div>
         <div class="stat chart">
           <div>
-            <label>Clicks</label>
+            <h4 class="label">Clicks</h4>
             <span class="num" data-value="<?php echo $agg_c ?>" ><?php echo theme::humanize_number($agg_c) ?></span>
           </div>
           <svg viewBox="-10 -10 520 120" class="trendline" height="70">

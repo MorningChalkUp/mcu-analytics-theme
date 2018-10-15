@@ -114,7 +114,11 @@
   
   // ACF Options
   if( function_exists('acf_add_options_page') ) {
-    acf_add_options_sub_page();
+    acf_add_options_sub_page(array(
+      'capability'  => 'manage_options',
+      'menu_title'  => 'Inventory Manager',
+      'page_title'  => 'Inventory Manager',
+    ));
   }
   
 }

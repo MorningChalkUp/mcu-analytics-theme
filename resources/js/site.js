@@ -10,7 +10,7 @@
   }
   
   $(function(){
-    toggleMenu()
+    toggleMenu();
     
     $('#report_select').on('change', function () {
       console.log($(this).val());
