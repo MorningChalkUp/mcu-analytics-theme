@@ -8,6 +8,9 @@
         <h3><i class="far fa-calendar-alt"></i></h3>
         <?php
           $weeks = get_field('weeks','options');
+          // here is where we need to do some validation if user is logged in.
+          // 1. check how many weeks have been purchased by user. limit user to 5 total for 2019
+          // 2. set weeks adjacent to purchased weeks as unavailable
           $months = array();
           foreach($weeks as $week){
             $month = date('M',strtotime($week['start'])).' '.date('Y',strtotime($week['start']));
@@ -26,15 +29,18 @@
                   } else {
                     $range = date('M',$start).' '.date('d',$start).' - '.date('M',$end).' '.date('d',$end);
                   }
+                  
                   if($week['availability'] == 'available'){
                     $tooltip = false;
-                  } elseif ($week['availability'] == 'purchased'){
-                    $tooltip = 'Purchased';
+                    $disabled = '';
                   } else {
-                    $tooltip = 'Not for Sale';
+                    $tooltip = $week['availability'];
+                    $disabled = 'disabled';
                   }
                 ?>
-                <a href="#" class="purchase-btn" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" <?php if($tooltip) echo "title='$tooltip'"?> ><?php echo $range ?></a>
+                <?php /* ?><a href="#" class="purchase-btn" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" <?php if($tooltip) echo "title='$tooltip'"?> ><?php echo $range ?></a>php */?>
+                <input <?php echo $disabled ?> class="purchase-checkbox" id="<?php echo $start ?>" type="checkbox"  />
+                <label class="purchase-checklabel" for="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>"><?php echo $range ?></label>
               <?php endforeach; ?>
             </div>
             <?php
@@ -59,34 +65,35 @@
           <span class="total">Total: $3000</span>
           
           <script src="https://checkout.stripe.com/checkout.js"></script>
+          
 
-          <button id="customButton" class="btn">Checkout</button>
+          <button id="checkoutButton" class="btn" data-total="3000">Checkout</button>
 
           <script>
-          var handler = StripeCheckout.configure({
-            key: 'pk_c1RxlK2387fUBDHZ5qOvSupF9DY0b',
-            image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
-            locale: 'auto',
-            token: function(token) {
-              // You can access the token ID with `token.id`.
-              // Get the token ID to your server-side code for use.
-            }
-          });
-
-          document.getElementById('customButton').addEventListener('click', function(e) {
-            // Open Checkout with further options:
-            handler.open({
-              name: 'Parapxl Corp',
-              description: '2 widgets',
-              amount: 2000
+            var handler = StripeCheckout.configure({
+              key: 'pk_c1RxlK2387fUBDHZ5qOvSupF9DY0b',
+              image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+              locale: 'auto',
+              token: function(token) {
+                // You can access the token ID with `token.id`.
+                // Get the token ID to your server-side code for use.
+              }
             });
-            e.preventDefault();
-          });
 
-          // Close Checkout on page navigation:
-          window.addEventListener('popstate', function() {
-            handler.close();
-          });
+            document.getElementById('checkoutButton').addEventListener('click', function(e) {
+              // Open Checkout with further options:
+              handler.open({
+                name: 'MCU Sponsorship',
+                description: '-',
+                amount: document.getElementById('customButton').total
+              });
+              e.preventDefault();
+            });
+
+            // Close Checkout on page navigation:
+            window.addEventListener('popstate', function() {
+              handler.close();
+            });
           </script>
         </div>
       </div>
