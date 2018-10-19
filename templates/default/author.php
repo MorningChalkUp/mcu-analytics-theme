@@ -133,29 +133,121 @@ if ( is_user_logged_in() ) :
         </div>
       </div>
     </div>
-    <div class="box">
-      
-      <table id="reports">
-        <thead>
-          <tr>
-            <?php if (current_user_can( 'manage_options' )) echo "<th></th>"; ?>
-            <th align="left"><label>Ad Reports</label></th>
-            <th align="right"><label>Open rate</label></th>
-            <th align="right"><label>Views</label></th>
-            <th align="right"><label>Clicks</label></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-            pxl::loop(
-              $partial,
-              $args
-            );
-          ?>
-        </tbody>
-      </table>
+    
+    <div class="row">
+      <div class="span8">
+        <div class="box">
+          <table id="reports">
+            <thead>
+              <tr>
+                <?php if (current_user_can( 'manage_options' )) echo "<th></th>"; ?>
+                <th align="left"><label>Ad Reports</label></th>
+                <th align="right"><label>Open rate</label></th>
+                <th align="right"><label>Views</label></th>
+                <th align="right"><label>Clicks</label></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php 
+                pxl::loop(
+                  $partial,
+                  $args
+                );
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="span4">
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th align="left"><label>Upcoming Ads</label></th>
+                <th align="right"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#t1547424000" class="popup">Jan 14 - 18</a></td>
+                <td align="right">
+                  <!-- <span class="status on" title="Ad Written"><i class="far fa-pencil"></i></span>
+                  <span class="status on" title="Ad Approved"><i class="far fa-check-circle"></i></span> -->
+                </td>
+              </tr>
+              <tr>
+                <td><a href="#t1547424000" class="popup">Feb 25 - Mar 01</a></td>
+                <td align="right">
+                  <!-- <span class="status on" title="Ad Written"><i class="far fa-pencil"></i></span>
+                  <span class="status off" title="Ad Approved"><i class="far fa-check-circle"></i></span> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div id="t1547424000" class="mfp-hide popupwindow" >
+            <div id="manageads">
+              <h3>Your ads for Jan 14 - 18</h3>
+              <div>
+                <h4>Jan 14</h4>
+                <p>
+                  <label for="descriptor">Descriptor</label><br>
+                  <input type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor"> Mobility WOD
+                </p>
+            
+                <p>
+                  <label>Ad Copy</label><br>
+                  <textarea style="width:100%"></textarea>
+                </p>
+            
+                <p>
+                  <label>Link</label><br>
+                  <input type="text" name="link" value="" placeholder="http://www.morningchalkup.com" id="link">
+                </p>
+            
+                <p>
+                  <label>Hyperlinked Text</label><br>
+                  <input type="text" name="link_text" value="" placeholder="learn more" id="link_text">
+                </p>
+              
+                <!-- <p>
+                  <input type="checkbox" name="approved" value="" id="approved"><label for="approved">Approved</label>
+                </p> -->
+              </div>
+              
+              <div>
+                <h4>Jan 15</h4>
+                <p>
+                  <label for="descriptor">Descriptor</label><br>
+                  <input type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor"> Mobility WOD
+                </p>
+            
+                <p>
+                  <label>Ad Copy</label><br>
+                  <textarea style="width:100%"></textarea>
+                </p>
+            
+                <p>
+                  <label>Link</label><br>
+                  <input type="text" name="link" value="" placeholder="http://www.morningchalkup.com" id="link">
+                </p>
+            
+                <p>
+                  <label>Hyperlinked Text</label><br>
+                  <input type="text" name="link_text" value="" placeholder="learn more" id="link_text">
+                </p>
+              
+                <!-- <p>
+                  <input type="checkbox" name="approved" value="" id="approved"><label for="approved">Approved</label>
+                </p> -->
+              </div>
+              
+            </div>
+          </div>
+          <br>
+          <a href="t1547424000" class="btn btn-full">New Ads</a>
+        </div>
+      </div>
     </div>
-
 	</div>
 </div>
 <?php endif; ?>

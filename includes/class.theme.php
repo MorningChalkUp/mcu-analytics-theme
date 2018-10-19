@@ -21,9 +21,11 @@
         'min' => false,
         'css' => array(
           'main'   => true,
+          'magnific-popup' => true,
           'gf-fix' => array('deps' => array('gforms_ready_class_css','gforms_formsmain_css')),
         ),
         'js'  => array(
+          'magnific-popup' => true,
           'fontawesome-all.min' => array('defer' => 'true'),
           'site' => array('deps' => array('jquery')),
         )

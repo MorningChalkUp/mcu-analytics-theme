@@ -3,7 +3,7 @@
 /* Resets */
   *{line-height:150%}
   br{line-height:100%}
-  html, body{background-color:#f9f9f9;color:#484546;font-family:'Roboto', 'Helvetica Neue', sans-serif;font-weight:300;font-size:16px;height:100%;margin:0;padding:0;}
+  html, body{background-color:#f9f9f9;color:#484546;font-family:'Roboto', 'Helvetica Neue', sans-serif;font-weight:400;font-size:16px;height:100%;margin:0;padding:0;}
   a{color:#3D5BA9;text-decoration:none;transition:0.2s all;}
   a *{transition:0.2s all;}
   b, strong{font-weight:500;}
@@ -38,7 +38,7 @@
   input[type="checkbox"]{opacity:0;width:16px !important;height:16px;margin:0 6px 0 0;}
   input[type="checkbox"] + label{opacity:0.7;position:relative;transition:0.2s all;}
   input[type="checkbox"] + label:before,
-  input[type="checkbox"] + label:after{border-radius:4px;content:'';height:16px;left:-27px;position:absolute;top:0px;width:16px;}
+  input[type="checkbox"] + label:after{border-radius:4px;content:'';height:16px;left:-22px;position:absolute;top:0px;width:16px;}
   input[type="checkbox"] + label:before{background-color:rgba(0,0,0,0.2);}
   input[type="checkbox"] + label:after{background-color:#3D5BA9;box-shadow:0 1px 3px rgba(0,0,0,0.2);transform:scale(0.0);transition:0.2s all;width:16px;height:16px;}
   
@@ -177,6 +177,8 @@
   button.btn{border:none;cursor:pointer;background-color:#3D5BA9;color:#fff;border-radius:4px;font-size:14px;font-weight:bold;padding:0.7em 1em;transition:0.2s all;}
   button.btn:hover{background-color:#4c72d4;}
   
+  .btn-full{display:block;text-align:center;}
+  
   .vertical-center{height:100%;display:flex;flex-direction:column;justify-content:space-between;}
   .vertical-center:before,
   .vertical-center:after{content:'';display:block;}
@@ -207,7 +209,7 @@
   #navbar .contain .navmid{text-align:center;}
   #navbar .contain .navright{text-align:right;}
   
-  #navbar + .section{margin-top:80px;}
+  #navbar + .section > *{padding-top:80px;}
   
   #nav{font-size: 14px;text-transform: uppercase;font-weight:700;}
   #nav a{color:#484546;}
@@ -267,10 +269,10 @@
   
   td.avatar{padding-right:0;}
   
-  table#reports td:first-child,
-  table#reports th:first-child{padding-left:0;}
-  table#reports td:last-child,
-  table#reports th:last-child{padding-right:0;}
+  table td:first-child,
+  table th:first-child{padding-left:0;}
+  table td:last-child,
+  table th:last-child{padding-right:0;}
   
   table.fix {table-layout:fixed;}
   table.fix th:first-child,
@@ -373,7 +375,12 @@
   .add-ons input[type="checkbox"]:hover + label + .price,
   .add-ons input[type="checkbox"]:checked + label + .price{opacity:1;}
   
+  .status{margin-left:10px;}
+  .status.off{color:#ddd;}
+  .status.on{color:#22B573;}
   
   #checkout{padding-top:2rem;text-align:right;}
   #checkout .total{color:#3D5BA9;font-weight:bold;margin-right:1rem;}
+  
+  .popupwindow{background-color:#fff;max-width:600px;margin:0 auto;padding:2rem;}
   

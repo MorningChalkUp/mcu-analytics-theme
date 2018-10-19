@@ -1,9 +1,7 @@
 <?php /* Template Name: Campaigns */ ?>
 <div class="section">
   <div class="wrapper">
-    <h2 class="section-title">
-      <?php the_title() ?>
-    </h2>
+    <h2 class="section-title"><?php the_title() ?></h2>
     <table>
     <?php
       $campaigns = mcu_get_campaigns();

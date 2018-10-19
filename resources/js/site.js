@@ -9,8 +9,19 @@
     });
   }
   
+  // Inline Modal
+  function popup() {
+    if ( jQuery('.popup').length ) {
+      jQuery('.popup').magnificPopup({
+        type: 'inline',
+        midClick: true
+      });
+    }
+  }
+  
   $(function(){
     toggleMenu();
+    popup();
     
     $('#report_select').on('change', function () {
       console.log($(this).val());
