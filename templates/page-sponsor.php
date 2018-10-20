@@ -65,7 +65,6 @@
           <span class="total">Total: $3000</span>
           
           <script src="https://checkout.stripe.com/checkout.js"></script>
-          
 
           <button id="checkoutButton" class="btn" data-total="3000">Checkout</button>
 

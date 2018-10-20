@@ -187,11 +187,12 @@ if ( is_user_logged_in() ) :
           <div id="t1547424000" class="mfp-hide popupwindow" >
             <div id="manageads">
               <h3>Your ads for Jan 14 - 18</h3>
+              <hr>
               <div>
-                <h4>Jan 14</h4>
+                <h4 class="label">Jan 14</h4>
                 <p>
                   <label for="descriptor">Descriptor</label><br>
-                  <input type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor"> Mobility WOD
+                  <input type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor">
                 </p>
             
                 <p>
@@ -209,16 +210,14 @@ if ( is_user_logged_in() ) :
                   <input type="text" name="link_text" value="" placeholder="learn more" id="link_text">
                 </p>
               
-                <!-- <p>
-                  <input type="checkbox" name="approved" value="" id="approved"><label for="approved">Approved</label>
-                </p> -->
+                <hr>
               </div>
               
               <div>
-                <h4>Jan 15</h4>
+                <h4 class="label">Jan 15</h4>
                 <p>
                   <label for="descriptor">Descriptor</label><br>
-                  <input type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor"> Mobility WOD
+                  <input type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor">
                 </p>
             
                 <p>
@@ -236,15 +235,13 @@ if ( is_user_logged_in() ) :
                   <input type="text" name="link_text" value="" placeholder="learn more" id="link_text">
                 </p>
               
-                <!-- <p>
-                  <input type="checkbox" name="approved" value="" id="approved"><label for="approved">Approved</label>
-                </p> -->
+                <hr>
               </div>
               
             </div>
           </div>
           <br>
-          <a href="t1547424000" class="btn btn-full">New Ads</a>
+          <a href="/sponsor/" class="btn btn-full">New Ads</a>
         </div>
       </div>
     </div>
