@@ -17,6 +17,7 @@
       $('#cart #list').append(html);
       $('#checkoutButton').data('total', $('#checkoutButton').data('total') + $(this).data('price'));
       $('.total #amt').text($('#checkoutButton').data('total'));
+      // console.log('.facebook-'+$(this).data('id'));
     } else {
       remove_id = $(this).data('id');
       $('.'+remove_id).remove();
@@ -24,12 +25,19 @@
       $('.total #amt').text($('#checkoutButton').data('total'));
     }
   });
+
+  $(document).on('change', '.add-ons input', function(event) {
+    if($(this).prop('checked')) {
+      $('#checkoutButton').data('total', $('#checkoutButton').data('total') + $(this).data('price'));
+      $('.total #amt').text($('#checkoutButton').data('total'));
+    } else {
+      $('#checkoutButton').data('total', $('#checkoutButton').data('total') - $(this).data('price'));
+      $('.total #amt').text($('#checkoutButton').data('total'));
+    }
+    // console.log($(this).attr('class'));
+    // if ($(this).prop('checked')) {
+    //   $('#checkoutButton').data('total', $('#checkoutButton').data('total') + $(this).data('price'));
+    //   $('.total #amt').text($('#checkoutButton').data('total'));
+    // }
+  });
 })(jQuery);
-$=jQuery;
-$('input.facebook').change(function() {
-  console.log('fb');
-  if ($(this).prop('checked')) {
-    $('#checkoutButton').data('total', $('#checkoutButton').data('total') + $(this).data('price'));
-    $('.total #amt').text($('#checkoutButton').data('total'));
-  }
-});
