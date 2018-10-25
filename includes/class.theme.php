@@ -28,6 +28,7 @@
           'magnific-popup' => true,
           'fontawesome-all.min' => array('defer' => 'true'),
           'site' => array('deps' => array('jquery')),
+          'sponsorships' => array( 'deps' => array('jquery'), 'in_footer' => true ),
         )
       );
     }
