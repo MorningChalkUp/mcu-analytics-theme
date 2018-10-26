@@ -14,7 +14,9 @@
             'orderby' => 'meta_value',
             'order' => 'DESC',
           ),
-        )
+        ),
+        'purchase' => 'dashicons-tag',
+        'purchased_item' => 'dashicons-cart'
       );
       
       $resources = array(
