@@ -60,7 +60,7 @@
 
           <script>
             var handler = StripeCheckout.configure({
-              key: 'pk_c1RxlK2387fUBDHZ5qOvSupF9DY0b',
+              key: 'pk_live_1ifgCgToYfxzfGj2JU8JtWSY',
               image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
               locale: 'auto',
               token: function(token) {
