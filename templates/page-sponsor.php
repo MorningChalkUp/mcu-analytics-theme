@@ -39,8 +39,8 @@
                   }
                 ?>
                 <?php /* ?><a href="#" class="purchase-btn" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" <?php if($tooltip) echo "title='$tooltip'"?> ><?php echo $range ?></a>php */?>
-                <input <?php echo $disabled ?> class="purchase-checkbox" id="<?php echo $start ?>" type="checkbox"  />
-                <label class="purchase-checklabel" for="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>"><?php echo $range ?></label>
+                <input <?php echo $disabled ?> class="purchase-checkbox" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" />
+                <label class="purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?></label>
               <?php endforeach; ?>
             </div>
             <?php
@@ -49,28 +49,18 @@
       </div>
       <div id="cart">
         <h3><i class="far fa-shopping-cart"></i></h3>
-        <div class="cart-item">
-          <h4>Title Here <span class="price">$2100</span></h4>
-          <div class="inside">
-            <p>Notes here</p>
-            <h5>Add-ons:</h5>
-            <ul class="add-ons">
-              <li><input type="checkbox" id="facebook"/> <label for="facebook">Facebook Retargeting</label> <span class="price">+ $250</span></li>
-              <li><input type="checkbox" id="ab"/> <label for="ab">A/B Testing</label> <span class="price">+ $250</span></li>
-              <li><input type="checkbox" id="wewrite"/> <label for="wewrite">We Write Your Ads</label> <span class="price">+ $250</span></li>
-            </ul>
-          </div>
+        <div id="list">
         </div>
         <div id="checkout">
-          <span class="total">Total: $3000</span>
+          <span class="total">Total: $<span id="amt">0</span></span>
           
           <script src="https://checkout.stripe.com/checkout.js"></script>
 
-          <button id="checkoutButton" class="btn" data-total="3000">Checkout</button>
+          <button id="checkoutButton" class="btn" data-total="0">Checkout</button>
 
           <script>
             var handler = StripeCheckout.configure({
-              key: 'pk_c1RxlK2387fUBDHZ5qOvSupF9DY0b',
+              key: 'pk_live_1ifgCgToYfxzfGj2JU8JtWSY',
               image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
               locale: 'auto',
               token: function(token) {
@@ -84,7 +74,7 @@
               handler.open({
                 name: 'MCU Sponsorship',
                 description: '-',
-                amount: document.getElementById('customButton').total
+                amount: jQuery('#customButton').data('total'),
               });
               e.preventDefault();
             });
