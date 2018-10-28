@@ -79,10 +79,10 @@ if ( is_user_logged_in() ) :
         $agg_c += $c;
         $agg_or += ($r > 0) ? $o/$r : 0;
       }
-      $avg_or = $agg_or/count($reports);
+      
+      $avg_or = $reports ? $agg_or/count($reports) : 0;
       $inc = 500/($rcount-1); // for trendline
     ?>
-    
     <div class="box nopad flexed">
       <div class="stat blue center-text ads-stat">
         <h4 class="label">Ads</h4>

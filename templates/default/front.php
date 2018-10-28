@@ -5,7 +5,8 @@
   
 	<div class="section vertical-center">
 		<div class="wrapper">
-			<div id="login" class="box">
+			
+      <div id="login" class="box">
 				<?php wp_login_form(array('label_log_in' => 'Sign In')); ?>
   			<?php
   				if ( !empty($_REQUEST['login']) ) {
@@ -14,6 +15,7 @@
   				}
   				if ( !empty($_REQUEST['passwordreset']) ) echo "<h5>Check your email for the confirmation link.<small></h5>";
   			?>
+        <p class="center-text">or <a href="/create-account/" >Create an Account</a></p>
 			</div>
 			
 		</div>

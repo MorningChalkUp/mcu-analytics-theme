@@ -2,7 +2,7 @@
 
 <div class="section">
   <div class="wrapper">
-    <h2>Sponsorships</h2>
+    <h2>Sponsor the Morning Chalk Up</h2>
     <div id="purchasebox">
       <div id="products">
         <h3><i class="far fa-calendar-alt"></i></h3>

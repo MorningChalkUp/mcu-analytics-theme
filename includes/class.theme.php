@@ -35,6 +35,9 @@
       );
     }
     
+    
+    
+    
     // Hooks : Actions
       public function actions() {
         add_action('init', array($this, 'action_init'));
@@ -44,11 +47,27 @@
         add_action('wp_login_failed', array($this, 'action_wp_login_failed'), 10, 1);
         add_action('after_password_reset', array($this, 'action_after_password_reset'), 10, 1);
         
+        add_action( 'gform_user_registered', array($this, 'action_gf_registration_autologin'),  10, 4 );
+        
         add_action ('wp_loaded', array($this, 'update_sponsor_profile'));
         
         remove_action('wp_head', 'print_emoji_detection_script', 7);
         remove_action('wp_print_styles', 'print_emoji_styles');
       }
+      
+      function action_gf_registration_autologin( $user_id, $user_config, $entry, $password ) {
+       $user = get_userdata( $user_id );
+       $user_login = $user->user_login;
+       $user_password = $password;
+ 
+          wp_signon( array(
+       'user_login' => $user_login,
+       'user_password' =>  $user_password,
+       'remember' => false
+ 
+          ) );
+      }
+      
       public function action_init() {
         if ( !is_admin() ) {}
       }
@@ -61,7 +80,14 @@
       public function filters() {
         add_filter('gform_ajax_spinner_url', array($this, 'filter_gf_spinner_replace'), 10, 2 );
         add_filter('gform_enable_field_label_visibility_settings', '__return_true');
+        add_filter('acf/load_field/name=date', array($this, 'filter_acf_default_date') );
       }
+      
+      function filter_acf_default_date($field) {
+        $field['default_value'] = date('Ymd');
+        return $field;
+      }
+      
       public function filter_gf_spinner_replace( $image_src, $form ) {
         return  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // relative to you theme images folder
       }
