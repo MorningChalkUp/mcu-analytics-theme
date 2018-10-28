@@ -348,16 +348,16 @@
   #products .purchase-checkbox{display:none;}
   #products .purchase-checklabel:before,
   #products .purchase-checklabel:after{display:none;}
-  #products .purchase-checklabel{box-shadow:inset 0 0 0 1px;border-radius:4px;cursor:pointer;color:#3D5BA9;font-size:14px;font-weight:bold;opacity:1;padding:0.7em 1em;}
+  #products .purchase-checklabel{box-shadow:inset 0 0 0 1px;border-radius:4px;cursor:pointer;color:#3D5BA9;font-size:14px;font-weight:bold;opacity:1;padding:0.7em 1em;white-space:nowrap;line-height:42px;}
+  #products .purchase-checklabel span{font-weight:400;margin-left:5px;}
   #products .purchase-checklabel:hover{color:#4c72d4;}
   #products .purchase-checkbox:checked + .purchase-checklabel{background-color:#3D5BA9;color:#fff;}
   #products .purchase-checkbox:disabled + .purchase-checklabel,
   #products .purchase-checkbox:disabled + .purchase-checklabel:hover{background-color:#e1e1e1;box-shadow:none;color:#999999;}
-  
 
   #purchasebox{background-color:#fff;display:flex;}
   #purchasebox #products{padding:2rem;flex:2;}
-  #purchasebox #cart{padding:2rem;background-color:#eee;}
+  #purchasebox #cart{padding:2rem;background-color:#eee;min-width:300px;}
   #purchasebox h3{margin-top:0;}
   
   #products .month{margin:1rem 0 2rem;}
@@ -366,7 +366,7 @@
   .cart-item h4{margin:0;}
   .cart-item h5{margin:0;}
   .cart-item .inside{margin-left:0.5rem;padding-left:1rem;border-left:1px solid #ccc;}
-  .cart-item{border-bottom:1px solid #ccc;padding-bottom:1rem;}
+  .cart-item{padding-bottom:1rem;}
   
   .price{font-weight:500;float:right;}
   
@@ -386,4 +386,8 @@
   .popupwindow{background-color:#fff;max-width:600px;margin:0 auto;padding:2rem;}
   
   #manageads input{width:100%;}
+  
+  @media (max-width: 976px) {
+    #purchasebox{display:block;}
+  }
   

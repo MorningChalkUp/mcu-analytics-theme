@@ -5,7 +5,7 @@
         <div class="cart-item ${$(this).data('id')}" data-item_total="${$(this).data('price')}">
           <h4>${$(this).data('range')} <span class="price">$${$(this).data('price')}</span></h4>
           <div class="inside">
-            <p>Notes here</p>
+            <p>${$(this).data('notes')}</p>
             <h5>Add-ons:</h5>
             <ul class="add-ons">
               <li><input type="checkbox" data-id="${$(this).data('id')}" class="facebook" data-price="250" id="facebook-${$(this).data('id')}"/> <label for="facebook-${$(this).data('id')}">Facebook Retargeting</label> <span class="price">+ $250</span></li>
