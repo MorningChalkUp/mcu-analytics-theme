@@ -24,10 +24,14 @@
                 <?php
                   $start = strtotime($week['start']);
                   $end = strtotime($week['end']);
-                  if ( date('M',$start) == date('M',$end) ){
-                    $range = date('M',$start).' '.date('d',$start).' - '.date('d',$end);
+                  $class = '';
+                  if ( date('M j',$start) == date('M j',$end) ){
+                    $range = date('M',$start).' '.date('j',$start);
+                    $class = 'single-day';
+                  } else if ( date('M',$start) == date('M',$end) ){
+                    $range = date('M',$start).' '.date('j',$start).' - '.date('j',$end);
                   } else {
-                    $range = date('M',$start).' '.date('d',$start).' - '.date('M',$end).' '.date('d',$end);
+                    $range = date('M',$start).' '.date('j',$start).' - '.date('M',$end).' '.date('j',$end);
                   }
                   
                   if($week['availability'] == 'available'){
@@ -40,7 +44,7 @@
                 ?>
                 <?php /* ?><a href="#" class="purchase-btn" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" <?php if($tooltip) echo "title='$tooltip'"?> ><?php echo $range ?></a>php */?>
                 <input <?php echo $disabled ?> class="purchase-checkbox" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" />
-                <label class="purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?> <span><?php echo '$'.$week['price'] ?></span></label>
+                <label class="<?php echo $class ?> purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?> <span><?php echo '$'.$week['price'] ?></span></label>
               <?php endforeach; ?>
             </div>
             <?php

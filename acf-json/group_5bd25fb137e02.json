@@ -5,7 +5,7 @@
         {
             "key": "field_5bd32d64049a3",
             "label": "Sponsor",
-            "name": "spoonsor",
+            "name": "sponsor",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -41,6 +41,40 @@
             "maxlength": ""
         },
         {
+            "key": "field_5bd635965b730",
+            "label": "Start Date",
+            "name": "start",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "m\/d\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_5bd635ac5b731",
+            "label": "End Date",
+            "name": "end",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "m\/d\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
             "key": "field_5bd0bf7944db0",
             "label": "Days",
             "name": "days",
@@ -74,7 +108,8 @@
                     },
                     "display_format": "d\/m\/Y",
                     "return_format": "d\/m\/Y",
-                    "first_day": 1
+                    "first_day": 1,
+                    "default_value": "20181028"
                 },
                 {
                     "key": "field_5bd0bfc344db2",
@@ -169,5 +204,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1540566466
+    "modified": 1540765159
 }
