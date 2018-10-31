@@ -56,16 +56,16 @@
         <div id="list">
         </div>
         <div id="checkout">
-          <span class="total">Total: $<span id="amt">0</span></span>
-          
+          <p class="total">Total: $<span id="amt">0</span></p>
           <script src="https://checkout.stripe.com/checkout.js"></script>
 
-          <button id="checkoutButton" class="btn" data-total="0">Checkout</button>
+          <button id="depositButton" class="btn" data-total="0">Deposit</button>
+          <button id="checkoutButton" class="btn" data-total="0">Pay in Full</button>
 
           <script>
             var handler = StripeCheckout.configure({
               key: 'pk_live_1ifgCgToYfxzfGj2JU8JtWSY',
-              image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+              image: window.location.origin + '/wp-content/themes/mcu-analytics-theme/resources/images/square-blue.png',
               locale: 'auto',
               token: function(token) {
                 // You can access the token ID with `token.id`.

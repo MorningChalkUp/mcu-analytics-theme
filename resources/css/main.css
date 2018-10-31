@@ -385,7 +385,7 @@
   .status.on{color:#22B573;}
   
   #checkout{padding-top:2rem;text-align:right;}
-  #checkout .total{color:#3D5BA9;font-weight:bold;margin-right:1rem;}
+  #checkout .total{color:#3D5BA9;font-size:18px;font-weight:bold;}
   
   .popupwindow{background-color:#fff;max-width:600px;margin:0 auto;padding:2rem;}
   
