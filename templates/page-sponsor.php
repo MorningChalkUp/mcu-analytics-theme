@@ -53,8 +53,7 @@
       </div>
       <div id="cart">
         <h3><i class="far fa-shopping-cart"></i></h3>
-        <div id="list">
-        </div>
+        <div id="list"></div>
         <div id="checkout">
           <p class="total">Total: $<span id="amt">0</span></p>
           <script src="https://checkout.stripe.com/checkout.js"></script>

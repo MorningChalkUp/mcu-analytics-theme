@@ -4,9 +4,9 @@
     "fields": [
         {
             "key": "field_5bd32d64049a3",
-            "label": "Sponsor",
-            "name": "sponsor",
-            "type": "text",
+            "label": "Purchaser",
+            "name": "purchaser",
+            "type": "user",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,11 +15,10 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "role": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "array"
         },
         {
             "key": "field_5bd32da1e3d63",
@@ -49,13 +48,13 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "display_format": "m\/d\/Y",
-            "return_format": "d\/m\/Y",
-            "first_day": 1
+            "return_format": "m\/d\/Y",
+            "first_day": 0
         },
         {
             "key": "field_5bd635ac5b731",
@@ -66,13 +65,13 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "display_format": "m\/d\/Y",
-            "return_format": "d\/m\/Y",
-            "first_day": 1
+            "return_format": "m\/d\/Y",
+            "first_day": 0
         },
         {
             "key": "field_5bd0bf7944db0",
@@ -109,7 +108,7 @@
                     "display_format": "d\/m\/Y",
                     "return_format": "d\/m\/Y",
                     "first_day": 1,
-                    "default_value": "20181028"
+                    "default_value": "20181031"
                 },
                 {
                     "key": "field_5bd0bfc344db2",
@@ -185,6 +184,63 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_5bd9198e7ffb7",
+            "label": "Facebook Retargeting",
+            "name": "facebook_retargeting",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5bd919c17ffb8",
+            "label": "A\/B Testing",
+            "name": "ab_testing",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5bd919cc7ffb9",
+            "label": "We Write Ads",
+            "name": "we_write_ads",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -204,5 +260,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1540765159
+    "modified": 1540954650
 }

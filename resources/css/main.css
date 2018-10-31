@@ -367,6 +367,10 @@
   #products .month{margin:1rem 0 2rem;}
   #products h4{margin:1rem 0;}
   
+  #list + #checkout{opacity:1;transition:0.2s opacity;}
+  #list:empty + #checkout{opacity:0;}
+  
+  
   .cart-item h4{margin:0;}
   .cart-item h5{margin:0;}
   .cart-item .inside{margin-left:0.5rem;padding-left:1rem;border-left:1px solid #ccc;}
