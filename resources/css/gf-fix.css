@@ -1,16 +1,27 @@
+.gform_wrapper .gform_body{ width: calc(100% + 16px); } /* fixes 16px offset caused by margin-right on fields */
+
+.gform_wrapper .gform_footer{padding-bottom:0;position:relative;/*not sure what this position is for*/}
+
+.gfield.field_sublabel_hidden_label .gfield_label,
+.gfield.hidden_label .gfield_label{ display:none; } /* 'hidden labels' not hidden and creating unwanted spaces */
+
+.gform_ajax_spinner{-webkit-animation:spinner 1.1s infinite linear;animation:spinner 1.1s infinite linear;border-left-style:solid;border-left-width:3px;border-radius:50%;border:3px solid rgba(255,255,255,0.6);height:20px;right:5px;position:absolute;top:16px;width:20px;}
+
 /* Gravity Forms – Validation Overrides */
   .validation_error{display:none;}
-  .gfield_error{background-color:transparent!important;border:none!important;}
   .gform_wrapper .validation_message{color:#790000;}
-  .gform_wrapper .gfield_error .gfield_label{color:#790000;}
-  .gform_wrapper .gfield_error{margin:0;}
-  .gform_wrapper .gfield_error .ginput_container{padding:0;}
   
-  .gfield_error input{background-color:#FFDFE0;border-color:#790000 !important;color:#fff;}
+  .gfield_error input{border-color:#790000 !important;color:#fff;}
   .gfield_error input::-webkit-input-placeholder{color:#790000;}
   .gfield_error input:-moz-placeholder{color:#790000;}
   .gfield_error input::-moz-placeholder{color:#790000;}
   .gfield_error input:-ms-input-placeholder{color:#790000;}
+  
+  .gform_wrapper li.gfield_error{background-color:transparent!important;border:none!important;padding:0 !important;position:relative;}
+  .gform_wrapper li.gfield_error .gfield_label{color:#790000;}
+  .gform_wrapper li.gfield_error .ginput_container{padding:0;}
+  .gform_wrapper li.gfield_error .validation_message{background-color: #790000;border-radius:4px;color:#fff;display:inline;font-size:12px;line-height:100%;padding: 4px 6px !important;width: auto;font-weight:normal;}  
+  
   
   .gform_wrapper li.gfield_error input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
   .gform_wrapper li.gfield_error textarea{color:#790000!important;}
@@ -18,16 +29,14 @@
   .gform_wrapper li.gfield.gfield_error.gfield_contains_required label.gfield_label{margin-top:0px !important;}
   .gform_wrapper li.gfield.gfield_error.gfield_contains_required div.ginput_container{margin-top:0px !important;}
   .gform_wrapper li.gfield.gfield_error.gfield_contains_required .ginput_complex + div.gfield_description{padding-top:0;}
-  .gform_wrapper .top_label li.gfield.gfield_error.gf_left_half + li.gfield.gf_right_half{width: calc(50% - 8px)!important;}
+
   .gform_wrapper form.gf_simple_horizontal div.gform_body ul.top_label.form_sublabel_below li.gfield,
   .gform_wrapper form.gf_simple_horizontal div.gform_footer.top_label{padding-top:0!important;vertical-align:top;}
   
   .gform_wrapper li.hidden_label .ginput_container,
   .gform_wrapper li.hidden_label .ginput_container input{margin-top:0 !important;}
   
-  .gform_ajax_spinner{-webkit-animation:spinner 1.1s infinite linear;animation:spinner 1.1s infinite linear;border-left-style:solid;border-left-width:3px;border-radius:50%;border:3px solid rgba(255,255,255,0.6);height:20px;right:5px;position:absolute;top:16px;width:20px;}
-  .gform_validation_error .gform_ajax_spinner{top:16px;}
-  .gform_wrapper .gform_footer{position:relative;}
+
   @-webkit-keyframes spinner {
     0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}
     100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}
@@ -39,19 +48,40 @@
   }
   
   @media (max-width: 641px) {
+    .gform_wrapper .gform_body{width: 100%;}
+    
     .gform_wrapper .top_label li.gfield.gfield_error.gf_left_half, 
     .gform_wrapper .top_label li.gfield.gfield_error.gf_right_half{margin-right:0;padding-right:0;width:50%;}
+        
+    .gform_wrapper .gform_footer input.button, 
+    .gform_wrapper .gform_footer input[type=submit], 
+    .gform_wrapper .gform_page_footer input.button, 
+    .gform_wrapper .gform_page_footer input[type=submit]{ margin:0; }
     
-    .gform_wrapper form.gf_simple_horizontal div.gform_body, 
-    .gform_wrapper form.gf_simple_horizontal div.gform_footer.top_label{vertical-align:top;}
-    .gform_wrapper form.gf_simple_horizontal div.gform_body ul.top_label li.gfield{padding-top:0;}
-    .gform_wrapper form.gf_simple_horizontal div.gform_body ul.top_label.form_sublabel_above li.gfield, 
-    .gform_wrapper form.gf_simple_horizontal div.gform_body ul.top_label.form_sublabel_below li.gfield{vertical-align:top;}
-    
-    .gform_wrapper .gform_footer input.button, .gform_wrapper .gform_footer input[type=submit], .gform_wrapper .gform_page_footer input.button, .gform_wrapper .gform_page_footer input[type=submit]{
-      margin:0;
-    }
   }
   @media (max-width: 480px) {
     .gf_left_half, .gf_right_half{width:100%!important;}
+  }
+  
+/*  PXL Horizontal */
+  
+  /* assume default is left aligned */
+  .pxl-horizontal_wrapper .pxl-horizontal{text-align:left;margin-left:-8px;}
+  
+  /* inherit alignment via container or previes element in-line style */
+  .right-text .pxl-horizontal_wrapper .pxl-horizontal,
+  *[style*='right'] + .pxl-horizontal_wrapper .pxl-horizontal{text-align:right;margin-left:0px;margin-right:-8px;max-width:calc(100% + 8px);}
+  .center-text .pxl-horizontal_wrapper .pxl-horizontal,
+  *[style*='center'] + .pxl-horizontal_wrapper .pxl-horizontal{text-align:center;margin-left:0px;margin-right:0px;}
+  
+  @media (max-width: 641px) {
+    .pxl-horizontal{text-align:inherit !important;margin:0 !important;}
+    .pxl-horizontal .gform_body li.gfield{width:50% !important;}
+    .pxl-horizontal .gform_body li.gfield .ginput_container{width:100% ;}
+    .pxl-horizontal .gform_body li.gfield .ginput_container input{width:100% ;}
+    .gform_wrapper .pxl-horizontal li.gfield.gfield_error,
+    .gform_wrapper .pxl-horizontal li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning{margin-bottom:0 !important;}
+  }
+  @media (max-width: 480px) {
+    .pxl-horizontal .gform_body li.gfield{width:100% !important;}
   }

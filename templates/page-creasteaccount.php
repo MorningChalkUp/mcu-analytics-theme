@@ -9,7 +9,7 @@
       
       <div id="login" class="box">
         <h2 style="margin-top:0;"><?php the_title(); ?></h2>
-        <?php gravity_form(2, false, false, false, '', true, 10 ); ?>
+        <?php gravity_form('Create an Account', false, false, false, '', true, 10 ); ?>
 			</div>
 			
 		</div>
