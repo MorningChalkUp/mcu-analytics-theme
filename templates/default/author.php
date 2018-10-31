@@ -168,78 +168,25 @@ if ( is_user_logged_in() ) :
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><a href="#t1547424000" class="popup">Jan 14 - 18</a></td>
-                <td align="right">
-                  <!-- <span class="status on" title="Ad Written"><i class="far fa-pencil"></i></span>
-                  <span class="status on" title="Ad Approved"><i class="far fa-check-circle"></i></span> -->
-                </td>
-              </tr>
-              <tr>
-                <td><a href="#t1547424000" class="popup">Feb 25 - Mar 01</a></td>
-                <td align="right">
-                  <!-- <span class="status on" title="Ad Written"><i class="far fa-pencil"></i></span>
-                  <span class="status off" title="Ad Approved"><i class="far fa-check-circle"></i></span> -->
-                </td>
-              </tr>
+              <?php
+                $pi_args = array(
+                  'post_type' => 'purchased_item',
+                  'posts_per_page' => -1,
+                  'meta_key' => 'start',
+                  'orderby' => 'meta_value',
+                  'order' => 'DESC',
+                  'meta_query' => array(
+                    array(
+                      'key' => 'purchaser', // name of custom field
+                      'value' => $author->ID,
+                      'compare' => '=',
+                    )
+                  )
+                );
+                pxl::loop('purchased-item',$pi_args);
+              ?>
             </tbody>
           </table>
-          <div id="t1547424000" class="mfp-hide popupwindow" >
-            <div id="manageads">
-              <h3>Your ads for Jan 14 - 18</h3>
-              <hr>
-              <div>
-                <h4 class="label">Jan 14</h4>
-                <p>
-                  <label for="descriptor">Descriptor</label><br>
-                  <input type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor">
-                </p>
-            
-                <p>
-                  <label>Ad Copy</label><br>
-                  <textarea style="width:100%"></textarea>
-                </p>
-            
-                <p>
-                  <label>Link</label><br>
-                  <input type="text" name="link" value="" placeholder="http://www.morningchalkup.com" id="link">
-                </p>
-            
-                <p>
-                  <label>Hyperlinked Text</label><br>
-                  <input type="text" name="link_text" value="" placeholder="learn more" id="link_text">
-                </p>
-              
-                <hr>
-              </div>
-              
-              <div>
-                <h4 class="label">Jan 15</h4>
-                <p>
-                  <label for="descriptor">Descriptor</label><br>
-                  <input type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor">
-                </p>
-            
-                <p>
-                  <label>Ad Copy</label><br>
-                  <textarea style="width:100%"></textarea>
-                </p>
-            
-                <p>
-                  <label>Link</label><br>
-                  <input type="text" name="link" value="" placeholder="http://www.morningchalkup.com" id="link">
-                </p>
-            
-                <p>
-                  <label>Hyperlinked Text</label><br>
-                  <input type="text" name="link_text" value="" placeholder="learn more" id="link_text">
-                </p>
-              
-                <hr>
-              </div>
-              
-            </div>
-          </div>
           <br>
           <a href="/sponsor/" class="btn btn-full">New Ads</a>
         </div>
