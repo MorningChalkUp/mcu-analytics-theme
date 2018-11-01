@@ -10,7 +10,6 @@
           $weeks = get_field('weeks','options');
           // here is where we need to do some validation if user is logged in.
           // 1. check how many weeks have been purchased by user. limit user to 5 total for 2019
-          // 2. set weeks adjacent to purchased weeks as unavailable
           $months = array();
           foreach($weeks as $week){
             $month = date('M',strtotime($week['start'])).' '.date('Y',strtotime($week['start']));
@@ -42,7 +41,6 @@
                     $disabled = 'disabled';
                   }
                 ?>
-                <?php /* ?><a href="#" class="purchase-btn" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" <?php if($tooltip) echo "title='$tooltip'"?> ><?php echo $range ?></a>php */?>
                 <input <?php echo $disabled ?> class="purchase-checkbox" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" />
                 <label class="<?php echo $class ?> purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?> <span><?php echo '$'.$week['price'] ?></span></label>
               <?php endforeach; ?>

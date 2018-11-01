@@ -93,6 +93,8 @@ var down_payment = .2; //as decimal
             if (!$('#' + second_prev_id).prop('checked')) {
               $('#' + prev_id).prop('disabled', false);
             }
+          } else {
+            $('#' + prev_id).prop('disabled', false);
           }
         }
       }
@@ -105,6 +107,8 @@ var down_payment = .2; //as decimal
             if (!$('#' + second_next_id).prop('checked')) {
               $('#' + next_id).prop('disabled', false);
             }
+          } else {
+            $('#' + next_id).prop('disabled', false);
           }
         }
       }
@@ -128,10 +132,12 @@ var down_payment = .2; //as decimal
         });
       }
       if ($('.cart-item').length == max_weeks - 1) {
-        $.each($('.purchase-checkbox'), function(i, val) {
-          if(!$(val).prop('checked')) {
-            if($(val).data('status') == 'available') {
-              $(val).prop('disabled', false);
+        $.each(week_ids, function(i, val) {
+          if(!$('#'+val).prop('checked')) {
+            if($('#'+val).data('status') == 'available') {
+              if(((i - 1) >= 0 && !$('#' + week_ids[i - 1]).prop('checked')) && (i < week_ids.length && !$('#' + week_ids[i + 1]).prop('checked'))) {
+                $('#'+val).prop('disabled', false);
+              }
             }
           }
         });
