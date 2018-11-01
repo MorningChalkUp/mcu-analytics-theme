@@ -56,37 +56,9 @@
         <div id="list"></div>
         <div id="checkout">
           <p class="total">Total: $<span id="amt">0</span></p>
-          <script src="https://checkout.stripe.com/checkout.js"></script>
-
-          <button id="depositButton" class="btn" data-total="0">Deposit</button>
+          <button id="depositButton" class="btn" data-total="0">20% Deposit</button>
           <button id="checkoutButton" class="btn" data-total="0">Pay in Full</button>
 
-          <script>
-            var handler = StripeCheckout.configure({
-              key: 'pk_live_1ifgCgToYfxzfGj2JU8JtWSY',
-              image: window.location.origin + '/wp-content/themes/mcu-analytics-theme/resources/images/square-blue.png',
-              locale: 'auto',
-              token: function(token) {
-                // You can access the token ID with `token.id`.
-                // Get the token ID to your server-side code for use.
-              }
-            });
-
-            document.getElementById('checkoutButton').addEventListener('click', function(e) {
-              // Open Checkout with further options:
-              handler.open({
-                name: 'MCU Sponsorship',
-                description: '-',
-                amount: jQuery('#customButton').data('total'),
-              });
-              e.preventDefault();
-            });
-
-            // Close Checkout on page navigation:
-            window.addEventListener('popstate', function() {
-              handler.close();
-            });
-          </script>
         </div>
       </div>
       

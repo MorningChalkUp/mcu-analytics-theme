@@ -30,7 +30,8 @@
           'magnific-popup' => true,
           'fontawesome-all.min' => array('defer' => 'true'),
           'site' => array('deps' => array('jquery')),
-          'sponsorships' => array( 'deps' => array('jquery'), 'in_footer' => true ),
+          'stripe' => array('in_footer' => true, 'src' => 'https://checkout.stripe.com/checkout.js'),
+          'sponsorships' => array( 'deps' => array('jquery', 'stripe'), 'in_footer' => true ),
         )
       );
     }
