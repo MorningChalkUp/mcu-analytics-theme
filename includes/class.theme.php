@@ -16,7 +16,7 @@
           ),
         ),
         'purchase' => 'dashicons-tag',
-        'purchased_item' => 'dashicons-cart'
+        'purchased_item' => 'dashicons-cart',
       );
       
       $resources = array(
@@ -30,8 +30,6 @@
           'magnific-popup' => true,
           'fontawesome-all.min' => array('defer' => 'true'),
           'site' => array('deps' => array('jquery')),
-          'stripe' => array('in_footer' => true, 'src' => 'https://checkout.stripe.com/checkout.js'),
-          'sponsorships' => array( 'deps' => array('jquery', 'stripe'), 'in_footer' => true ),
         )
       );
     }
