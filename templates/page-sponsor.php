@@ -1,8 +1,10 @@
 <?php /* Template Name: Sponsor */ ?>
 <?php 
   if (is_user_logged_in()) {
-    $user_email = get_userdata( get_current_user_id() )->user_email; 
+    $user = get_userdata( get_current_user_id() );
+    $user_email = $user->user_email; 
   } else {
+    $user = null;
     $user_email = '';
   }
 
@@ -16,8 +18,6 @@
         <h3><i class="far fa-calendar-alt"></i></h3>
         <?php
           $weeks = get_field('weeks','options');
-          // here is where we need to do some validation if user is logged in.
-          // 1. check how many weeks have been purchased by user. limit user to 5 total for 2019
           $months = array();
           foreach($weeks as $week){
             $month = date('M',strtotime($week['start'])).' '.date('Y',strtotime($week['start']));
@@ -48,8 +48,15 @@
                     $tooltip = $week['availability'];
                     $disabled = 'disabled';
                   }
+
+                  if( $week['purchaser']['ID'] == $user->ID ) {
+                    $purchaser = 'purchaser';
+                  } else {
+                    $purchaser = '';
+                  }
+
                 ?>
-                <input <?php echo $disabled ?> class="purchase-checkbox" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" data-start="<?php echo date('n/j/Y', strtotime($week['start'])) ?>" data-end="<?php echo date('n/j/Y', strtotime($week['end'])) ?>" />
+                <input <?php echo $disabled ?> class="purchase-checkbox <?php echo $purchaser ?>" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" data-start="<?php echo date('n/j/Y', strtotime($week['start'])) ?>" data-end="<?php echo date('n/j/Y', strtotime($week['end'])) ?>" />
                 <label class="<?php echo $class ?> purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?> <span><?php echo '$'.$week['price'] ?></span></label>
               <?php endforeach; ?>
             </div>
