@@ -135,7 +135,7 @@
                         "id": ""
                     },
                     "role": "",
-                    "allow_null": 0,
+                    "allow_null": 1,
                     "multiple": 0,
                     "return_format": "array"
                 }
@@ -159,5 +159,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1541435876
+    "modified": 1541436637
 }

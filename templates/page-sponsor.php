@@ -5,7 +5,15 @@
     $user_email = $user->user_email; 
   } else {
     $user = null;
-    $user_email = '';
+    $user_email = 'pk_test_TYooMQauvdEDq54NiTphI7jx';
+  }
+
+  if( get_field('mode', 'options') == 'test' ) {
+    $stripe_key = get_field( 'stripe_test_publishable_key','options' );
+  } elseif ( get_field('mode', 'options') == 'live' ) {
+    $stripe_key = get_field( 'stripe_live_publishable_key','options' );
+  } else {
+    $stripe_key = '';
   }
 
 ?>
@@ -71,7 +79,7 @@
           endforeach;
         ?>
       </div>
-      <div id="cart" data-user="<?php echo $user_email; ?>">
+      <div id="cart" data-user="<?php echo $user_email; ?>" data-key="<?php echo $stripe_key; ?>">
         <h3><i class="far fa-shopping-cart"></i></h3>
         <div id="list"></div>
         <div id="checkout">
