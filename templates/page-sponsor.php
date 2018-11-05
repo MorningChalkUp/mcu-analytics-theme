@@ -1,4 +1,12 @@
 <?php /* Template Name: Sponsor */ ?>
+<?php 
+  if (is_user_logged_in()) {
+    $user_email = get_userdata( get_current_user_id() )->user_email; 
+  } else {
+    $user_email = '';
+  }
+
+?>
 
 <div class="section">
   <div class="wrapper">
@@ -49,14 +57,17 @@
           endforeach;
         ?>
       </div>
-      <div id="cart">
+      <div id="cart" data-user="<?php echo $user_email; ?>">
         <h3><i class="far fa-shopping-cart"></i></h3>
         <div id="list"></div>
         <div id="checkout">
           <p class="total">Total: $<span id="amt">0</span></p>
-          <button id="depositButton" class="btn" data-total="0">20% Deposit</button>
-          <button id="checkoutButton" class="btn" data-total="0">Pay in Full</button>
-
+          <?php if(is_user_logged_in()): ?>
+            <button id="depositButton" class="btn" data-total="0">20% Deposit</button>
+            <button id="checkoutButton" class="btn" data-total="0">Pay in Full</button>
+          <?php else: ?>
+            <a id="createAccount" href="/create-account/" class="btn">Create Account</a>
+          <?php endif; ?>
         </div>
       </div>
       
