@@ -81,8 +81,16 @@
                         $purchaser = '';
                       }
 
+                      $addOns = array(
+                        'facebook' => 'false',
+                        'ab' => 'false',
+                        'wewrite' => 'false',
+                      );
+                      foreach ($week['add-ons'] as $addOn) {
+                        $addOns[$addOn] = 'true';
+                      }
                     ?>
-                    <input <?php echo $disabled ?> class="purchase-checkbox <?php echo $purchaser ?>" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" data-start="<?php echo date('n/j/Y', strtotime($week['start'])) ?>" data-end="<?php echo date('n/j/Y', strtotime($week['end'])) ?>" />
+                    <input <?php echo $disabled ?> class="purchase-checkbox <?php echo $purchaser ?>" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" data-start="<?php echo date('n/j/Y', strtotime($week['start'])) ?>" data-end="<?php echo date('n/j/Y', strtotime($week['end'])) ?>" data-facebook="<?php echo $addOns['facebook'] ?>" data-ab="<?php echo $addOns['ab'] ?>" data-wewrite="<?php echo $addOns['wewrite'] ?>" />
                     <label class="<?php echo $class ?> purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?> <span><?php echo '$'.$week['price'] ?></span></label>
                   <?php endif; ?>
                 <?php endforeach; ?>
