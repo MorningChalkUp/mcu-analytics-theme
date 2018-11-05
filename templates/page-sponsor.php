@@ -63,8 +63,8 @@
                     $tooltip = $week['availability'];
                     $disabled = 'disabled';
                   }
-
-                  if( isset($week['purchaser']['ID']) && isset($user->ID) $week['purchaser']['ID'] == $user->ID ) {
+                  
+                  if( $week['purchaser']['ID'] == $user->ID ) {
                     $purchaser = 'purchaser';
                   } else {
                     $purchaser = '';
