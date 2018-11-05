@@ -66,9 +66,5 @@
     </div>
   </div>
 <?php else : // Content Loads Between ?>
-  <div id="footer">
-    <div class="wrapper">
-      
-    </div>
-  </div>
+
 <?php endif; ?>

@@ -79,19 +79,19 @@ if ( is_user_logged_in() ) :
         $agg_c += $c;
         $agg_or += ($r > 0) ? $o/$r : 0;
       }
-      $avg_or = $agg_or/count($reports);
+      
+      $avg_or = $reports ? $agg_or/count($reports) : 0;
       $inc = 500/($rcount-1); // for trendline
     ?>
-    
     <div class="box nopad flexed">
       <div class="stat blue center-text ads-stat">
-        <label>Ads</label>
+        <h4 class="label">Ads</h4>
         <span class="num"><?php echo $rcount ?></span>
       </div>
       <div class="stats">
         <div class="stat chart">
           <div>
-            <label>Views</label>
+            <h4 class="label">Views</h4>
             <span class="num" data-value="<?php echo $agg_o ?>" ><?php echo theme::humanize_number($agg_o) ?></span>
           </div>
           <svg viewBox="-10 -10 520 120" class="trendline" height="70">
@@ -112,7 +112,7 @@ if ( is_user_logged_in() ) :
         </div>
         <div class="stat chart">
           <div>
-            <label>Clicks</label>
+            <h4 class="label">Clicks</h4>
             <span class="num" data-value="<?php echo $agg_c ?>" ><?php echo theme::humanize_number($agg_c) ?></span>
           </div>
           <svg viewBox="-10 -10 520 120" class="trendline" height="70">
@@ -133,29 +133,65 @@ if ( is_user_logged_in() ) :
         </div>
       </div>
     </div>
-    <div class="box">
-      
-      <table id="reports">
-        <thead>
-          <tr>
-            <?php if (current_user_can( 'manage_options' )) echo "<th></th>"; ?>
-            <th align="left"><label>Ad Reports</label></th>
-            <th align="right"><label>Open rate</label></th>
-            <th align="right"><label>Views</label></th>
-            <th align="right"><label>Clicks</label></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-            pxl::loop(
-              $partial,
-              $args
-            );
-          ?>
-        </tbody>
-      </table>
+    
+    <div class="row">
+      <div class="span8">
+        <div class="box">
+          <table id="reports">
+            <thead>
+              <tr>
+                <?php if (current_user_can( 'manage_options' )) echo "<th></th>"; ?>
+                <th align="left"><label>Ad Reports</label></th>
+                <th align="right"><label>Open rate</label></th>
+                <th align="right"><label>Views</label></th>
+                <th align="right"><label>Clicks</label></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php 
+                pxl::loop(
+                  $partial,
+                  $args
+                );
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="span4">
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th align="left"><label>Upcoming Ads</label></th>
+                <th align="right"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                $pi_args = array(
+                  'post_type' => 'purchased_item',
+                  'posts_per_page' => -1,
+                  'meta_key' => 'start',
+                  'orderby' => 'meta_value',
+                  'order' => 'DESC',
+                  'meta_query' => array(
+                    array(
+                      'key' => 'purchaser', // name of custom field
+                      'value' => $author->ID,
+                      'compare' => '=',
+                    )
+                  )
+                );
+                pxl::loop('purchased-item',$pi_args);
+              ?>
+            </tbody>
+          </table>
+          <br>
+          <a href="/sponsor/" class="btn btn-full">Purchase New Ads</a>
+        </div>
+      </div>
     </div>
-
 	</div>
 </div>
 <?php endif; ?>

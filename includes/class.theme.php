@@ -86,7 +86,7 @@
         $field['default_value'] = date('Ymd');
         return $field;
       }
-      
+
       public function filter_gf_spinner_replace( $image_src, $form ) {
         return  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // relative to you theme images folder
       }
@@ -148,6 +148,11 @@
       'capability'  => 'manage_options',
       'menu_title'  => 'Inventory Manager',
       'page_title'  => 'Inventory Manager',
+    ));
+    acf_add_options_sub_page(array(
+      'capability'  => 'manage_options',
+      'menu_title'  => 'Stripe Options',
+      'page_title'  => 'Stripe Options',
     ));
   }
   
