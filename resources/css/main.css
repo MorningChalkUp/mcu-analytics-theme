@@ -360,7 +360,7 @@
   
   #products .purchase-checklabel.single-day{color:#009792;background-color:rgba(0,151,146,0.05);}
   #products .purchase-checklabel.single-day:hover{color:#00ADA8;}
-  #products .purchase-checkbox:checked + .purchase-checklabel.single-day{box-shadow:inset 0 0 0 1px #6441a9;background-color:#6441a9;color:#fff;}
+  #products .purchase-checkbox:checked + .purchase-checklabel.single-day{box-shadow:inset 0 0 0 1px #009792;background-color:#009792;color:#fff;}
 
   #purchasebox{background-color:#fff;display:flex;}
   #purchasebox #products{padding:2rem;flex:2;}

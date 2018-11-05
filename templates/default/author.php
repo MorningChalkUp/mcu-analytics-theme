@@ -188,7 +188,7 @@ if ( is_user_logged_in() ) :
             </tbody>
           </table>
           <br>
-          <a href="/sponsor/" class="btn btn-full">New Ads</a>
+          <a href="/sponsor/" class="btn btn-full">Purchase New Ads</a>
         </div>
       </div>
     </div>
