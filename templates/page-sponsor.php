@@ -41,10 +41,11 @@
           foreach($months as $key=>$month):
             ?>
             <?php 
+              $empty = true;
               foreach ($month as $week) {
-                $empty = true;
                 if ( $week['availability'] != 'not_for_sale' ) {
                   $empty = false;
+                  break;
                 }
               }
             ?>
