@@ -19,7 +19,7 @@
         <div>
           <p>Below is a list of available advertising inventory on the Morning Chalk Up. Grayed out items have already been reserved. More inventory may be released at a later date.</p>
           <p>For a full breakdown of current audience, the sponsorship program, and add on features download our 2019 sponsorship guide.</p>
-          <p>If you have any questions, please email Justin@morningchalkup.com.</p>
+          <p>If you have any questions, please email <a href="mailto:justin@morningchalkup.com">Justin@morningchalkup.com</a>.</p>
           <hr>
         </div>
         
