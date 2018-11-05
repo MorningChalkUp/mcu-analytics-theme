@@ -64,7 +64,7 @@
                     $disabled = 'disabled';
                   }
 
-                  if( $week['purchaser']['ID'] == $user->ID ) {
+                  if( isset($week['purchaser']['ID']) && isset($user->ID) $week['purchaser']['ID'] == $user->ID ) {
                     $purchaser = 'purchaser';
                   } else {
                     $purchaser = '';
