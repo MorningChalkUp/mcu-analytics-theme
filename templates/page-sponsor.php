@@ -43,36 +43,38 @@
             <div class="month">
               <h4 class="label"><?php echo $key ?></h4>
               <?php foreach ($month as $week) : ?>
-                <?php
-                  $start = strtotime($week['start']);
-                  $end = strtotime($week['end']);
-                  $class = '';
-                  if ( date('M j',$start) == date('M j',$end) ){
-                    $range = date('M',$start).' '.date('j',$start);
-                    $class = 'single-day';
-                  } else if ( date('M',$start) == date('M',$end) ){
-                    $range = date('M',$start).' '.date('j',$start).' - '.date('j',$end);
-                  } else {
-                    $range = date('M',$start).' '.date('j',$start).' - '.date('M',$end).' '.date('j',$end);
-                  }
-                  
-                  if($week['availability'] == 'available'){
-                    $tooltip = false;
-                    $disabled = '';
-                  } else {
-                    $tooltip = $week['availability'];
-                    $disabled = 'disabled';
-                  }
+                <?php if($week['availability'] != 'not_for_sale'): ?>
+                  <?php
+                    $start = strtotime($week['start']);
+                    $end = strtotime($week['end']);
+                    $class = '';
+                    if ( date('M j',$start) == date('M j',$end) ){
+                      $range = date('M',$start).' '.date('j',$start);
+                      $class = 'single-day';
+                    } else if ( date('M',$start) == date('M',$end) ){
+                      $range = date('M',$start).' '.date('j',$start).' - '.date('j',$end);
+                    } else {
+                      $range = date('M',$start).' '.date('j',$start).' - '.date('M',$end).' '.date('j',$end);
+                    }
+                    
+                    if($week['availability'] == 'available'){
+                      $tooltip = false;
+                      $disabled = '';
+                    } else {
+                      $tooltip = $week['availability'];
+                      $disabled = 'disabled';
+                    }
 
-                  if( isset($week['purchaser']['ID']) && isset($user->ID) $week['purchaser']['ID'] == $user->ID ) {
-                    $purchaser = 'purchaser';
-                  } else {
-                    $purchaser = '';
-                  }
+                    if( isset($week['purchaser']['ID']) && isset($user->ID) $week['purchaser']['ID'] == $user->ID ) {
+                      $purchaser = 'purchaser';
+                    } else {
+                      $purchaser = '';
+                    }
 
-                ?>
-                <input <?php echo $disabled ?> class="purchase-checkbox <?php echo $purchaser ?>" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" data-start="<?php echo date('n/j/Y', strtotime($week['start'])) ?>" data-end="<?php echo date('n/j/Y', strtotime($week['end'])) ?>" />
-                <label class="<?php echo $class ?> purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?> <span><?php echo '$'.$week['price'] ?></span></label>
+                  ?>
+                  <input <?php echo $disabled ?> class="purchase-checkbox <?php echo $purchaser ?>" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" data-start="<?php echo date('n/j/Y', strtotime($week['start'])) ?>" data-end="<?php echo date('n/j/Y', strtotime($week['end'])) ?>" />
+                  <label class="<?php echo $class ?> purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?> <span><?php echo '$'.$week['price'] ?></span></label>
+                <?php endif; ?>
               <?php endforeach; ?>
             </div>
             <?php
