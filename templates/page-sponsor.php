@@ -43,7 +43,6 @@
             <div class="month">
               <h4 class="label"><?php echo $key ?></h4>
               <?php foreach ($month as $week) : ?>
-                <?php if($week['availability'] != 'not_for_sale'): ?>
                 <?php
                   $start = strtotime($week['start']);
                   $end = strtotime($week['end']);
@@ -74,7 +73,6 @@
                 ?>
                 <input <?php echo $disabled ?> class="purchase-checkbox <?php echo $purchaser ?>" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" data-start="<?php echo date('n/j/Y', strtotime($week['start'])) ?>" data-end="<?php echo date('n/j/Y', strtotime($week['end'])) ?>" />
                 <label class="<?php echo $class ?> purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?> <span><?php echo '$'.$week['price'] ?></span></label>
-              <?php endif; ?>
               <?php endforeach; ?>
             </div>
             <?php
