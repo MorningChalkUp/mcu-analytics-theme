@@ -62,7 +62,29 @@
   .box.nopad{padding:0;}
   
   ul li{margin:0.5rem 0;}
-
+  
+  /* Tooltips */
+  [data-tooltip]{position: relative;z-index: 2;cursor: pointer;}
+  [data-tooltip]:before,
+  [data-tooltip]:after{opacity: 0;pointer-events: none;transition:0.2s all;}
+  [data-tooltip]:after{content:'';position:absolute;border:5px solid transparent;bottom:125%;border-top-color:rgba(0,0,0,0.7);left:50%;margin-left:-5px;margin-bottom:-5px;}
+  [data-tooltip]:before{
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    margin-bottom: 5px;
+    margin-left: -80px;
+    padding: 7px;
+    width: 160px;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    content: attr(data-tooltip);
+    text-align: center;
+    font-size: 12px;
+    line-height: 12px;
+  }
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after{opacity: 1;}
   
 /* Layout */
   .wrapper{margin:0 auto;width:930px;position:relative;}
