@@ -7,7 +7,6 @@
     $user = null;
     $user_email = '';
   }
-
   if( get_field('mode', 'options') == 'test' ) {
     $stripe_key = get_field( 'stripe_test_publishable_key','options' );
   } elseif ( get_field('mode', 'options') == 'live' ) {
@@ -15,7 +14,6 @@
   } else {
     $stripe_key = 'pk_test_TYooMQauvdEDq54NiTphI7jx';
   }
-
 ?>
 
 <div class="section">
@@ -24,10 +22,12 @@
     <div id="purchasebox">
       <div id="products">
         <h3><i class="far fa-calendar-alt"></i></h3>
-        <div>
-          <?php the_content(); ?>
-          <hr>
-        </div>
+        <?php if (get_the_content() != ''): ?>
+          <div>
+            <?php the_content(); ?>
+            <hr>
+          </div>
+        <?php endif; ?>
         
         <?php
           $weeks = get_field('weeks','options');
@@ -38,41 +38,60 @@
           }
           foreach($months as $key=>$month):
             ?>
-            <div class="month">
-              <h4 class="label"><?php echo $key ?></h4>
-              <?php foreach ($month as $week) : ?>
-                <?php
-                  $start = strtotime($week['start']);
-                  $end = strtotime($week['end']);
-                  $class = '';
-                  if ( date('M j',$start) == date('M j',$end) ){
-                    $range = date('M',$start).' '.date('j',$start);
-                    $class = 'single-day';
-                  } else if ( date('M',$start) == date('M',$end) ){
-                    $range = date('M',$start).' '.date('j',$start).' - '.date('j',$end);
-                  } else {
-                    $range = date('M',$start).' '.date('j',$start).' - '.date('M',$end).' '.date('j',$end);
-                  }
-                  
-                  if($week['availability'] == 'available'){
-                    $tooltip = false;
-                    $disabled = '';
-                  } else {
-                    $tooltip = $week['availability'];
-                    $disabled = 'disabled';
-                  }
-
-                  if( isset($week['purchaser']['ID']) && isset($user->ID) && $week['purchaser']['ID'] == $user->ID ) {
-                    $purchaser = 'purchaser';
-                  } else {
-                    $purchaser = '';
-                  }
-
-                ?>
-                <input <?php echo $disabled ?> class="purchase-checkbox <?php echo $purchaser ?>" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" data-start="<?php echo date('n/j/Y', strtotime($week['start'])) ?>" data-end="<?php echo date('n/j/Y', strtotime($week['end'])) ?>" />
-                <label class="<?php echo $class ?> purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?> <span><?php echo '$'.$week['price'] ?></span></label>
-              <?php endforeach; ?>
-            </div>
+            <?php 
+              $empty = true;
+              foreach ($month as $week) {
+                if ( $week['availability'] != 'not_for_sale' ) {
+                  $empty = false;
+                  break;
+                }
+              }
+            ?>
+            <?php if ( !$empty ): ?>
+              <div class="month">
+                <h4 class="label"><?php echo $key ?></h4>
+                <?php foreach ($month as $week) : ?>
+                  <?php if ( $week['availability'] != 'not_for_sale' ): ?>
+                    <?php
+                      $start = strtotime($week['start']);
+                      $end = strtotime($week['end']);
+                      $class = '';
+                      if ( date('M j',$start) == date('M j',$end) ){
+                        $range = date('M',$start).' '.date('j',$start);
+                        $class = 'single-day';
+                      } else if ( date('M',$start) == date('M',$end) ){
+                        $range = date('M',$start).' '.date('j',$start).' - '.date('j',$end);
+                      } else {
+                        $range = date('M',$start).' '.date('j',$start).' - '.date('M',$end).' '.date('j',$end);
+                      }
+                      
+                      if($week['availability'] == 'available'){
+                        $tooltip = false;
+                        $disabled = '';
+                      } else {
+                        $tooltip = $week['availability'];
+                        $disabled = 'disabled';
+                      }
+                      if( $user != null && $week['purchaser']['ID'] == $user->ID ) {
+                        $purchaser = 'purchaser';
+                      } else {
+                        $purchaser = '';
+                      }
+                      $addOns = array(
+                        'facebook' => 'false',
+                        'ab' => 'false',
+                        'wewrite' => 'false',
+                      );
+                      foreach ($week['add-ons'] as $addOn) {
+                        $addOns[$addOn] = 'true';
+                      }
+                    ?>
+                    <input <?php echo $disabled ?> class="purchase-checkbox <?php echo $purchaser ?>" id="<?php echo $start ?>" type="checkbox" data-id="<?php echo $start ?>" data-status="<?php echo $week['availability'] ?>" data-price="<?php echo $week['price'] ?>" data-range="<?php echo $range ?>" data-notes="<?php echo $week['notes'] ?>" data-start="<?php echo date('n/j/Y', strtotime($week['start'])) ?>" data-end="<?php echo date('n/j/Y', strtotime($week['end'])) ?>" data-facebook="<?php echo $addOns['facebook'] ?>" data-ab="<?php echo $addOns['ab'] ?>" data-wewrite="<?php echo $addOns['wewrite'] ?>" />
+                    <label class="<?php echo $class ?> purchase-checklabel" for="<?php echo $start ?>"><?php echo $range ?> <span><?php echo '$'.$week['price'] ?></span></label>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
             <?php
           endforeach;
         ?>
