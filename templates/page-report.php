@@ -131,6 +131,4 @@
       </div>
     </div>
   <?php endforeach; ?>
-<?php else : ?>
-  <?php header('Location: /'); ?>
 <?php endif; ?>
