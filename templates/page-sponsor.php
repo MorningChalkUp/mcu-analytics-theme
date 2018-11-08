@@ -7,7 +7,6 @@
     $user = null;
     $user_email = '';
   }
-
   if( get_field('mode', 'options') == 'test' ) {
     $stripe_key = get_field( 'stripe_test_publishable_key','options' );
   } elseif ( get_field('mode', 'options') == 'live' ) {
@@ -15,7 +14,6 @@
   } else {
     $stripe_key = 'pk_test_TYooMQauvdEDq54NiTphI7jx';
   }
-
 ?>
 
 <div class="section">
@@ -74,13 +72,11 @@
                         $tooltip = $week['availability'];
                         $disabled = 'disabled';
                       }
-
                       if( $user != null && $week['purchaser']['ID'] == $user->ID ) {
                         $purchaser = 'purchaser';
                       } else {
                         $purchaser = '';
                       }
-
                       $addOns = array(
                         'facebook' => 'false',
                         'ab' => 'false',
