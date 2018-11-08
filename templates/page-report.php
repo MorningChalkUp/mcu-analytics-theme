@@ -86,7 +86,9 @@
   <?php foreach ($purchases as $purchase): ?>
     <div class="section">
       <div class="wrapper">
-        <h2><?php echo get_field('purchaser', $purchase)['display_name']; ?> - Order#: <?php echo $purchase->ID; ?></h2>
+        <h2><?php echo get_field('purchaser', $purchase)['display_name']; ?> - Order#: <?php echo $purchase->ID; ?>
+          <br><small>Payment: <?php the_field( 'stripe_id', $purchase ); ?></small>
+        </h2>
 
         <div style="font-weight: 700;">Total: $<?php echo number_format(get_field( 'purchase_total', $purchase ), 2,'.', ',') ?><br>
           Paid: $<?php echo number_format(get_field( 'amount_paid', $purchase ), 2,'.', ',') ?>
