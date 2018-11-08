@@ -105,10 +105,10 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "d\/m\/Y",
-                    "return_format": "d\/m\/Y",
-                    "first_day": 1,
-                    "default_value": "20181031"
+                    "display_format": "m\/d\/Y",
+                    "return_format": "m\/d\/Y",
+                    "first_day": 0,
+                    "default_value": "20181108"
                 },
                 {
                     "key": "field_5bd0bfc344db2",
@@ -260,5 +260,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1540954650
+    "modified": 1541694913
 }
