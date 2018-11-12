@@ -178,7 +178,7 @@ if ( is_user_logged_in() ) :
                   'meta_query' => array(
                     array(
                       'key' => 'purchaser', // name of custom field
-                      'value' => $author->ID,
+                      'value' => '36',
                       'compare' => '=',
                     )
                   )
