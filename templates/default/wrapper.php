@@ -51,6 +51,9 @@
             <div id="menu">
               <ul>
                 <li><a href="/profile">My Profile</a></li>
+                <?php if ( current_user_can('administrator') ): ?>
+                  <li><a href="/purchase-reporting">Purchase Reporting</a></li>
+                <?php endif; ?>
                 <li><?php echo "<a href='$logout'>Logout</a>" ?></li>
               </ul>
             </div>
