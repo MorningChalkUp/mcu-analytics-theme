@@ -19,9 +19,26 @@
     }
   }
   
+	function initRotater(){
+		$('#panels .panel').first().addClass('active');
+    $('#tabs .tab').first().addClass('active');
+		rotater();
+	}
+	function rotater(){
+		$('#tabs').on('click', '.tab', function(e){
+			e.preventDefault();
+			var target = $(this).attr('href');
+			$('#panels .panel.active').removeClass('active');
+			$('#tabs .tab.active').removeClass('active');
+			$(this).addClass('active');
+			$(target).addClass('active');
+		})
+	}
+  
   $(function(){
     toggleMenu();
     popup();
+    initRotater();
     
     $('#report_select').on('change', function () {
       console.log($(this).val());

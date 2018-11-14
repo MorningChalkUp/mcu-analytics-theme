@@ -12,7 +12,7 @@
       $range = date('M',$start).' '.date('j',$start).' - '.date('M',$end).' '.date('j',$end);
     }
   ?>
-  <td><a href="<?php the_permalink() ?>" class="popup"><?php echo $range ?></a></td>
+  <td><a href="<?php the_permalink() ?>"><?php echo $range ?></a></td>
   <td align="right">
     <?php $purchase_id = get_field('purchase_id'); ?>
     <?php 
