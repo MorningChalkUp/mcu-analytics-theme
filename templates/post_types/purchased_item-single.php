@@ -21,7 +21,7 @@
       $total = get_field('purchase_total',$purchase);
       $date = new DateTime(get_the_date());
       date_add($date, date_interval_create_from_date_string('30 days'));
-      $due= date_format($date, 'F, j Y');
+      $due = date_format($date, 'F, j Y');
       
       if( $paid < $total){
         $unpaid = $total - $paid;
@@ -47,31 +47,39 @@
         <?php endforeach ?>
       </div>
       <div id="panels">
-        <?php foreach ($days as $key=>$day): $date = new DateTime($day['date'])?>
+        <?php foreach ($days as $key=>$day): $date = new DateTime($day['date']); ?>
           <div class="panel" id="key<?php echo $key ?>">
             <form>
               <h2 style="margin-top:0;"><?php echo date_format($date, 'l, F j') ?></h2>
+              <?php
+                // disable field and show notice if within 12 hours of ad day
+                $disable = ( date_format($date, 'U') - time() < 60*60*12 ) ? 'disabled' : '' ;
+                if ($disable == 'disabled') echo "
+                  <div class='error'>
+                    This ad is in production and cannot be edited further. For emergency changes, please contact Morning Chalk Up at info@morningchalkup.com
+                  </div>
+                ";
+              ?>
               <p><label for="descriptor">Descriptor</label><br>
-                <input type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor">
+                <input <?php echo $disable ?> type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor">
+              </p>
+              
+              <p><label>Link</label><br>
+                <input <?php echo $disable ?> type="text" name="link" value="" placeholder="http://www.morningchalkup.com" id="link">
               </p>
           
               <p><label>Ad Copy</label><br>
-                <textarea name="ad" style="width:100%"></textarea>
+                <textarea <?php echo $disable ?> name="ad" style="width:100%"></textarea>
+                <small>Use [ ] around the text you want us to apply your link to. For best results, blah blah</small>
               </p>
             
               <?php if(get_field('ab_testing')) : ?>
                 <p><label>Ad Copy</label><br>
-                  <textarea name="ad" style="width:100%"></textarea>
+                  <textarea <?php echo $disable ?> name="ad" style="width:100%"></textarea>
+                  <small>Use [ ] around the text you want us to apply your link to. For best results, blah blah</small>
                 </p>
               <?php endif; ?>
-            
-              <p><label>Link</label><br>
-                <input type="text" name="link" value="" placeholder="http://www.morningchalkup.com" id="link">
-              </p>
           
-              <p><label>Hyperlinked Text</label><br>
-                <input type="text" name="link_text" value="" placeholder="learn more" id="link_text">
-              </p>
               <input type="submit" value="Save"/>
             </form>
           
