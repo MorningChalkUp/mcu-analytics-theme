@@ -444,12 +444,11 @@
   
   #panels .panel{display:flex;}
   #panels .panel form{flex:1;padding:2rem;}
-  #panels .panel form #reversed{display:none;}
-  #panels .panel #preview{flex:1;border-left:1px solid #eee;}
+  #panels .panel .preview{flex:1;border-left:1px solid #eee;}
   
-  #preview tr{border-bottom:none;}
+  .preview tr{border-bottom:none;}
 
-  #charCount{float:right;}
+  .charCount{float:right;}
   
-  .toolong #charCount{color:red;}
-  .toolong #adtextarea{border-color:red;box-shadow:0 0 5px red;}
+  .toolong .charCount{color:red;}
+  .toolong .adtextarea{border-color:red;box-shadow:0 0 5px red;}
