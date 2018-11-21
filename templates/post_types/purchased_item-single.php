@@ -68,9 +68,12 @@
                 <input <?php echo $disable ?> type="text" name="link" value="" placeholder="http://www.morningchalkup.com" id="link">
               </p>
           
-              <p><label>Ad Copy</label><br>
-                <textarea <?php echo $disable ?> name="ad" style="width:100%"></textarea>
+              <p><label>Ad Copy</label><small id="charCount"></small><br>
+                <textarea id="adtextarea" <?php echo $disable ?> name="ad" style="width:100%"></textarea>
                 <small>Use [ ] around the text you want us to apply your link to. For best results, blah blah</small>
+                
+                
+                <p id="reversed"></p>
               </p>
             
               <?php if(get_field('ab_testing')) : ?>
@@ -82,7 +85,49 @@
           
               <input type="submit" value="Save"/>
             </form>
-          
+            <div id="preview">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px; font-family:Roboto, sans-serif">
+                <tr>
+                  <td align="left" style="padding: 20px 10px 20px 25px;font-size:12px"><a style="color:#3d5ba9" href="#" ><span style="color:#3d5ba9">Send us a tip!</span></a></td>
+                  <td align="right" style="padding: 20px 25px 20px 10px;font-size:12px"><?php echo date_format($date, 'l, F j') ?></td>
+                </tr>
+              </table>
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px;">
+                <tr>
+                  <td style="padding: 20px 25px 0; text-align: center">
+                    <img src="<?php bloginfo('stylesheet_directory') ?>/resources/images/mcu.svg" width="320" alt="Morning Chalk Up" border="0" align="center" style="max-width: 100%; height: auto; font-family: Roboto, sans-serif; font-size: 24px; line-height: 36px; color: #555555; margin: auto;" class="g-img">
+                  </td>
+                </tr>
+              </table>
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px;">
+                <tr>
+                  <td bgcolor="#ffffff">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                        <td style="padding: 40px 25px 10px; font-family: Roboto, sans-serif; font-size: 16px; line-height: 24px; color: #333132;">
+                            <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is powered by Company Name. <span id="original"></p>
+                            <p>This is where the ad copy will be inserted</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 40px 25px 15px 25px; font-family: Roboto, sans-serif; color: #333132; font-weight: bold;font-size: 18px; line-height: 18px;letter-spacing:2px">
+                            QUOTE OF THE DAY
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 0px 25px 40px; font-family: Roboto, sans-serif; font-size: 16px; line-height: 24px; color: #333132;">
+                            <multiline label='Quote of the Day'>
+                                <p><em>"QUOTE." - Unknown</em></p>
+                            </multiline>
+                            <div style="font-size:12px;text-align: right;"><a style="color:#3d5ba9" href="mailto:tips@morningchalkup.com?subject=Here's%20a%20quote!" target="_blank"><span style="color:#3d5ba9">+ Send us your favorite quote.</span></a></div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              
+            </div>
           </div>
         <?php endforeach ?>
       </div>

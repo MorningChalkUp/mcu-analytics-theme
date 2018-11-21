@@ -439,5 +439,17 @@
   #tabs a.completed{color:#2AD587;}
   
   #panels{background-color:#fff;position:relative;}
-  #panels .panel{background-color:#fff;padding:2rem;opacity:0;position:absolute;transition:0.2s all;pointer-events:none;z-index:1;left:0;right:0;}
+  #panels .panel{background-color:#fff;opacity:0;position:absolute;transition:0.2s all;pointer-events:none;z-index:1;left:0;right:0;}
   #panels .panel.active{opacity:1;pointer-events:auto;z-index:2;}
+  
+  #panels .panel{display:flex;}
+  #panels .panel form{flex:1;padding:2rem;}
+  #panels .panel form #reversed{display:none;}
+  #panels .panel #preview{flex:1;border-left:1px solid #eee;}
+  
+  #preview tr{border-bottom:none;}
+
+  #charCount{float:right;}
+  
+  .toolong #charCount{color:red;}
+  .toolong #adtextarea{border-color:red;box-shadow:0 0 5px red;}
