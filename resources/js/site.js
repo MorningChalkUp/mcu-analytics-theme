@@ -45,7 +45,7 @@
           count = this.getElementsByClassName('charCount'),
           desctarget = this.getElementsByClassName('desctarget'),
           target = this.getElementsByClassName('target'),
-          timeout = null;
+          timeout = null;      
   
       function handleChange(){
         var newText = textarea[0].value;
