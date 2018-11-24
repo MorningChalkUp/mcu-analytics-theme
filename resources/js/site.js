@@ -55,7 +55,10 @@
         } else {
           $(textarea[0]).parent('p').removeClass('toolong');
         }
-        newText = newText.replace('[','<a href="#">').replace(']','</a>');
+        do {
+          orig = newText;
+          newText = newText.replace('[','<a href="#">').replace(']','</a>');
+        } while(orig !== newText);
         newText = newText.replace(/\n/g, "<br/>");
         $(count[0]).html(' '+newText.length+'/500 characters');
         $(desctarget[0]).html(descriptorText);

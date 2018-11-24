@@ -52,7 +52,7 @@
       <div id="panels">
         <?php foreach ($days as $key=>$day): $date = new DateTime($day['date']); ?>
           <div class="panel" id="key<?php echo $key ?>">
-            <form>
+            <form enctype="multipart/form-data" method="post">
               <h2 style="margin-top:0;"><?php echo date_format($date, 'l, F j') ?></h2>
               <?php
                 // disable field and show notice if within 12 hours of ad day
