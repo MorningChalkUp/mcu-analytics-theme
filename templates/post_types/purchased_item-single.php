@@ -40,10 +40,13 @@
         <?php 
           foreach ($days as $key=>$day): 
             $date = new DateTime($day['date']); 
-            // we need to determine if the fields are complete here so we can restyle the tabs
-            // swap <i class="far fa-fw fa-minus"></i> for <i class="far fa-fw fa-check"></i>
+            if($day['descriptor'] != '' && $day['copy'] != '' && $day['link'] != '') {
+              $indicator = 'fa-check';
+            } else {
+              $indicator = 'fa-minus';
+            }
         ?>
-          <a class="tab" href="#key<?php echo $key ?>"><i class="far fa-fw fa-minus"></i> <?php echo date_format($date, 'M j') ?></a>
+          <a class="tab" href="#key<?php echo $key ?>"><i class="far fa-fw <?php echo $indicator; ?>"></i> <?php echo date_format($date, 'M j') ?></a>
         <?php endforeach ?>
       </div>
       <div id="panels">
@@ -61,20 +64,20 @@
                 ";
               ?>
               <p><label for="descriptor">Descriptor</label><br>
-                <input <?php echo $disable ?> class="addescriptor" type="text" name="descriptor" value="powered by" placeholder="powered by" id="descriptor">
+                <input <?php echo $disable ?> class="addescriptor" type="text" name="descriptor" value="<?php echo $day['descriptor'] ?>" placeholder="Company Name" id="descriptor">
               </p>
               
               <p><label>Link</label><br>
-                <input <?php echo $disable ?> type="text" name="link" value="" placeholder="http://www.morningchalkup.com" id="link">
+                <input <?php echo $disable ?> type="text" name="link" value="<?php echo $day['link'] ?>" placeholder="http://www.morningchalkup.com" id="link">
               </p>
           
-              <p><label>Ad Copy</label><small class="charCount"></small><br>
-                <textarea rows="6" class="adtextarea" <?php echo $disable ?> name="ad" style="width:100%"></textarea>
+              <p><label>Ad Copy <?php echo get_field('ab_testing') ? 'A' : '' ?></label><small class="charCount"></small><br>
+                <textarea rows="6" class="adtextarea" <?php echo $disable ?> name="ad" style="width:100%"><?php echo $day['copy']; ?></textarea>
                 <small>Use [ ] around the text you want us to apply your link to. For best results, blah blah</small>
               </p>
             
               <?php if(get_field('ab_testing')) : ?>
-                <p><label>Ad Copy</label><br>
+                <p><label>Ad Copy B</label><br>
                   <textarea <?php echo $disable ?> name="ad" style="width:100%"></textarea>
                   <small>Use [ ] around the text you want us to apply your link to. For best results, blah blah</small>
                 </p>
@@ -102,7 +105,7 @@
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
                         <td style="padding: 40px 25px 10px; font-family: Roboto, sans-serif; font-size: 16px; line-height: 24px; color: #333132;">
-                            <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is <span class="desctarget"></span> <strong>Company Name</strong>. <span class="target"></span></p>
+                            <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is powered by <strong><span class="desctarget"></span></strong>. <span class="target"></span></p>
                         </td>
                       </tr>
                       <?php
