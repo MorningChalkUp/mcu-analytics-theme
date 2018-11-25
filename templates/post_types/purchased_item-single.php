@@ -39,7 +39,7 @@
       <div id="tabs">
         <?php 
           foreach ($days as $key=>$day): 
-            $date = new DateTime($day['date']); 
+            $date = new DateTime($day['date']);
             if($day['descriptor'] != '' && $day['copy'] != '' && $day['link'] != '') {
               $indicator = 'fa-check';
             } else {
@@ -84,6 +84,14 @@
               <?php endif; ?>
           
               <input type="submit" value="Save"/>
+              
+              <?php wp_nonce_field( 'update-ads' ) ?>
+
+              <input type="hidden" name="row" value="<?php echo $key + 1; ?>">
+              <input type="hidden" name="post" value="<?php echo get_the_ID(); ?>">
+              <input name="honey-name" value="" type="text" style="display:none;"></input>
+              <input name="action" type="hidden" id="action" value="update-ads" />
+
             </form>
             <div class="preview">
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px; font-family:Roboto, sans-serif">

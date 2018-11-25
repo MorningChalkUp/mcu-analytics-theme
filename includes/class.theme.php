@@ -49,6 +49,7 @@
         add_action( 'gform_user_registered', array($this, 'action_gf_registration_autologin'),  10, 4 );
         
         add_action ('wp_loaded', array($this, 'update_sponsor_profile'));
+        add_action ('wp_loaded', array($this, 'update_ad_info'));
         
         remove_action('wp_head', 'print_emoji_detection_script', 7);
         remove_action('wp_print_styles', 'print_emoji_styles');
@@ -103,6 +104,13 @@
           require_once(THEME.'/includes/update-profile.php');
         }
       }
+
+      public function update_ad_info() {
+        if( is_user_logged_in() ) {
+          require_once(THEME.'/includes/update-ad-info.php');
+        }
+      }
+
       public function action_after_password_reset() {
         // Redirects the user back to the My Account page once they have set a new password.
         wp_redirect(home_url('/'));
