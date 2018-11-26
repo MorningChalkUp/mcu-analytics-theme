@@ -38,7 +38,7 @@
     <div class="wrapper">
       <?php if(isset($success) && $success): ?>
         <div class='success'>
-          <?php echo get_field('purchaser', $data['purchase_id'])['display_name'] ?>: Order #: <?php echo $data['purchase_id'] ?> Email Sent
+          <?php echo get_field('purchaser', $data['purchase_id'])['display_name'] ?>: Order #: <?php echo $data['purchase_id'] ?> Email sent to <?php echo get_field('purchaser', $data['purchase_id'])['user_email'] ?>
         </div>
       <?php endif; ?>
     </div>
