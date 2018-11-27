@@ -280,6 +280,8 @@
   .error a:not('.btn'){color:#fff;text-decoration:underline;}
   .error a.btn{background-color:#fff;color:red;opacity:0.9;}
   .error a.btn:hover{opacity:1;}
+
+  .success{background-color:green;color:#fff;padding:20px;border-radius:4px;text-align:center;}
   
   #reports a{display:block;}
   #reports a img{vertical-align:middle;border-radius:15px;margin-right:10px;}
