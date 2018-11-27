@@ -113,7 +113,8 @@
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
                         <td style="padding: 40px 25px 10px; font-family: Roboto, sans-serif; font-size: 16px; line-height: 24px; color: #333132;">
-                            <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is powered by <strong><span class="desctarget"></span></strong>. <span class="target"></span></p>
+                          <?php $author = wp_get_current_user(); ?>
+                          <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is <span class="desctarget"></span> <strong><?php echo $author->display_name; ?></strong>. <span class="target"></span></p>
                         </td>
                       </tr>
                       <?php

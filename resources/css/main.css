@@ -446,7 +446,8 @@
   #panels .panel form{flex:1;padding:2rem;}
   #panels .panel .preview{flex:1;border-left:1px solid #eee;}
   
-  .preview tr{border-bottom:none;}
+  #panels .preview{height:auto;}
+  #panels .preview tr{border-bottom:none;}
 
   .charCount{float:right;}
   
