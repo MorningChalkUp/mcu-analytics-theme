@@ -64,7 +64,7 @@
                 ";
               ?>
               <p><label for="descriptor">Descriptor</label><br>
-                <input <?php echo $disable ?> class="addescriptor" type="text" name="descriptor" value="<?php echo $day['descriptor'] ?>" placeholder="Company Name" id="descriptor">
+                <input <?php echo $disable ?> class="addescriptor" type="text" name="descriptor" value="<?php echo $day['descriptor'] ? : 'powered by' ?>" placeholder="powered by" id="descriptor">
               </p>
               
               <p><label>Link</label><br>

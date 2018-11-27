@@ -437,6 +437,7 @@
   #tabs a{color:#999;display:inline-block;font-weight:700;padding:0.5rem 1rem;}
   #tabs a.active{background-color:#fff;color:#000;}
   #tabs a.completed{color:#2AD587;}
+  #tabs a [data-icon="check"]{color:#2AD587;}
   
   #panels{background-color:#fff;position:relative;}
   #panels .panel{background-color:#fff;opacity:0;position:absolute;transition:0.2s all;pointer-events:none;z-index:1;left:0;right:0;}
