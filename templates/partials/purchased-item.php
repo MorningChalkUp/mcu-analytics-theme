@@ -12,7 +12,7 @@
       $range = date('M',$start).' '.date('j',$start).' - '.date('M',$end).' '.date('j',$end);
     }
   ?>
-  <td><a href="<?php the_permalink() ?>"><?php echo $range ?></a></td>
+  <td><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></td>
   <td align="right">
     <?php $purchase_id = get_field('purchase_id'); ?>
     <?php 
@@ -25,7 +25,7 @@
       }
     ?>
     <span class="status <?php echo $paid ?>" data-tooltip="<?php echo $paid_for ?>"><i class="far fa-dollar-sign"></i></span>
-    <span class="status on" data-tooltip="Written"><i class="far fa-pencil"></i></span>
+    <span class="status on" data-tooltip="Written"><i class="far fa-check"></i></span>
       
     
   </td>

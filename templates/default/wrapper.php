@@ -58,6 +58,10 @@
             <ul class="menu">
               <li>
                 <a href="/">Login</a>
+
+              </li>
+              <li>
+                <a href="/create-account/">Register</a>
               </li>
             </ul>
           <?php endif; ?>

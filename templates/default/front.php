@@ -7,6 +7,7 @@
 		<div class="wrapper">
 			
       <div id="login" class="box">
+        <h2 style="margin-top:0;">Sign In</h2>
 				<?php wp_login_form(array('label_log_in' => 'Sign In')); ?>
   			<?php
   				if ( !empty($_REQUEST['login']) ) {
