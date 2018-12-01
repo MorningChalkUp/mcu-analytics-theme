@@ -115,6 +115,10 @@ if ( is_user_logged_in() ) :
               <?php pxl::loop('purchased-item',$pi_args); ?>
             </tbody>
           </table>
+        <?php else : ?>
+          <p class="center-text" style="margin:0;">
+            2019 Ads are available for purchase. &nbsp;&nbsp;<a href="/sponsor/" class="btn">Purchase Ads</a>
+          </p>
         <?php endif; ?>
       <?php endif; ?>
     </div>
