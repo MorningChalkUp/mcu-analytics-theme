@@ -27,5 +27,9 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' && !empty( $_POST['action'] ) && $_POS
     'copy' => $_POST['ad']
   );
 
+  if (isset($_POST['ad_b'])) {
+    $row['copy_b'] = $_POST['ad_b'];
+  }
+
   update_row('days', $_POST['row'], $row, $_POST['post']);
 }
