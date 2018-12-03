@@ -1,3 +1,20 @@
+<?php 
+  if (is_user_logged_in()) {
+    $user = get_userdata( get_current_user_id() );
+    $user_email = $user->user_email; 
+  } else {
+    $user = null;
+    $user_email = '';
+  }
+  if( get_field('mode', 'options') == 'test' ) {
+    $stripe_key = get_field( 'stripe_test_publishable_key','options' );
+  } elseif ( get_field('mode', 'options') == 'live' ) {
+    $stripe_key = get_field( 'stripe_live_publishable_key','options' );
+  } else {
+    $stripe_key = 'pk_test_TYooMQauvdEDq54NiTphI7jx';
+  }
+?>
+
 <div class="section">
   <div class="wrapper">
     <?php
@@ -13,6 +30,7 @@
         $range = date('M',$start).' '.date('j',$start).' - '.date('M',$end).' '.date('j',$end);
       }
     ?>
+
     <h2>Your ads for <strong><?php echo $range ?></strong></h2>
     
     <?php
@@ -22,17 +40,27 @@
       $date = new DateTime(get_the_date());
       date_add($date, date_interval_create_from_date_string('30 days'));
       $due = date_format($date, 'F, j Y');
-      
-      if( $paid < $total){
-        $unpaid = $total - $paid;
-        echo "
-          <div class='error'>
-            There is a remaining balance of $$unpaid on this $$total purchase due by <strong>$due</strong>. 
-            <a class='btn'>Pay Balance</a>
-          </div>
-        ";
-      }
     ?>
+      
+    <?php if( $paid < $total) : ?>
+      <?php $unpaid = $total - $paid; ?>
+      <div class='error'>
+        There is a remaining balance of $<?php echo $unpaid ?> on this $<?php echo $total ?> purchase due by <strong><?php echo $due ?></strong>. 
+        <button id="balanceBtn" data-purchase="<?php echo $purchase ?>" data-key="<?php echo $stripe_key ?>" data-balance="<?php echo $unpaid ?>" data-total="<?php echo $total ?>" class='btn'>Pay Balance</button>
+      </div>
+    <?php endif; ?>
+
+    <?php if( isset($_GET['r']) && $_GET['r'] == 's' ): ?>
+      <div class='success'>
+        Thank you for your payment!
+      </div>
+    <?php endif; ?>
+
+    <?php if( isset($_GET['r']) && $_GET['r'] == 'f' ): ?>
+      <div class='error'>
+        There was a problem with your payment: <?php echo $_GET['msg']; ?>
+      </div>
+    <?php endif; ?>
 
     <div id="ad-manager">
       <?php $days = get_field('days') ?>

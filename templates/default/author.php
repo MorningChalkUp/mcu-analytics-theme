@@ -56,6 +56,13 @@ if ( is_user_logged_in() ) :
 ?>
 <div class="section">
   <div class="wrapper">
+
+    <?php if( isset($_GET['r']) && $_GET['r'] == 's' ): ?>
+      <div class='success'>
+        Thank you for your purchase!
+      </div>
+    <?php endif; ?>
+
     <div class="box">
       <?php if ( current_user_can( 'manage_options' ) ) : ?>
         <table>
