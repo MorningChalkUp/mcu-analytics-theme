@@ -40,7 +40,7 @@
         <?php 
           foreach ($days as $key=>$day): 
             $date = new DateTime($day['date']);
-            if($day['descriptor'] != '' && $day['copy'] != '' && $day['link'] != '') {
+            if($day['copy'] != '' && $day['link'] != '') {
               $indicator = 'fa-check';
             } else {
               $indicator = 'fa-minus';
@@ -63,8 +63,18 @@
                   </div>
                 ";
               ?>
+              <!-- <p><label for="descriptor">Descriptor</label><br>
+                <input <?php //echo $disable ?> class="addescriptor" type="text" name="descriptor" value="<?php //echo $day['descriptor'] ? : 'powered by' ?>" placeholder="powered by" id="descriptor">
+              </p> -->
+              
               <p><label for="descriptor">Descriptor</label><br>
-                <input <?php echo $disable ?> class="addescriptor" type="text" name="descriptor" value="<?php echo $day['descriptor'] ? : 'powered by' ?>" placeholder="powered by" id="descriptor">
+                <select <?php echo $disable ?> class="addescriptor" id="descriptor" value="<?php echo $day['descriptor'] ? : 'powered by' ?>">
+                  <option value="brought to you by" >Brought to you by</option>
+                  <option value="built by" >Built by</option>
+                  <option value="fueled by" >Fueled by</option>
+                  <option value="powered by" >Powered by</option>
+                  <option value="sponsored by" >Sponsored by</option>
+                </select>
               </p>
               
               <p><label>Link</label><br>
@@ -73,13 +83,13 @@
           
               <p><label>Ad Copy <?php echo get_field('ab_testing') ? 'A' : '' ?></label><small class="charCount"></small><br>
                 <textarea rows="6" class="adtextarea" <?php echo $disable ?> name="ad" style="width:100%"><?php echo $day['copy']; ?></textarea>
-                <small>Use [ ] around the text you want us to apply your link to. For best results, blah blah</small>
+                <small>Place [ ] around the text you want to hyperlink.</small>
               </p>
             
               <?php if(get_field('ab_testing')) : ?>
                 <p><label>Ad Copy B</label><br>
                   <textarea <?php echo $disable ?> name="ad_b" style="width:100%"><?php echo $day['copy_b']; ?></textarea>
-                  <small>Use [ ] around the text you want us to apply your link to. For best results, blah blah</small>
+                  <small>Place [ ] around the text you want to hyperlink.</small>
                 </p>
               <?php endif; ?>
           
@@ -114,7 +124,7 @@
                       <tr>
                         <td style="padding: 40px 25px 10px; font-family: Roboto, sans-serif; font-size: 16px; line-height: 24px; color: #333132;">
                           <?php $author = wp_get_current_user(); ?>
-                          <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is <span class="desctarget"></span> <strong><?php echo $author->display_name; ?></strong>. <span class="target"></span></p>
+                          <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is <span class="desctarget"></span> <strong><?php echo $author->display_name; ?></strong><span class="target"></span></p>
                         </td>
                       </tr>
                       <?php

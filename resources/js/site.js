@@ -57,9 +57,9 @@
         }
         do {
           orig = newText;
-          newText = newText.replace('[','<a href="#">').replace(']','</a>');
+          newText = newText.replace('[','<a href="#"><strong>').replace(']','</strong></a>');
         } while(orig !== newText);
-        newText = newText.replace(/\n/g, "<br/>");
+        //newText = newText.replace(/\n/g, "<br/>");
         $(count[0]).html(' '+newText.length+'/500 characters');
         $(desctarget[0]).html(descriptorText);
         $(target[0]).html(newText);
