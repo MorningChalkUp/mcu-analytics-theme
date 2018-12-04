@@ -61,7 +61,7 @@
         } while(orig !== newText);
         //newText = newText.replace(/\n/g, "<br/>");
         $(count[0]).html(' '+newText.length+'/500 characters');
-        $(desctarget[0]).html(descriptorText);
+        // $(desctarget[0]).html(descriptorText);
         $(target[0]).html(newText);
       }
  
@@ -71,8 +71,12 @@
       }
  
       textarea[0].onkeydown=textarea[0].onkeyup=textarea[0].onclick=eventHandler;
-      descriptor[0].onkeydown=descriptor[0].onkeyup=descriptor[0].onclick=eventHandler;
+      // descriptor[0].onkeydown=descriptor[0].onkeyup=descriptor[0].onclick=eventHandler;
       handleChange();
+      $('.desctarget').text($('#descriptor').val());
+      $('#descriptor').change(function() {
+        $('.desctarget').text($('#descriptor').val());
+      });
       
     })
   }

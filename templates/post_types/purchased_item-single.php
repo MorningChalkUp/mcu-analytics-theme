@@ -91,17 +91,14 @@
                   </div>
                 ";
               ?>
-              <!-- <p><label for="descriptor">Descriptor</label><br>
-                <input <?php //echo $disable ?> class="addescriptor" type="text" name="descriptor" value="<?php //echo $day['descriptor'] ? : 'powered by' ?>" placeholder="powered by" id="descriptor">
-              </p> -->
               
               <p><label for="descriptor">Descriptor</label><br>
-                <select <?php echo $disable ?> class="addescriptor" id="descriptor" value="<?php echo $day['descriptor'] ? : 'powered by' ?>">
-                  <option value="brought to you by" >Brought to you by</option>
-                  <option value="built by" >Built by</option>
-                  <option value="fueled by" >Fueled by</option>
-                  <option value="powered by" >Powered by</option>
-                  <option value="sponsored by" >Sponsored by</option>
+                <select <?php echo $disable ?> class="addescriptor" id="descriptor" name="descriptor">
+                  <option value="brought to you by" <?php echo $day['descriptor'] == 'brought to you by' ? 'selected' : '' ?>>Brought to you by</option>
+                  <option value="built by" <?php echo $day['descriptor'] == 'built by' ? 'selected' : '' ?>>Built by</option>
+                  <option value="fueled by" <?php echo $day['descriptor'] == 'fueled by' ? 'selected' : '' ?>>Fueled by</option>
+                  <option value="powered by" <?php echo $day['descriptor'] == 'powered by' ? 'selected' : '' ?>>Powered by</option>
+                  <option value="sponsored by" <?php echo $day['descriptor'] == 'sponsored by' ? 'selected' : '' ?>>Sponsored by</option>
                 </select>
               </p>
               
