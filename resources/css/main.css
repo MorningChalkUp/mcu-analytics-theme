@@ -451,7 +451,7 @@
   #panels .panel{display:flex;}
   #panels .panel form{flex:1;padding:2rem;}
   #panels .panel form input[type="text"]{width:100%;}
-  #panels .panel .preview{flex:1;border-left:1px solid #eee;}
+  #panels .panel .preview{flex:1;border-left:1px solid #eee;pointer-events:none;}
   
   #panels .preview{height:auto;}
   #panels .preview tr{border-bottom:none;}
