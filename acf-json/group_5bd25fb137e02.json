@@ -108,7 +108,7 @@
                     "display_format": "m\/d\/Y",
                     "return_format": "m\/d\/Y",
                     "first_day": 0,
-                    "default_value": "20181130"
+                    "default_value": "20181204"
                 },
                 {
                     "key": "field_5bd0bfc344db2",
@@ -146,7 +146,7 @@
                     "placeholder": "",
                     "maxlength": "",
                     "rows": "",
-                    "new_lines": "br"
+                    "new_lines": ""
                 },
                 {
                     "key": "field_5c018b888f3f5",
@@ -279,5 +279,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1543606922
+    "modified": 1543944969
 }

@@ -107,7 +107,7 @@
               </p>
           
               <p><label>Ad Copy <?php echo get_field('ab_testing') ? 'A' : '' ?></label><small class="charCount"></small><br>
-                <textarea rows="6" class="adtextarea" <?php echo $disable ?> name="ad" style="width:100%"><?php echo $day['copy']; ?></textarea>
+                <textarea rows="6" class="adtextarea" <?php echo $disable ?> name="ad" style="width:100%"><?php echo htmlentities($day['copy']); ?></textarea>
                 <small>Place [ ] around the text you want to hyperlink.</small>
               </p>
             
