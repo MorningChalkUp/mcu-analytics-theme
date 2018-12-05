@@ -31,11 +31,11 @@
     ?>
 
     <?php if (count($days) == $written_days): ?>
-      <span class="status on" data-tooltip="Written"><i class="far fa-check"></i></span>
+      <span class="status on" data-tooltip="Written"><i class="far fa-check fa-fw"></i></span>
     <?php elseif ($written_days > 0): ?>
-      <span class="status partial" data-tooltip="Partly Written"><i class="far fa-check"></i></span>
+      <span class="status partial" data-tooltip="In Progress"><i class="far fa-exclamation-circle fa-fw"></i></span>
     <?php else: ?>
-      <span class="status off" data-tooltip="Not Written"><i class="far fa-check"></i></span>
+      <span class="status warning" data-tooltip="Not Written"><i class="far fa-exclamation-triangle fa-fw"></i></span>
     <?php endif; ?>  
     
   </td>

@@ -424,6 +424,7 @@
   .status{margin-left:10px;color:#ddd;}
   .status.partial{color:#dc9947;}
   .status.on{color:#22B573;}
+  .status.warning{color:red;}
   
   #checkout{padding-top:2rem;text-align:right;}
   #checkout .total{color:#3D5BA9;font-size:18px;font-weight:bold;}
