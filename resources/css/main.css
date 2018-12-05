@@ -422,6 +422,7 @@
   .add-ons input[type="checkbox"]:checked + label + .price{opacity:1;}
   
   .status{margin-left:10px;color:#ddd;}
+  .status.partial{color:#dc9947;}
   .status.on{color:#22B573;}
   
   #checkout{padding-top:2rem;text-align:right;}

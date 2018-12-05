@@ -25,8 +25,22 @@
       }
     ?>
     <span class="status <?php echo $paid ?>" data-tooltip="<?php echo $paid_for ?>"><i class="far fa-dollar-sign"></i></span>
-    <span class="status on" data-tooltip="Written"><i class="far fa-check"></i></span>
-      
+    <?php $days = get_field('days');
+      $written_days = 0;
+      foreach ($days as $key => $day) {
+        if($day['copy'] != '' && $day['link'] != '') {
+          ++$written_days;
+        }
+      }
+    ?>
+
+    <?php if (count($days) == $written_days): ?>
+      <span class="status on" data-tooltip="Written"><i class="far fa-check"></i></span>
+    <?php elseif ($written_days > 0): ?>
+      <span class="status partial" data-tooltip="Partly Written"><i class="far fa-check"></i></span>
+    <?php else: ?>
+      <span class="status off" data-tooltip="Not Written"><i class="far fa-check"></i></span>
+    <?php endif; ?>  
     
   </td>
 </tr>
