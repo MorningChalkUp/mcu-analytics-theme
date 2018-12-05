@@ -13,7 +13,6 @@
         $copyb = str_replace(']', "</a>", $copyb );
         $purchaser = get_field('purchaser');
       ?>
-        <?php fn::log($copy) ?>
         <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is <?php echo $day['descriptor'] ?> <span style="font-weight:bold;"><?php echo $purchaser['display_name'] ?></span><?php echo ($copy) ?></p>
       <?php if (get_field('ab_testing')) : ?>
         <hr>
