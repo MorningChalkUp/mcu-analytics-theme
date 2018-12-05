@@ -2,17 +2,13 @@
   <?php
     $start = strtotime(get_field('start'));
     $end = strtotime(get_field('end'));
-    $class = '';
     if ( date('M j',$start) == date('M j',$end) ){
-      $range = date('M',$start).' '.date('j',$start);
-      $class = 'single-day';
-    } else if ( date('M',$start) == date('M',$end) ){
-      $range = date('M',$start).' '.date('j',$start).' - '.date('j',$end);
+      $range = date('F j, Y',$start);
     } else {
-      $range = date('M',$start).' '.date('j',$start).' - '.date('M',$end).' '.date('j',$end);
+      $range = date('F j',$start).' - '.date('F j, Y',$end);
     }
   ?>
-  <td><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></td>
+  <td><a href="<?php the_permalink() ?>"><?php echo $range ?></a></td>
   <td align="right">
     <?php $purchase_id = get_field('purchase_id'); ?>
     <?php 
