@@ -39,44 +39,86 @@
   function adPreviewInit(){
     $('.panel').each(function(){
       
-    
-      var textarea = this.getElementsByClassName('adtextarea'),
-          descriptor = this.getElementsByClassName('addescriptor'), 
-          count = this.getElementsByClassName('charCount'),
-          desctarget = this.getElementsByClassName('desctarget'),
-          target = this.getElementsByClassName('target'),
-          timeout = null;      
-  
-      function handleChange(){
-        var newText = textarea[0].value;
-        var descriptorText = descriptor[0].value;
+      var target = $(this).find('.preview .target'),
+          timeout = null;
+      
+      // Trigger Preview 
+      $(this).find('.adtextarea').each(function(){
+        $(this).focus(function(){
+          handleChange(this);
+        })
+        console.log(this);
+        $(this).on('input', function(){
+          handleChange(this);
+        })
+      })
+      handleChange($('.adtextarea')[0]);
+      
+      function handleChange(adtextarea){
+        var newText = adtextarea.value,
+            previewLabel = $(adtextarea).data('label');
         if (newText.length >= 500) {
-          $(textarea[0]).parent('p').addClass('toolong');
+          $(adtextarea).parent('p').addClass('toolong');
         } else {
-          $(textarea[0]).parent('p').removeClass('toolong');
+          $(adtextarea).parent('p').removeClass('toolong');
         }
         do {
           orig = newText;
           newText = newText.replace('[','<a href="#"><strong>').replace(']','</strong></a>');
         } while(orig !== newText);
         newText = newText.replace(/\n/g, "<br/>");
-        $(count[0]).html(' '+newText.length+'/500 characters');
-        // $(desctarget[0]).html(descriptorText);
-        $(target[0]).html(newText);
+        $(adtextarea).parent('p').find('.charCount').html(' '+newText.length+'/500 characters');
+        $(target).html(newText);
+        
+        console.log(previewLabel);
+        $('.preview-label').html(previewLabel);
       }
- 
-      function eventHandler(){
-        if(timeout) clearTimeout(timeout);
-        timeout=setTimeout(handleChange, 50);
-      }
- 
-      textarea[0].onkeydown=textarea[0].onkeyup=textarea[0].onclick=eventHandler;
-      // descriptor[0].onkeydown=descriptor[0].onkeyup=descriptor[0].onclick=eventHandler;
-      handleChange();
-      $('.desctarget').text($('#descriptor').val());
-      $('#descriptor').change(function() {
-        $('.desctarget').text($('#descriptor').val());
+      
+      $(this).find('.desctarget').text($(this).find('.addescriptor').val());
+      $(this).find('.addescriptor').change(function() {
+        $(this).find('.desctarget').text($(this).find('.addescriptor').val());
       });
+      
+      
+      
+    
+      //var textareas = this.getElementsByClassName('adtextarea'),
+      //    descriptor = this.getElementsByClassName('addescriptor'), 
+      //    count = this.getElementsByClassName('charCount'),
+      //    desctarget = this.getElementsByClassName('desctarget'),
+      //    target = this.getElementsByClassName('target'),
+      //    timeout = null;      
+      //
+      //function handleChange(){
+      //  var newText = textarea[0].value;
+      //  var descriptorText = descriptor[0].value;
+      //  if (newText.length >= 500) {
+      //    $(textarea[0]).parent('p').addClass('toolong');
+      //  } else {
+      //    $(textarea[0]).parent('p').removeClass('toolong');
+      //  }
+      //  do {
+      //    orig = newText;
+      //    newText = newText.replace('[','<a href="#"><strong>').replace(']','</strong></a>');
+      //  } while(orig !== newText);
+      //  newText = newText.replace(/\n/g, "<br/>");
+      //  $(count[0]).html(' '+newText.length+'/500 characters');
+      //  // $(desctarget[0]).html(descriptorText);
+      //  $(target[0]).html(newText);
+      //}
+      //
+      //function eventHandler(){
+      //  if(timeout) clearTimeout(timeout);
+      //  timeout=setTimeout(handleChange, 50);
+      //}
+      //
+      //textarea[0].onkeydown=textarea[0].onkeyup=textarea[0].onclick=eventHandler;
+      //// descriptor[0].onkeydown=descriptor[0].onkeyup=descriptor[0].onclick=eventHandler;
+      //handleChange();
+      //$('.desctarget').text($('#descriptor').val());
+      //$('#descriptor').change(function() {
+      //  $('.desctarget').text($('#descriptor').val());
+      //});
       
     })
   }

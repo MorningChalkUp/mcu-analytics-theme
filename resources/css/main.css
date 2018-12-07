@@ -28,6 +28,8 @@
   :-ms-input-placeholder {color: inherit;opacity:0.5;}
   :-moz-placeholder {color: inherit;opacity:0.5;}
   
+  textarea{resize: none;}
+  
   .select-container{overflow: hidden;position:relative;box-sizing:border-box;display:inline;}
   .select-container:before{display:none;font-family:'Font Awesome 5 Light';content:'\f107';}
   .select-container .fa-angle-down{color:#3D5BA9;font-size:24px;position:absolute;right:0.8rem;top:50%;margin-top:-7px;}
@@ -465,6 +467,8 @@
   
   #panels .preview{height:auto;}
   #panels .preview tr{border-bottom:none;}
+
+  .preview-label{font-size:12px;background-color:#3D5BA9;border-radius:10px;color:#fff;padding:3px 10px;text-transform:uppercase;}
 
   .charCount{float:right;}
   

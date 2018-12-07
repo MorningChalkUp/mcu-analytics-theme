@@ -92,28 +92,28 @@
                 ";
               ?>
               
-              <p><label for="descriptor">Descriptor</label><br>
-                <div class="select-outline"><select <?php echo $disable ?> class="addescriptor" id="descriptor" name="descriptor">
-                  <option value="brought to you by" <?php echo $day['descriptor'] == 'brought to you by' ? 'selected' : '' ?>>Brought to you by</option>
-                  <option value="built by" <?php echo $day['descriptor'] == 'built by' ? 'selected' : '' ?>>Built by</option>
-                  <option value="fueled by" <?php echo $day['descriptor'] == 'fueled by' ? 'selected' : '' ?>>Fueled by</option>
-                  <option value="powered by" <?php echo $day['descriptor'] == 'powered by' ? 'selected' : '' ?>>Powered by</option>
-                  <option value="sponsored by" <?php echo $day['descriptor'] == 'sponsored by' ? 'selected' : '' ?>>Sponsored by</option>
-                </select><i class="fal fa-angle-down"></i></div>
-              </p>
+              <p style="margin-bottom:0"><label for="descriptor">Descriptor</label></p>
+              <div class="select-outline"><select <?php echo $disable ?> class="addescriptor" id="descriptor" name="descriptor">
+                <option value="brought to you by" <?php echo $day['descriptor'] == 'brought to you by' ? 'selected' : '' ?>>Brought to you by</option>
+                <option value="built by" <?php echo $day['descriptor'] == 'built by' ? 'selected' : '' ?>>Built by</option>
+                <option value="fueled by" <?php echo $day['descriptor'] == 'fueled by' ? 'selected' : '' ?>>Fueled by</option>
+                <option value="powered by" <?php echo $day['descriptor'] == 'powered by' ? 'selected' : '' ?>>Powered by</option>
+                <option value="sponsored by" <?php echo $day['descriptor'] == 'sponsored by' ? 'selected' : '' ?>>Sponsored by</option>
+              </select><i class="fal fa-angle-down"></i></div>
+              
               
               <p><label>Link</label><br>
                 <input <?php echo $disable ?> type="text" name="link" value="<?php echo $day['link'] ?>" placeholder="http://www.morningchalkup.com" id="link">
               </p>
           
-              <p><label>Ad Copy <?php echo get_field('ab_testing') ? 'A' : '' ?></label><small class="charCount"></small><br>
-                <textarea rows="6" class="adtextarea" <?php echo $disable ?> name="ad" style="width:100%"><?php echo htmlentities($day['copy']); ?></textarea>
+              <p id="copya"><label>Ad Copy <?php echo get_field('ab_testing') ? 'A' : '' ?></label><small class="charCount"></small><br>
+                <textarea rows="6" class="adtextarea" data-label="Ad Copy A" <?php echo $disable ?> name="ad" style="width:100%"><?php echo htmlentities($day['copy']); ?></textarea>
                 <small>Place [ ] around the text you want to hyperlink.</small>
               </p>
             
               <?php if(get_field('ab_testing')) : ?>
-                <p><label>Ad Copy B</label><br>
-                  <textarea <?php echo $disable ?> name="ad_b" style="width:100%"><?php echo $day['copy_b']; ?></textarea>
+                <p id="copyb"><label>Ad Copy B</label><small class="charCount"></small><br>
+                  <textarea rows="6" class="adtextarea" data-label="Ad Copy B" <?php echo $disable ?> name="ad_b" style="width:100%"><?php echo htmlentities($day['copy_b']); ?></textarea>
                   <small>Place [ ] around the text you want to hyperlink.</small>
                 </p>
               <?php endif; ?>
@@ -129,6 +129,7 @@
 
             </form>
             <div class="preview">
+              <?php if(get_field('ab_testing')) : ?><h3 class="center-text" style="margin-bottom:0"><span class="preview-label"></span></h3><?php endif; ?>
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px; font-family:Roboto, sans-serif">
                 <tr>
                   <td align="left" style="padding: 20px 10px 20px 25px;font-size:12px"><a style="color:#3d5ba9" href="#" ><span style="color:#3d5ba9">Send us a tip!</span></a></td>
@@ -149,14 +150,27 @@
                       <tr>
                         <td style="padding: 40px 25px 10px; font-family: Roboto, sans-serif; font-size: 16px; line-height: 24px; color: #333132;">
                           <?php $author = wp_get_current_user(); ?>
-                          <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is <span class="desctarget"></span> <strong><?php echo $author->display_name; ?></strong><span class="target"></span></p>
+                          <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is <span class="desctarget"></span> <strong><?php echo $author->display_name; ?></strong>.</p>
+                          <p><span class="target"></span></p>
                         </td>
                       </tr>
                       <?php
                         $quotes = array(
-                          '"All I do is win, win, win no matter what. Got money on my mind, I could never get enough. Every time I step into the building everybody hands go up..." - Mat Fraser',
-                          '"I come from a land down under. Where beer does flow and men chunder. Can\'t you hear, can\'t you hear the thunder?" - Tia Clair Toomey',
-                          '"If I was you, I\'d wanna be me too." - Brooke Wells',
+                          '"We give up things we love for things we love even more."  -- Craig Groeschel',
+                          '"Success is not final, failure is not fatal: it is the courage to continue that counts." -- Winston Churchill',
+                          '"You can have everything in life you want if you will just help enough other people get what they want." -- Zig Ziglar',
+                          '"I have already settled it for myself, so flattery and criticism go down the same drain and I am quite free." -- Georgia O\'Keefe',
+                          '"Discipline is always attractive." -- Joe Duncan',
+                          '"It\'s kind of fun to do the impossible." -- Walt Disney',
+                          '“You wouldn’t worry so much about what others think of you if you realized how seldom they do.” -- Eleanor Roosevelt',
+                          '"When everything seems to be going against you, remember that the airplane takes off against the wind, not with it." -- Henry Ford',
+                          '“Be so good they can’t ignore you.” -- Steve Martin ',
+                          '“There is no limits to what a man can accomplish if he’s unwilling to take credit for it.” - Ronald Reagan',
+                          '"I\'m going to work so that it\'s a pure guts race at the end, and if it is, I am the only one who can win it." -- Steve Prefontaine',
+                          '"Be quick, but don\'t hurry." -- John Wooden',
+                          '"Indecision is the thief of opportunity." -- Jim Rohn',
+                          '"For the strength of the Pack is the Wolf and the strength of the Wolf is the Pack." -- Rudyard Kipling',
+                          '"You have to be odd to be number one." -- Dr. Seuss',
                         );
                         shuffle($quotes);
                       ?>
