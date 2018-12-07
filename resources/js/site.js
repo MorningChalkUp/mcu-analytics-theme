@@ -52,7 +52,7 @@
           handleChange(this);
         })
       })
-      handleChange($('.adtextarea')[0]);
+      handleChange($(this).find('.adtextarea')[0]);
       
       function handleChange(adtextarea){
         var newText = adtextarea.value,
