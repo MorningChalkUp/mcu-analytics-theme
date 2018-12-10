@@ -47,10 +47,11 @@
       $(this).find('.adtextarea').each(function(){
         $(this).focus(function(){
           handleChange(this);
-        })
+        });
         $(this).on('input', function(){
           handleChange(this);
-        })
+        });
+        handleChange(this);
       })
       handleChange($(this).find('.adtextarea')[0]);
       
