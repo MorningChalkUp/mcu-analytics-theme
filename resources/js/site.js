@@ -70,7 +70,6 @@
         $(adtextarea).parent('p').find('.charCount').html(' '+newText.length+'/500 characters');
         $(target).html(newText);
         
-        console.log(previewLabel);
         $('.preview-label').html(previewLabel);
       }
       
