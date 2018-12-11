@@ -19,6 +19,13 @@
 <div class="section">
   <div class="wrapper">
     <h2>Sponsor the Morning Chalk Up</h2>
+
+    <?php if( isset($_GET['r']) && $_GET['r'] == 'f' ): ?>
+      <div class='error'>
+        There was a problem with your payment: <?php echo $_GET['msg']; ?>
+      </div>
+    <?php endif; ?>
+    
     <div id="purchasebox">
       <div id="products">
         <h3><i class="far fa-calendar-alt"></i></h3>

@@ -14,6 +14,7 @@
   h2,h3,h4,h5,h6{margin:2rem 0;}
   h1,h2,h3,h4,h5,h6,
   h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{line-height:120%;}
+  td h5, th h5{margin:0;}
   
   hr{background-color:#cccccc;border:none;height:1px;margin:2em 0;}
   
@@ -27,6 +28,8 @@
   :-ms-input-placeholder {color: inherit;opacity:0.5;}
   :-moz-placeholder {color: inherit;opacity:0.5;}
   
+  textarea{resize: none;}
+  
   .select-container{overflow: hidden;position:relative;box-sizing:border-box;display:inline;}
   .select-container:before{display:none;font-family:'Font Awesome 5 Light';content:'\f107';}
   .select-container .fa-angle-down{color:#3D5BA9;font-size:24px;position:absolute;right:0.8rem;top:50%;margin-top:-7px;}
@@ -34,6 +37,14 @@
   .select-container select:focus{outline:none;}
   .select-container select::-ms-expand{display: none;}
   .select-container select option{background-color:#fff;color:#808080;}
+  
+  .select-outline{overflow: hidden;position:relative;border:1px solid #ddd;box-sizing:border-box;border-radius:4px;display:inline-block;}
+  .select-outline:before{display:none;font-family:'Font Awesome 5 Light';content:'\f107';}
+  .select-outline .fa-angle-down{color:#3D5BA9;font-size:24px;position:absolute;right:0.8rem;top:50%;margin-top:-11px;}
+  .select-outline select{cursor:pointer;border: none;background: none;font-family:inherit;font-size:16px;-webkit-appearance: none;-moz-appearance: none;appearance: none;padding: 0.5rem 30px 0.5rem 0.7rem;position:relative;z-index:10;font-weight:inherit;}
+  .select-outline select:focus{outline:none;}
+  .select-outline select::-ms-expand{display: none;}
+  .select-outline select option{background-color:#fff;color:#808080;}
   
   input[type="checkbox"]{opacity:0;width:16px !important;height:16px;margin:0 6px 0 0;}
   label input[type="checkbox"]{opacity:1;}
@@ -280,6 +291,8 @@
   .error a:not('.btn'){color:#fff;text-decoration:underline;}
   .error a.btn{background-color:#fff;color:red;opacity:0.9;}
   .error a.btn:hover{opacity:1;}
+  .error button.btn{background-color:#fff;color:red;opacity:0.9;}
+  .error button.btn:hover{opacity:1;}
 
   .success{background-color:green;color:#fff;padding:20px;border-radius:4px;text-align:center;}
   
@@ -419,7 +432,9 @@
   .add-ons input[type="checkbox"]:checked + label + .price{opacity:1;}
   
   .status{margin-left:10px;color:#ddd;}
+  .status.partial{color:#dc9947;}
   .status.on{color:#22B573;}
+  .status.warning{color:red;}
   
   #checkout{padding-top:2rem;text-align:right;}
   #checkout .total{color:#3D5BA9;font-size:18px;font-weight:bold;}
@@ -439,6 +454,8 @@
   #tabs a{color:#999;display:inline-block;font-weight:700;padding:0.5rem 1rem;}
   #tabs a.active{background-color:#fff;color:#000;}
   #tabs a.completed{color:#2AD587;}
+  #tabs a [data-icon="check"]{color:#2AD587;}
+
   
   #panels{background-color:#fff;position:relative;}
   #panels .panel{background-color:#fff;opacity:0;position:absolute;transition:0.2s all;pointer-events:none;z-index:1;left:0;right:0;}
@@ -446,9 +463,13 @@
   
   #panels .panel{display:flex;}
   #panels .panel form{flex:1;padding:2rem;}
-  #panels .panel .preview{flex:1;border-left:1px solid #eee;}
+  #panels .panel form input[type="text"]{width:100%;}
+  #panels .panel .preview{flex:1;border-left:1px solid #eee;pointer-events:none;}
   
-  .preview tr{border-bottom:none;}
+  #panels .preview{height:auto;}
+  #panels .preview tr{border-bottom:none;}
+
+  .preview-label{font-size:12px;background-color:#3D5BA9;border-radius:10px;color:#fff;padding:3px 10px;text-transform:uppercase;}
 
   .charCount{float:right;}
   

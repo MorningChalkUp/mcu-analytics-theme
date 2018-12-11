@@ -108,7 +108,7 @@
                     "display_format": "m\/d\/Y",
                     "return_format": "m\/d\/Y",
                     "first_day": 0,
-                    "default_value": "20181108"
+                    "default_value": "20181204"
                 },
                 {
                     "key": "field_5bd0bfc344db2",
@@ -147,6 +147,25 @@
                     "maxlength": "",
                     "rows": "",
                     "new_lines": ""
+                },
+                {
+                    "key": "field_5c018b888f3f5",
+                    "label": "Copy B",
+                    "name": "copy_b",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "br"
                 },
                 {
                     "key": "field_5bd0bfd644db4",
@@ -260,5 +279,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1541694913
+    "modified": 1543944969
 }

@@ -56,6 +56,80 @@ if ( is_user_logged_in() ) :
 ?>
 <div class="section">
   <div class="wrapper">
+
+    <?php if( isset($_GET['r']) && $_GET['r'] == 's' ): ?>
+      <div class='success'>
+        Thank you for your purchase!
+      </div>
+    <?php endif; ?>
+
+    <div class="box">
+      <?php if ( current_user_can( 'manage_options' ) ) : ?>
+        <table>
+          <thead>
+            <tr><th align="left" colspan="2"><h4 class="label">Upcoming Ad Copy</h4></th></tr>
+          </thead>
+          <tbody>
+        <?php
+          $today = date( 'Y-m-d' );
+          $next_ad = array(
+            'post_type' => 'purchased_item',
+            'posts_per_page' => 1,
+            'meta_key' => 'end',
+            'orderby' => 'meta_value',
+            'order' => 'ASC',
+            'meta_query' => array(
+              array(
+                'key' => 'end',
+                'value' => $today, 
+                'compare' => '>',
+                'type' => 'DATE'
+              )
+            )
+          );
+          pxl::loop('ad-details',$next_ad);
+        ?>
+          </tbody>
+        </table>
+        
+      <?php else : ?>
+        <?php
+          $pi_args = array(
+            'post_type' => 'purchased_item',
+            'posts_per_page' => -1,
+            'meta_key' => 'start',
+            'orderby' => 'meta_value',
+            'order' => 'ASC',
+            'meta_query' => array(
+              array(
+                'key' => 'purchaser', // name of custom field
+                'value' => $author->ID, //$author->ID
+                'compare' => '=',
+              )
+            )
+          );
+          $pi = new WP_Query( $pi_args );
+          if ($pi->found_posts) : 
+        ?>
+          <table>
+            <thead>
+              <tr>
+                <th align="left"><label>Upcoming Ads</label></th>
+                <th align="right"><a href="/sponsor/" class="btn">Purchase New Ads</a></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php pxl::loop('purchased-item',$pi_args); ?>
+            </tbody>
+          </table>
+        <?php else : ?>
+          <p class="center-text" style="margin:0;">
+            2019 Ads are available for purchase. &nbsp;&nbsp;<a href="/sponsor/" class="btn">Purchase Ads</a>
+          </p>
+        <?php endif; ?>
+      <?php endif; ?>
+    </div>
+    
     <?php
       $reports = get_posts($args);
       $rcount = count($reports);
@@ -134,64 +208,31 @@ if ( is_user_logged_in() ) :
       </div>
     </div>
     
-    <div class="row">
-      <div class="span8">
-        <div class="box">
-          <table id="reports">
-            <thead>
-              <tr>
-                <?php if (current_user_can( 'manage_options' )) echo "<th></th>"; ?>
-                <th align="left"><label>Ad Reports</label></th>
-                <th align="right"><label>Open rate</label></th>
-                <th align="right"><label>Views</label></th>
-                <th align="right"><label>Clicks</label></th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php 
-                pxl::loop(
-                  $partial,
-                  $args
-                );
-              ?>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="span4">
-        <div class="box">
-          <table>
-            <thead>
-              <tr>
-                <th align="left"><label>Upcoming Ads</label></th>
-                <th align="right"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-                $pi_args = array(
-                  'post_type' => 'purchased_item',
-                  'posts_per_page' => -1,
-                  'meta_key' => 'start',
-                  'orderby' => 'meta_value',
-                  'order' => 'DESC',
-                  'meta_query' => array(
-                    array(
-                      'key' => 'purchaser', // name of custom field
-                      'value' => $author->ID,
-                      'compare' => '=',
-                    )
-                  )
-                );
-                pxl::loop('purchased-item',$pi_args);
-              ?>
-            </tbody>
-          </table>
-          <br>
-          <a href="/sponsor/" class="btn btn-full">Purchase New Ads</a>
-        </div>
-      </div>
+
+    <div class="box">
+      <table id="reports">
+        <thead>
+          <tr>
+            <?php if (current_user_can( 'manage_options' )) echo "<th></th>"; ?>
+            <th align="left"><label>Ad Reports</label></th>
+            <th align="right"><label>Open rate</label></th>
+            <th align="right"><label>Views</label></th>
+            <th align="right"><label>Clicks</label></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            pxl::loop(
+              $partial,
+              $args
+            );
+          ?>
+        </tbody>
+      </table>
     </div>
+      
+
+
 	</div>
 </div>
 <?php endif; ?>
