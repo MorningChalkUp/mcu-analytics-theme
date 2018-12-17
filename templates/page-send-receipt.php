@@ -51,7 +51,10 @@
         <input type="hidden" value="<?php echo $post->ID ?>" name="purchase_id">
         <?php $purchaser = get_field('purchaser', $post->ID) ?>
         <div class="box">
-          <h2><?php echo $purchaser['display_name']; ?>: Order #: <?php echo $post->ID ?></h2>
+          <h2>
+            <?php echo $purchaser['display_name']; ?>: Order #: <?php echo $post->ID ?><br>
+            <small><?php echo $purchaser['user_email']; ?></small>
+          </h2>
           <input type="hidden" value="<?php echo $purchaser['display_name']; ?>" name="user[name]">
           <input type="hidden" value="<?php echo $purchaser['user_email']; ?>" name="user[email]">
           <input type="hidden" value="<?php the_field('stripe_id', $post->ID) ?>" name="transaction">
