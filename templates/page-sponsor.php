@@ -22,7 +22,7 @@
 
     <?php if( isset($_GET['r']) && $_GET['r'] == 'f' ): ?>
       <div class='error'>
-        There was a problem with your payment: <?php echo $_GET['msg']; ?>
+        There was a problem with your transaction: <?php echo $_GET['msg']; ?>
       </div>
     <?php endif; ?>
     
