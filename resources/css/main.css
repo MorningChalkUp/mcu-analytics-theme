@@ -215,6 +215,9 @@
   a.btn:hover{background-color:#4c72d4;}
   button.btn{border:none;cursor:pointer;background-color:#3D5BA9;color:#fff;border-radius:4px;font-size:14px;font-weight:bold;padding:0.7em 1em;transition:0.2s all;}
   button.btn:hover{background-color:#4c72d4;}
+  button.btn-sm{padding: .25em .5em;font-size: 12px;font-weight: normal;}
+  button.btn-reminder{background-color: #484546;}
+  button.btn-reminder:hover{background-color: #6C6C6C;}
   
   .btn-full{display:block;text-align:center;}
   
