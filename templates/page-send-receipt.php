@@ -57,7 +57,8 @@
         <div class="box">
           <h2>
             <?php echo $purchaser['display_name']; ?>: Order #: <?php echo $post->ID ?><br>
-            <small><?php echo $purchaser['user_email']; ?></small>
+            <small><?php echo $purchaser['user_email']; ?></small> | 
+            <small>$<?php the_field('amount_paid', $post->ID) ?> / $<?php the_field('purchase_total', $post->ID) ?></small>
           </h2>
 
           <?php 
