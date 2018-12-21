@@ -159,6 +159,11 @@
     ));
     acf_add_options_sub_page(array(
       'capability'  => 'manage_options',
+      'menu_title'  => 'Link Inventory',
+      'page_title'  => 'Sponsored Links Inventory Manager',
+    ));
+    acf_add_options_sub_page(array(
+      'capability'  => 'manage_options',
       'menu_title'  => 'Stripe Options',
       'page_title'  => 'Stripe Options',
     ));
