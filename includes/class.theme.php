@@ -16,7 +16,24 @@
           ),
         ),
         'purchase' => 'dashicons-tag',
-        'purchased_item' => 'dashicons-cart',
+        'purchased-item' => array(
+          'menu_icon' => 'dashicons-cart',
+          'query'     => array(
+            'posts_per_page'       => '-1',
+            'type'       => 'archive',
+            'order'      => 'ASC',
+            'orderby'    => 'meta_value',
+            'meta_key'   => 'end',
+            'meta_query' => array(
+              array(
+                'key'     => 'end',
+                'value'   => date("Ymd"),
+                'compare' => '>=',
+                'type'    => 'numeric'
+              ),
+            ),
+          ),
+        ),
       );
       
       $resources = array(

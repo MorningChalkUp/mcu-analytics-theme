@@ -71,21 +71,20 @@ if ( is_user_logged_in() ) :
           </thead>
           <tbody>
         <?php
-          $today = date( 'Y-m-d' );
           $next_ad = array(
             'post_type' => 'purchased_item',
             'posts_per_page' => 1,
-            'meta_key' => 'end',
-            'orderby' => 'meta_value',
-            'order' => 'ASC',
+            'order'      => 'ASC',
+            'orderby'    => 'meta_value',
+            'meta_key'   => 'start',
             'meta_query' => array(
               array(
-                'key' => 'end',
-                'value' => $today, 
-                'compare' => '>',
-                'type' => 'DATE'
-              )
-            )
+                'key'     => 'start',
+                'value'   => date("Ymd"),
+                'compare' => '>=',
+                'type'    => 'numeric'
+              ),
+            ),
           );
           pxl::loop('ad-details',$next_ad);
         ?>
