@@ -27,7 +27,7 @@
             'meta_query' => array(
               array(
                 'key'     => 'end',
-                'value'   => date("Y-m-d"),
+                'value'   => date("Ymd"),
                 'compare' => '>=',
                 'type'    => 'numeric'
               ),
