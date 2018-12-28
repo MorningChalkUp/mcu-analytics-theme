@@ -125,7 +125,7 @@ if ( is_user_logged_in() ) :
           <p class="center-text" style="margin:0;">
             2019 Ads are available for purchase. &nbsp;&nbsp;<a href="/sponsor/" class="btn">Purchase Ads</a>
           </p>
-					<p class="center-text" style="margin:1.25rem;">
+					<p class="center-text" style="margin:1.25rem 0 0 0;">
 						Now Available: Sponsoed Links every Monday - Friday. &nbsp;&nbsp;<a href="/sponsored-links/" class="btn">Purchase Sponsored Links</a>
 					</p>
         <?php endif; ?>
