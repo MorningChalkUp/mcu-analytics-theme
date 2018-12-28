@@ -16,7 +16,24 @@
           ),
         ),
         'purchase' => 'dashicons-tag',
-        'purchased_item' => 'dashicons-cart',
+        'purchased_item' => array(
+          'menu_icon' => 'dashicons-cart',
+          'query'     => array(
+            'posts_per_page'       => '-1',
+            'type'       => 'archive',
+            'order'      => 'ASC',
+            'orderby'    => 'meta_value',
+            'meta_key'   => 'end',
+            'meta_query' => array(
+              array(
+                'key'     => 'end',
+                'value'   => date("Ymd"),
+                'compare' => '>=',
+                'type'    => 'numeric'
+              ),
+            ),
+          ),
+        ),
       );
       
       $resources = array(
@@ -156,6 +173,11 @@
       'capability'  => 'manage_options',
       'menu_title'  => 'Inventory Manager',
       'page_title'  => 'Inventory Manager',
+    ));
+    acf_add_options_sub_page(array(
+      'capability'  => 'manage_options',
+      'menu_title'  => 'Link Inventory',
+      'page_title'  => 'Sponsored Links Inventory Manager',
     ));
     acf_add_options_sub_page(array(
       'capability'  => 'manage_options',
