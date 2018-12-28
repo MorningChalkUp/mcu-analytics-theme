@@ -114,8 +114,7 @@ if ( is_user_logged_in() ) :
             <thead>
               <tr>
                 <th align="left"><label>Upcoming Ads</label></th>
-                <th align="right"><a href="/sponsor/" class="btn">Purchase New Ads</a></th>
-                <th align="right"><a href="/sponsored-links/" class="btn">Purchase New Sponsored Links</a></th>
+                <th align="right"><a href="/sponsor/" class="btn">Purchase New Ads</a> <a href="/sponsored-links/" class="btn">Purchase New Sponsored Links</a></th>
               </tr>
             </thead>
             <tbody>
