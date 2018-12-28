@@ -18,6 +18,23 @@
 <div class="section">
   <div class="wrapper-tight">
 
+		<?php
+      $purchase = get_the_ID();
+      $paid = get_field('amount_paid');
+      $total = get_field('purchase_total');
+      $date = new DateTime(get_the_date());
+      date_add($date, date_interval_create_from_date_string('30 days'));
+      $due = date_format($date, 'F, j Y');
+    ?>
+      
+    <?php if( $paid < $total) : ?>
+      <?php $unpaid = $total - $paid; ?>
+      <div class='error'>
+        There is a remaining balance of $<?php echo $unpaid ?> on this $<?php echo $total ?> purchase due by <strong><?php echo $due ?></strong>. 
+        <button id="balanceBtn" data-purchase="<?php echo $purchase ?>" data-key="<?php echo $stripe_key ?>" data-balance="<?php echo $unpaid ?>" data-total="<?php echo $total ?>" class='btn'>Pay Balance</button>
+      </div>
+    <?php endif; ?>
+
     <?php if( isset($_GET['r']) && $_GET['r'] == 's' ): ?>
       <div class='success'>
         Thank you for your payment!
@@ -31,16 +48,52 @@
     <?php endif; ?>
 
     <div class="box">
-      <h3 style="margin-top:0"><?php the_title(); ?></h3>
-      <div class="payment" style="margin-bottom: 1rem;">
-        $<?php the_field('amount_paid') ?> / $<?php the_field('purchase_total') ?> Paid
-      </div>
-      <?php if( get_field('amount_paid') != get_field('purchase_total') ) : ?>
-        <div class="balance">
-          <button id="balanceBtn" data-purchase="<?php echo get_the_ID(); ?>" data-key="<?php echo $stripe_key ?>" data-balance="<?php echo get_field('purchase_total') - get_field('amount_paid') ?>" data-total="<?php the_field('purchase_total'); ?>" data-user="<?php echo $user_email; ?>" class='btn'>Pay Balance</button>
-        </div>
-      <?php endif; ?>
-    </div>
-    
-  </div>
+			<p>
+				<?php the_date(); ?><br>
+				Order #<?php echo the_ID(); ?>
+			</p>
+			<p><?php echo $user->display_name; ?>,</p>
+			<p>Thank you for reserving a sponsorship with the Morning Chalk Up.</p>
+			<p>Here are the details of your order:</p>
+			<?php 
+        $items = query_posts(array(
+          'post_type' => 'purchased_item',
+          'posts_per_page' => -1,
+          'meta_key' => 'purchase_id',
+          'meta_value' => get_the_ID(),
+          'orderby' => 'title',
+          'order' => 'ASC',
+        ));
+      ?>
+			<?php foreach ($items as $item): ?>
+				<h3>
+					Morning Chalk Up Sponsorship - 
+					<?php 
+						echo date('F j, Y', strtotime(get_field('start', $item))); 
+						if(get_field('start', $item) != get_field('end', $item)) {
+							echo ' - ';
+							echo date('F j, Y', strtotime(get_field('end', $item))); 
+						}
+					?>
+				</h3>
+				<?php if(get_field('facebook_retargeting', $item) || get_field('ab_testing', $item) || get_field('we_write_ads', $item)): ?>
+					<ul>
+						<?php if(get_field('facebook_retargeting', $item)) echo "<li>Facebook Retargeting</li>";  ?>
+						<?php if(get_field('ab_testing', $item)) echo "<li>A/B Testing</li>"; ?>
+						<?php if(get_field('we_write_ads', $item)) echo "<li>We Write Ads</li>"; ?>
+					</ul>
+        <?php endif; ?>
+				<hr>
+			<?php endforeach; ?>
+
+			<div class="text-right">
+				<div class="total">
+						Grand Total: $<?php the_field('purchase_total') ?>
+				</div>
+				<div class="balance">
+						Balance Due: $<?php echo get_field('purchase_total') - get_field('amount_paid'); ?>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
