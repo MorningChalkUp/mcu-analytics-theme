@@ -18,7 +18,7 @@
 
 <div class="section">
   <div class="wrapper">
-    <h2>Sponsor the Morning Chalk Up</h2>
+    <h2>Purchase Ads</h2>
 
     <?php if( isset($_GET['r']) && $_GET['r'] == 'f' ): ?>
       <div class='error'>

@@ -114,7 +114,7 @@ if ( is_user_logged_in() ) :
             <thead>
               <tr>
                 <th align="left"><label>Upcoming Ads</label></th>
-                <th align="right"><a href="/sponsor/" class="btn">Purchase New Ads</a> <a href="/sponsored-links/" class="btn">Purchase New Sponsored Links</a></th>
+                <th align="right"><a href="/sponsor/" class="btn">Purchase Ads</a> <a href="/sponsored-links/" class="btn">Purchase Sponsored Links</a></th>
               </tr>
             </thead>
             <tbody>
@@ -123,10 +123,7 @@ if ( is_user_logged_in() ) :
           </table>
         <?php else : ?>
           <p class="center-text" style="margin:0;">
-            2019 Ads are available for purchase. &nbsp;&nbsp;<a href="/sponsor/" class="btn">Purchase Ads</a>
-          </p>
-					<p class="center-text" style="margin:1.25rem 0 0 0;">
-						Now Available: Sponsoed Links every Monday - Friday. &nbsp;&nbsp;<a href="/sponsored-links/" class="btn">Purchase Sponsored Links</a>
+            2019 Ads and Sponsored Links are available for purchase. &nbsp;&nbsp;<a href="/sponsor/" class="btn">Purchase Ads</a> <a href="/sponsored-links/" class="btn">Purchase Sponsored Links</a>
 					</p>
         <?php endif; ?>
       <?php endif; ?>
