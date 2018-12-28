@@ -16,7 +16,7 @@
           ),
         ),
         'purchase' => 'dashicons-tag',
-        'purchased-item' => array(
+        'purchased_item' => array(
           'menu_icon' => 'dashicons-cart',
           'query'     => array(
             'posts_per_page'       => '-1',
@@ -27,7 +27,7 @@
             'meta_query' => array(
               array(
                 'key'     => 'end',
-                'value'   => date("Ymd"),
+                'value'   => date("Y-m-d"),
                 'compare' => '>=',
                 'type'    => 'numeric'
               ),
