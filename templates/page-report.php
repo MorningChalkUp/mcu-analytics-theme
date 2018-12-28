@@ -56,6 +56,7 @@
           <div class="stat">
             <h4 class="label">Total Paid:</h4>
             <span class="num">$<?php echo number_format($paid, 2,'.', ',') ?></span>
+            <h4 class="label">$<?php echo number_format(($total - $paid), 2,'.', ',') ?> Remaining</h4>
           </div>
           <div class="stat">
             <h4 class="label">Weeks Purchased:</h4>

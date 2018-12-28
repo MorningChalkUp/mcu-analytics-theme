@@ -65,7 +65,7 @@
   .nofloat{float:none;}
   
   .screen-reader-text{display:none;}
-	.gform_ajax_spinner {border-left-color:#000000!important;}
+  .gform_ajax_spinner {border-left-color:#000000!important;}
   
   .box{background-color:#fff;padding:2rem ;box-shadow:1px 1px 0.5px rgba(0,0,0,0.1), 2px 5px 10px rgba(0,0,0,0.02);margin:2rem 0;}
   .box > h4:first-child{margin-top:0;}
@@ -455,6 +455,7 @@
   #tabs a.active{background-color:#fff;color:#000;}
   #tabs a.completed{color:#2AD587;}
   #tabs a [data-icon="check"]{color:#2AD587;}
+
   
   #panels{background-color:#fff;position:relative;}
   #panels .panel{background-color:#fff;opacity:0;position:absolute;transition:0.2s all;pointer-events:none;z-index:1;left:0;right:0;}
