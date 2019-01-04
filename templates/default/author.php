@@ -73,20 +73,22 @@ if ( is_user_logged_in() ) :
         <?php
           $next_ad = array(
             'post_type' => 'purchased_item',
-            'posts_per_page' => 1,
+            'posts_per_page' => 2,
             'order'      => 'ASC',
             'orderby'    => 'meta_value',
-            'meta_key'   => 'start',
+            'meta_key'   => 'end',
             'meta_query' => array(
               array(
-                'key'     => 'start',
+                'key'     => 'end',
                 'value'   => date("Ymd"),
                 'compare' => '>=',
                 'type'    => 'numeric'
               ),
             ),
           );
-          pxl::loop('ad-details',$next_ad);
+					foreach($next_ad as $ad) {
+						pxl::loop('ad-details',$ad);
+					}
         ?>
           </tbody>
         </table>
