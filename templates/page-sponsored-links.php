@@ -18,7 +18,7 @@
 
 <div class="section">
   <div class="wrapper">
-    <h2>Sponsor the Morning Chalk Up</h2>
+    <h2>Purchase Sponsored Links</h2>
 
     <?php if( isset($_GET['r']) && $_GET['r'] == 'f' ): ?>
       <div class='error'>
@@ -94,7 +94,7 @@
         <div id="checkout">
           <p class="total">Total: $<span id="amt">0</span></p>
           <?php if(is_user_logged_in()): ?>
-            <button id="checkoutButton" class="btn" data-total="0">Pay in Full</button>
+            <button id="checkoutButton" class="btn" data-total="0">Checkout</button>
           <?php else: ?>
             <a id="createAccount" href="/create-account/" class="btn">Create Account</a>
           <?php endif; ?>

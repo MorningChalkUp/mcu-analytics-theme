@@ -23,10 +23,10 @@
             'type'       => 'archive',
             'order'      => 'ASC',
             'orderby'    => 'meta_value',
-            'meta_key'   => 'end',
+            'meta_key'   => 'start',
             'meta_query' => array(
               array(
-                'key'     => 'end',
+                'key'     => 'start',
                 'value'   => date("Ymd"),
                 'compare' => '>=',
                 'type'    => 'numeric'
