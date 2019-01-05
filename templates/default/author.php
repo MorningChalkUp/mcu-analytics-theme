@@ -86,9 +86,7 @@ if ( is_user_logged_in() ) :
               ),
             ),
           );
-					foreach($next_ad as $ad) {
-						pxl::loop('ad-details',$ad);
-					}
+					pxl::loop('ad-details',$next_ad);
         ?>
           </tbody>
         </table>
