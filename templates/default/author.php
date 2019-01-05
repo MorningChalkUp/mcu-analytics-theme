@@ -73,7 +73,7 @@ if ( is_user_logged_in() ) :
         <?php
           $next_ad = array(
             'post_type' => 'purchased_item',
-            'posts_per_page' => 2,
+            'posts_per_page' => 3,
             'order'      => 'ASC',
             'orderby'    => 'meta_value',
             'meta_key'   => 'end',
