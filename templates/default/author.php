@@ -81,7 +81,7 @@ if ( is_user_logged_in() ) :
               array(
                 'key'     => 'end',
                 'value'   => date("Ymd"),
-                'compare' => '>=',
+                'compare' => '>',
                 'type'    => 'numeric'
               ),
             ),
