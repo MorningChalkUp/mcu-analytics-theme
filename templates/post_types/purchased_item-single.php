@@ -83,8 +83,9 @@
             <form enctype="multipart/form-data" method="post">
               <h2 style="margin-top:0;"><?php echo date_format($date, 'l, F j') ?></h2>
               <?php
-                // disable field and show notice if within 12 hours of ad day
-                $disable = ( date_format($date, 'U') - time() < 60*60*12 ) ? 'disabled' : '' ;
+								// disable field and show notice if within 12 hours of ad day
+								// edited to be 6 hours for hotfix on late add.
+                $disable = ( date_format($date, 'U') - time() < 60*60*6 ) ? 'disabled' : '' ;
                 if ($disable == 'disabled') echo "
                   <div class='error'>
                     This ad is in production and cannot be edited further. For emergency changes, please contact Morning Chalk Up at info@morningchalkup.com
