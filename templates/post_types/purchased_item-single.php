@@ -1,7 +1,7 @@
 <?php 
   if (is_user_logged_in()) {
     $user = get_userdata( get_current_user_id() );
-    $user_email = $user->user_email; 
+		$user_email = $user->user_email; 
   } else {
     $user = null;
     $user_email = '';
