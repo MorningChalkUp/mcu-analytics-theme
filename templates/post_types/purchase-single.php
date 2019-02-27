@@ -52,7 +52,7 @@
 				<?php the_date(); ?><br>
 				Order #<?php echo the_ID(); ?>
 			</p>
-			<p><?php echo $user->display_name; ?>,</p>
+			<p><?php echo get_field('purchaser')['display_name'] ?>,</p>
 			<p>Thank you for reserving a sponsorship with the Morning Chalk Up.</p>
 			<p>Here are the details of your order:</p>
 			<?php 
