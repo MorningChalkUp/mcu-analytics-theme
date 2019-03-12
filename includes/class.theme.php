@@ -90,7 +90,7 @@
 				if ( !is_admin() ) {}
 			}
 			public function action_template_redirect() {
-				$protected_types = array('purchased_item', 'purchase');
+				$protected_types = array('purchased_item', 'purchase', 'page', 'report', 'post');
 				if ( is_single() && in_array(get_query_var('post_type'), $protected_types ) ) {
 					if(!is_user_logged_in()) {
 						$location = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
