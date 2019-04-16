@@ -1,11 +1,11 @@
 {
-    "key": "group_5bbfdfb640f75",
-    "title": "Inventory Manager",
+    "key": "group_5c1ce5ebd05d0",
+    "title": "Link Inventory",
     "fields": [
         {
-            "key": "field_5bbfdfce38510",
-            "label": "Weeks",
-            "name": "weeks",
+            "key": "field_5c1ce5ebd40de",
+            "label": "Links",
+            "name": "links",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -19,12 +19,12 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "Add Week",
+            "button_label": "Add Day",
             "sub_fields": [
                 {
-                    "key": "field_5bbfdfe438511",
-                    "label": "Start",
-                    "name": "start",
+                    "key": "field_5c1ce5ebd6557",
+                    "label": "Day",
+                    "name": "day",
                     "type": "date_picker",
                     "instructions": "",
                     "required": 0,
@@ -39,24 +39,7 @@
                     "first_day": 0
                 },
                 {
-                    "key": "field_5bbfdff838512",
-                    "label": "End",
-                    "name": "end",
-                    "type": "date_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "display_format": "m\/d\/Y",
-                    "return_format": "Ymd",
-                    "first_day": 0
-                },
-                {
-                    "key": "field_5bbfe00338513",
+                    "key": "field_5c1ce5ebd6614",
                     "label": "Price",
                     "name": "price",
                     "type": "text",
@@ -68,14 +51,14 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": 450,
+                    "default_value": 250,
                     "placeholder": "",
-                    "prepend": "$",
+                    "prepend": "",
                     "append": "",
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5bbfe0ea38515",
+                    "key": "field_5c1ce94a61349",
                     "label": "Notes",
                     "name": "notes",
                     "type": "text",
@@ -94,7 +77,7 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5bbfe05b38514",
+                    "key": "field_5c1ce5ebd66eb",
                     "label": "Availability",
                     "name": "availability",
                     "type": "select",
@@ -122,7 +105,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_5bdfafc4b2efc",
+                    "key": "field_5c1ce5ebd672f",
                     "label": "Purchaser",
                     "name": "purchaser",
                     "type": "user",
@@ -140,10 +123,10 @@
                     "return_format": "array"
                 },
                 {
-                    "key": "field_5be093f8c4617",
-                    "label": "Add-Ons",
-                    "name": "add-ons",
-                    "type": "checkbox",
+                    "key": "field_5c1cec83ef009",
+                    "label": "Order ID",
+                    "name": "order_id",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -152,21 +135,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "facebook": "FB",
-                        "ab": "A\/B",
-                        "wewrite": "We Write"
-                    },
-                    "allow_custom": 0,
-                    "default_value": [
-                        "facebook",
-                        "ab",
-                        "wewrite"
-                    ],
-                    "layout": "vertical",
-                    "toggle": 0,
-                    "return_format": "value",
-                    "save_custom": 0
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -176,7 +149,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-inventory-manager"
+                "value": "acf-options-link-inventory"
             }
         ]
     ],
@@ -188,5 +161,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1545397732
+    "modified": 1545399474
 }

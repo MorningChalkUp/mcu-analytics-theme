@@ -73,20 +73,20 @@ if ( is_user_logged_in() ) :
         <?php
           $next_ad = array(
             'post_type' => 'purchased_item',
-            'posts_per_page' => 1,
+            'posts_per_page' => 3,
             'order'      => 'ASC',
             'orderby'    => 'meta_value',
-            'meta_key'   => 'start',
+            'meta_key'   => 'end',
             'meta_query' => array(
               array(
-                'key'     => 'start',
+                'key'     => 'end',
                 'value'   => date("Ymd"),
-                'compare' => '>=',
+                'compare' => '>',
                 'type'    => 'numeric'
               ),
             ),
           );
-          pxl::loop('ad-details',$next_ad);
+					pxl::loop('ad-details',$next_ad);
         ?>
           </tbody>
         </table>
@@ -114,7 +114,7 @@ if ( is_user_logged_in() ) :
             <thead>
               <tr>
                 <th align="left"><label>Upcoming Ads</label></th>
-                <th align="right"><a href="/sponsor/" class="btn">Purchase New Ads</a></th>
+                <th align="right"><a href="/sponsor/" class="btn">Purchase Ads</a> <a href="/sponsored-links/" class="btn">Purchase Sponsored Links</a></th>
               </tr>
             </thead>
             <tbody>
@@ -123,8 +123,8 @@ if ( is_user_logged_in() ) :
           </table>
         <?php else : ?>
           <p class="center-text" style="margin:0;">
-            2019 Ads are available for purchase. &nbsp;&nbsp;<a href="/sponsor/" class="btn">Purchase Ads</a>
-          </p>
+            2019 Ads and Sponsored Links are available for purchase. &nbsp;&nbsp;<a href="/sponsor/" class="btn">Purchase Ads</a> <a href="/sponsored-links/" class="btn">Purchase Sponsored Links</a>
+					</p>
         <?php endif; ?>
       <?php endif; ?>
     </div>

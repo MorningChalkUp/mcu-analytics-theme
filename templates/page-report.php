@@ -9,12 +9,22 @@
     $total = 0;
     $paid = 0;
     
+    $weeks =get_field('weeks', 'options');
+
     foreach ($purchases as $purchase) {
       $total += get_field( 'purchase_total', $purchase );
       $paid += get_field( 'amount_paid', $purchase );
     }
-
-    $weeks =get_field('weeks', 'options');
+    get_field('links', 'options');
+    if(have_rows('links', 'options')) {
+      while(have_rows('links', 'options')) {
+        the_row();
+        if(get_sub_field('order_id') != '' && get_sub_field('availability') == 'purchased') {
+          $total += get_sub_field('price');
+          $paid += get_sub_field('price');
+        }
+      }
+    }
 
     $total_weeks = 0;
     $purchased_weeks = 0;
@@ -130,6 +140,23 @@
           <?php endforeach; ?>
         </div>
         <div class="span4">
+          <h2>Sponsored Links</h2>
+          <table>
+            <?php if(have_rows('links', 'options')): ?>
+              <?php while(have_rows('links', 'options')): the_row(); ?>
+                <?php if(get_sub_field('availability') == 'purchased'): ?>
+                  <tr>
+                    <td>
+                      <?php echo date('M j', strtotime(get_sub_field('day')));  ?>
+                    </td>
+                    <td align="right">
+                      <strong><?php echo get_sub_field('purchaser')['display_name']; ?></strong>
+                    </td>
+                  </tr>
+                <?php endif; ?>
+              <?php endwhile; ?>
+            <?php endif; ?>
+          </table>
           <h2>By Date</h2>
           <table>
           <?php foreach ($weeks as $week): ?>

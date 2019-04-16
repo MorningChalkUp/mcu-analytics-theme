@@ -16,17 +16,17 @@
           ),
         ),
         'purchase' => 'dashicons-tag',
-        'purchased-item' => array(
+        'purchased_item' => array(
           'menu_icon' => 'dashicons-cart',
           'query'     => array(
             'posts_per_page'       => '-1',
             'type'       => 'archive',
             'order'      => 'ASC',
             'orderby'    => 'meta_value',
-            'meta_key'   => 'end',
+            'meta_key'   => 'start',
             'meta_query' => array(
               array(
-                'key'     => 'end',
+                'key'     => 'start',
                 'value'   => date("Ymd"),
                 'compare' => '>=',
                 'type'    => 'numeric'
@@ -57,6 +57,7 @@
     // Hooks : Actions
       public function actions() {
         add_action('init', array($this, 'action_init'));
+        add_action('template_redirect', array($this, 'action_template_redirect'));
         // add_action('acf/init', array($this, 'action_acf_init'));
         add_action('wp_head', array($this, 'action_wp_head'), 100);
         
@@ -86,8 +87,17 @@
       }
       
       public function action_init() {
-        if ( !is_admin() ) {}
-      }
+				if ( !is_admin() ) {}
+			}
+			public function action_template_redirect() {
+				$protected_types = array('purchased_item', 'purchase', 'page', 'report', 'post');
+				if ( is_single() && in_array(get_query_var('post_type'), $protected_types ) ) {
+					if(!is_user_logged_in()) {
+						$location = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+						header("Location: /?redirect=" . $location);
+					}
+				}
+			}
       public function action_acf_init() {
         acf_update_setting('google_api_key', $this->filter_google_maps_key());
       }
@@ -173,6 +183,11 @@
       'capability'  => 'manage_options',
       'menu_title'  => 'Inventory Manager',
       'page_title'  => 'Inventory Manager',
+    ));
+    acf_add_options_sub_page(array(
+      'capability'  => 'manage_options',
+      'menu_title'  => 'Link Inventory',
+      'page_title'  => 'Sponsored Links Inventory Manager',
     ));
     acf_add_options_sub_page(array(
       'capability'  => 'manage_options',

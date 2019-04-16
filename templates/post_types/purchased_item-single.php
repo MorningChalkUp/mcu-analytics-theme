@@ -1,7 +1,7 @@
 <?php 
   if (is_user_logged_in()) {
     $user = get_userdata( get_current_user_id() );
-    $user_email = $user->user_email; 
+		$user_email = $user->user_email; 
   } else {
     $user = null;
     $user_email = '';
@@ -83,8 +83,10 @@
             <form enctype="multipart/form-data" method="post">
               <h2 style="margin-top:0;"><?php echo date_format($date, 'l, F j') ?></h2>
               <?php
-                // disable field and show notice if within 12 hours of ad day
-                $disable = ( date_format($date, 'U') - time() < 60*60*12 ) ? 'disabled' : '' ;
+								// disable field and show notice if within 12 hours of ad day
+								// Remove disble for FitAid Week ...
+                // $disable = ( date_format($date, 'U') - time() < 60*60*12 ) ? 'disabled' : '' ;
+                $disable = ( date_format($date, 'U') - time() < 60*60*12 ) ? '' : '' ;
                 if ($disable == 'disabled') echo "
                   <div class='error'>
                     This ad is in production and cannot be edited further. For emergency changes, please contact Morning Chalk Up at info@morningchalkup.com
@@ -150,7 +152,7 @@
                       <tr>
                         <td style="padding: 40px 25px 10px; font-family: Roboto, sans-serif; font-size: 16px; line-height: 24px; color: #333132;">
                           <?php $author = wp_get_current_user(); ?>
-                          <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is <span class="desctarget"></span> <strong><?php echo $author->display_name; ?></strong>.</p>
+                          <p>Good morning and welcome to the <span style="font-weight:bold;">Morning Chalk Up</span>. Today's edition is <span class="desctarget"></span> <strong><?php echo get_field('purchaser')['display_name'] ?></strong>.</p>
                           <p><span class="target"></span></p>
                         </td>
                       </tr>
