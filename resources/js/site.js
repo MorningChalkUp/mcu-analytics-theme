@@ -36,49 +36,52 @@
 	}
   
  
-  function adPreviewInit(){
-    $('.panel').each(function(){
-      
+  function adPreviewInit() {
+    $('.panel').each(function () {
+
       var target = $(this).find('.preview .target'),
-          desctarget = $(this).find('.preview .desctarget'),
-          timeout = null;
-      
+        desctarget = $(this).find('.preview .desctarget'),
+        timeout = null;
+
       // Trigger Preview 
-      $(this).find('.adtextarea').each(function(){
-        $(this).focus(function(){
+      $(this).find('.adtextarea').each(function () {
+        $(this).focus(function () {
           handleChange(this);
         });
-        $(this).on('input', function(){
+        $(this).on('input', function () {
           handleChange(this);
         });
         handleChange(this);
       })
       handleChange($(this).find('.adtextarea')[0]);
-      
-      function handleChange(adtextarea){
+
+      function handleChange(adtextarea) {
         var newText = adtextarea.value,
-            previewLabel = $(adtextarea).data('label');
-        if (newText.length >= 500) {
+          previewLabel = $(adtextarea).data('label');
+        if (newText.replace(/\n/g, "\r\n").length > 500) {
           $(adtextarea).parent('p').addClass('toolong');
+          $("input[type='submit']").attr("disabled", true);
         } else {
           $(adtextarea).parent('p').removeClass('toolong');
+          $("input[type='submit']").attr("disabled", false);
         }
+        $(adtextarea).parent('p').find('.charCount').html(' ' + newText.replace(/\n/g, "\r\n").length + '/500 characters');
+
         do {
           orig = newText;
-          newText = newText.replace('[','<a href="#"><strong>').replace(']','</strong></a>');
-        } while(orig !== newText);
+          newText = newText.replace('[', '<a href="#"><strong>').replace(']', '</strong></a>');
+        } while (orig !== newText);
         newText = newText.replace(/\n/g, "<br/>");
-        $(adtextarea).parent('p').find('.charCount').html(' '+newText.length+'/500 characters');
         $(target).html(newText);
-        
+
         $('.preview-label').html(previewLabel);
       }
-      
+
       $(this).find('.desctarget').text($(this).find('.addescriptor').val());
-      $(this).find('.addescriptor').change(function() {
+      $(this).find('.addescriptor').change(function () {
         desctarget.text($(this).val());
       });
-      
+
     })
   }
   
