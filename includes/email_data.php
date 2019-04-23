@@ -6,7 +6,7 @@
     require_once 'cm/csrest_campaigns.php';
     require_once 'cm/csrest_clients.php';
     
-    function mcu_get_email_data($id, $ad_domains) {
+    function mcu_get_email_data($id, $ad_domains, $sponsored_link_domain) {
     
       $auth = array('api_key' => CM_API_KEY);
       $wrap = new CS_REST_Campaigns($id, $auth);
@@ -29,8 +29,9 @@
         } while (!$break);
     
         $ad_click = 0;
-        
         $ad_links = array();
+        $sponsored_link_click = 0;
+        $sponsored_link = '';
         foreach ($clicks as $click) {
           foreach ($ad_domains as $ad_domain) {
             // see if click link is on ad domain
@@ -45,6 +46,11 @@
               // if it is not, then add it
               // increment click count by one
             }
+          }
+
+          if ( strpos( strtolower($click->URL), strtolower($sponsored_link_domain) ) !== false) {
+            $sponsored_link_click++;
+            $sponsored_link = $click->URL;
           }
         }
     
@@ -72,6 +78,8 @@
           'title' => $title,
           'subject' => $subject,
           'web_view' => $result->response->WebVersionURL,
+          'sponsored_link' => $sponsored_link,
+          'sponsored_link_clicks' => $sponsored_link_click
         );
     
         return $data;

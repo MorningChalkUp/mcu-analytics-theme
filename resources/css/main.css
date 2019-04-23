@@ -746,6 +746,7 @@ h4 {
     font-weight: 300;
     font-size: 18px;
 }
+h4 svg{color:#ccc;margin-left:0.5rem;}
 
 a.btn {
     background-color: #3D5BA9;
@@ -1096,10 +1097,6 @@ table td.num {
     padding: 20px;
     border-radius: 4px;
     text-align: center;
-}
-
-#reports a {
-    display: block;
 }
 
 #reports a img {

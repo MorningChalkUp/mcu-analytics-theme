@@ -18,7 +18,26 @@
             "display_format": "m\/d\/Y",
             "return_format": "m\/d\/Y",
             "first_day": 1,
-            "default_value": "20181028"
+            "default_value": "20190423"
+        },
+        {
+            "key": "field_5a43f7b1f91b3",
+            "label": "Campaign ID",
+            "name": "campaign_id",
+            "type": "text",
+            "instructions": "<a href=\"\/campaigns\/\" target=\"_blank\">Find the ID<\/a>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_5a43f7d6f91b4",
@@ -39,25 +58,6 @@
             "allow_null": 0,
             "multiple": 0,
             "return_format": "array"
-        },
-        {
-            "key": "field_5a43f7b1f91b3",
-            "label": "Campaign ID",
-            "name": "campaign_id",
-            "type": "text",
-            "instructions": "<a href=\"\/campaigns\/\" target=\"_blank\">Find the ID<\/a>",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "40",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
         },
         {
             "key": "field_5a43f81bf91b5",
@@ -103,6 +103,64 @@
             "key": "field_5a5d0328f3017",
             "label": "Ad Copy",
             "name": "ad_copy",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5cbf395472687",
+            "label": "Link Sponsor",
+            "name": "link_sponsor",
+            "type": "user",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "role": [
+                "sponsor"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_5cbf397772688",
+            "label": "Link URL",
+            "name": "link_url",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5cbf49679cdde",
+            "label": "Sponsored Link Copy",
+            "name": "sponsored_link_copy",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
@@ -170,5 +228,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1540760139
+    "modified": 1556040063
 }
