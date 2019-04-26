@@ -33,24 +33,27 @@
         $sponsored_link_click = 0;
         $sponsored_link = '';
         foreach ($clicks as $click) {
-          foreach ($ad_domains as $ad_domain) {
-            // see if click link is on ad domain
-            if (strpos(strtolower($click->URL), strtolower($ad_domain['url'])) !== false) {
-              $ad_click ++;
-              // check to see if link is in $ad_link
-              if(!isset($ad_links[$click->URL])) {
-                $ad_links[$click->URL] = array('url' => $click->URL, 'clicks'=> 1);
-              } else {
-                $ad_links[$click->URL]['clicks']++;
+          if(isset($ad_domain['url']) && $ad_domain['url'] != '') {
+            foreach ($ad_domains as $ad_domain) {
+              // see if click link is on ad domain
+              if (strpos(strtolower($click->URL), strtolower($ad_domain['url'])) !== false) {
+                $ad_click ++;
+                // check to see if link is in $ad_link
+                if(!isset($ad_links[$click->URL])) {
+                  $ad_links[$click->URL] = array('url' => $click->URL, 'clicks'=> 1);
+                } else {
+                  $ad_links[$click->URL]['clicks']++;
+                }
+                // if it is not, then add it
+                // increment click count by one
               }
-              // if it is not, then add it
-              // increment click count by one
             }
           }
-
-          if ( strpos( strtolower($click->URL), strtolower($sponsored_link_domain) ) !== false) {
-            $sponsored_link_click++;
-            $sponsored_link = $click->URL;
+          if(isset($sponsored_link_domain) && $sponsored_link_domain != '') {
+            if ( strpos( strtolower($click->URL), strtolower($sponsored_link_domain) ) !== false) {
+              $sponsored_link_click++;
+              $sponsored_link = $click->URL;
+            }
           }
         }
     
