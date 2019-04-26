@@ -1,11 +1,10 @@
 <?php 
 if ( is_user_logged_in() ) :
   $site   = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'];
-  //current_user_can( 'manage_options' )
+  
+  
   if(is_author()){
     $author = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
-    $title = "<strong>$author->display_name</strong>";
-    $partial = 'post-report';
     $args = array(
       'post_type' => 'report',
       'posts_per_page' => -1,
@@ -22,8 +21,6 @@ if ( is_user_logged_in() ) :
     );
   } else { //this is a dashboard
     if(current_user_can( 'manage_options' )) {
-      $title = "<strong>All</strong>";
-      $partial = 'post-report';
       $args = array(
         'post_type' => 'report',
         'posts_per_page' => -1,
@@ -32,8 +29,6 @@ if ( is_user_logged_in() ) :
         'order' => 'DESC',
       );
     } else { 
-      $title = "<strong>$author->display_name</strong>";
-      $partial = 'post-report';
       $author = wp_get_current_user();
       $args = array(
         'post_type' => 'report',
@@ -42,8 +37,14 @@ if ( is_user_logged_in() ) :
         'orderby' => 'meta_value',
         'order' => 'DESC',
         'meta_query' => array(
+          'relation' => 'OR',
           array(
             'key' => 'sponsor', // name of custom field
+            'value' => $author->ID,
+            'compare' => '=',
+          ),
+          array(
+            'key' => 'link_sponsor', // name of custom field
             'value' => $author->ID,
             'compare' => '=',
           )
@@ -143,7 +144,12 @@ if ( is_user_logged_in() ) :
       foreach($reports as $report){
         $r = get_field('recipients', $report->ID) ? : 0;
         $o = get_field('opens', $report->ID) ? : 0;
-        $c = get_field('clicks', $report->ID) ? : 0;
+        // if user is link_sponsor, use link clicks
+        if( get_field('link_sponsor', $report->ID) == $author->ID){
+          $c =  get_field('sponsored_link_clicks', $report->ID) ? : 0;
+        } else {
+          $c =  get_field('clicks', $report->ID) ? : 0;
+        }
         $o_max = $o > $o_max ? $o : $o_max;
         $o_min = $o < $o_min ? $o : $o_min;
         $c_max = $c > $c_max ? $c : $c_max;
@@ -154,7 +160,7 @@ if ( is_user_logged_in() ) :
       }
       
       $avg_or = $reports ? $agg_or/count($reports) : 0;
-      $inc = 500/($rcount-1); // for trendline
+      if($rcount > 1) $inc = 500/($rcount-1); // for trendline
     ?>
     <div class="box nopad flexed">
       <div class="stat blue center-text ads-stat">
@@ -213,19 +219,14 @@ if ( is_user_logged_in() ) :
         <thead>
           <tr>
             <?php if (current_user_can( 'manage_options' )) echo "<th></th>"; ?>
-            <th align="left"><label>Ad Reports</label></th>
+            <th align="left"><label>Reports</label></th>
             <th align="right"><label>Open rate</label></th>
             <th align="right"><label>Views</label></th>
             <th align="right"><label>Clicks</label></th>
           </tr>
         </thead>
         <tbody>
-          <?php 
-            pxl::loop(
-              $partial,
-              $args
-            );
-          ?>
+          <?php pxl::loop( 'post-report', $args);?>
         </tbody>
       </table>
     </div>
