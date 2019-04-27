@@ -1,5 +1,6 @@
 <?php  
   // pull data
+  var_dump(get_field('ad_urls'));
   $mcu_email_data = mcu_get_email_data( get_field('campaign_id'), get_field('ad_urls'), get_field('link_url') );
   
   // save data to cache:
