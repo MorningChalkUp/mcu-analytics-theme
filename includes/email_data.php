@@ -33,7 +33,7 @@
         $sponsored_link_click = 0;
         $sponsored_link = '';
         foreach ($clicks as $click) {
-          if(isset($ad_domains) && $ad_domains != false && $ad_domains != '' & $ad_domains != []) {
+          if(isset($ad_domains) && $ad_domains[0]['url'] != 'false') {
             foreach ($ad_domains as $ad_domain) {
               // see if click link is on ad domain
               if (strpos(strtolower($click->URL), strtolower($ad_domain['url'])) !== false) {
