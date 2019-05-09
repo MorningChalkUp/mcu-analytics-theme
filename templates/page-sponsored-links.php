@@ -41,8 +41,10 @@
           // var_dump($days);
           $months = array();
           foreach($days as $day){
-            $month = date('M',strtotime($day['day'])).' '.date('Y',strtotime($day['day']));
-            $months[$month][] = $day;
+            if (strtotime($day['day']) > time()) {
+              $month = date('M',strtotime($day['day'])).' '.date('Y',strtotime($day['day']));
+              $months[$month][] = $day;
+            }
           }
           foreach($months as $key=>$month):
             ?>
