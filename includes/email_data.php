@@ -10,6 +10,7 @@
     
       $auth = array('api_key' => CM_API_KEY);
       $wrap = new CS_REST_Campaigns($id, $auth);
+      $wrap->setTimeout(30);
     
       $result = $wrap->get_summary();
     
