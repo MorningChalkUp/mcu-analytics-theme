@@ -6,8 +6,8 @@
     require_once 'cm/csrest_campaigns.php';
     require_once 'cm/csrest_clients.php';
     
-    define('CS_REST_SOCKET_TIMEOUT',30);
-    define('CS_REST_CALL_TIMEOUT',30);
+    // define('CS_REST_SOCKET_TIMEOUT',30);
+    // define('CS_REST_CALL_TIMEOUT',30);
     
     function mcu_get_email_data($id, $ad_domains, $sponsored_link_domain) {
     
