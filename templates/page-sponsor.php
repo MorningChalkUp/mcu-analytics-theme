@@ -40,8 +40,10 @@
           $weeks = get_field('weeks','options');
           $months = array();
           foreach($weeks as $week){
-            $month = date('M',strtotime($week['start'])).' '.date('Y',strtotime($week['start']));
-            $months[$month][] = $week;
+            if(strtotime($week['start']) >= strtotime('now')) {
+              $month = date('M',strtotime($week['start'])).' '.date('Y',strtotime($week['start']));
+              $months[$month][] = $week;
+            }
           }
           foreach($months as $key=>$month):
             ?>
