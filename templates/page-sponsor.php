@@ -58,7 +58,7 @@
               <div class="month">
                 <h4 class="label"><?php echo $key ?></h4>
                 <?php foreach ($month as $week) : ?>
-                  <?php if ( $week['availability'] != 'not_for_sale' ): ?>
+                  <?php if ( $week['availability'] != 'not_for_sale' &&  strtotime($week['start']) <= strtotime('now') ): ?>
                     <?php
                       $start = strtotime($week['start']);
                       $end = strtotime($week['end']);
